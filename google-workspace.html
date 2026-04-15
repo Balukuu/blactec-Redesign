@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Workspace | BlacTec — Business Email &amp; Collaboration Tools</title>
+  <meta name="description" content="Get Google Workspace through BlacTec — professional Gmail for business, Google Drive, Meet, Docs, and more. Custom email @yourdomain with 30GB storage. Perfect for African businesses.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Google Workspace | BlacTec — Business Email &amp; Collaboration Tools">
+  <meta property="og:description" content="Transform teamwork and boost productivity with Google Workspace from BlacTec. Professional email, cloud storage, video conferencing, and collaboration tools for your business.">
+  <meta property="og:image" content="https://blactec.ug/og-image.jpg">
+  <meta property="og:url" content="https://blactec.ug/google-workspace">
+  <meta property="og:type" content="website">
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — BlacTec Design System
+       ============================================================ */
+    :root {
+      --color-bg:           #0A0B0F;
+      --color-bg-alt:       #0F1117;
+      --color-bg-card:      #13151C;
+      --color-bg-glass:     rgba(255,255,255,0.04);
+      --color-primary:      #7C5CFC;
+      --color-primary-dark: #5B3FD4;
+      --color-primary-glow: rgba(124,92,252,0.25);
+      --color-accent:       #00E5FF;
+      --color-accent-soft:  rgba(0,229,255,0.12);
+      --color-text:         #FFFFFF;
+      --color-text-secondary: #A0A4B8;
+      --color-text-muted:   #5A5F75;
+      --color-border:       rgba(255,255,255,0.07);
+      --color-border-hover: rgba(124,92,252,0.4);
+      --radius-sm:          8px;
+      --radius-md:          14px;
+      --radius-lg:          24px;
+      --radius-xl:          36px;
+      --gradient-hero:      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,92,252,0.35) 0%, transparent 70%);
+      --gradient-brand:     linear-gradient(135deg, #7C5CFC 0%, #00E5FF 100%);
+      --gradient-card:      linear-gradient(135deg, rgba(124,92,252,0.08) 0%, rgba(0,229,255,0.04) 100%);
+      --shadow-card:        0 4px 40px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05) inset;
+      --shadow-glow:        0 0 60px rgba(124,92,252,0.3);
+
+      /* Google Workspace brand colors */
+      --gw-blue:   #4285F4;
+      --gw-red:    #EA4335;
+      --gw-yellow: #FBBC05;
+      --gw-green:  #34A853;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4,h5,h6 { line-height: 1.15; font-weight: 700; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ============================================================
+       ACCESSIBILITY
+       ============================================================ */
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Page loader */
+    #pageLoader {
+      position: fixed; inset: 0;
+      background: var(--color-bg);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #pageLoader.loaded { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 28px; font-weight: 900;
+      color: var(--color-text);
+      animation: loaderPulse 1.2s ease-in-out infinite;
+    }
+    .loader-logo .lac { color: var(--color-primary); }
+    @keyframes loaderPulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.95); }
+    }
+
+    /* ============================================================
+       UTILITIES
+       ============================================================ */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .gradient-text {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--color-primary);
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 12px;
+    }
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+      opacity: 0.15; margin: 0;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 28px; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px;
+      cursor: pointer; transition: all 0.25s ease; border: none; white-space: nowrap;
+    }
+    .btn-primary { background: var(--gradient-brand); color: #fff; box-shadow: 0 4px 24px var(--color-primary-glow); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--color-primary-glow); }
+    .btn-ghost { background: transparent; color: var(--color-text); border: 1.5px solid var(--color-border); }
+    .btn-ghost:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-2px); }
+    .btn-lg { padding: 16px 36px; font-size: 18px; }
+    .btn-sm { padding: 10px 20px; font-size: 14px; }
+    .btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
+    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+    .btn-google {
+      background: linear-gradient(135deg, var(--gw-blue) 0%, var(--gw-green) 100%);
+      color: #fff; box-shadow: 0 4px 24px rgba(66,133,244,0.3);
+    }
+    .btn-google:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(66,133,244,0.4); }
+
+    /* ============================================================
+       SCROLL ANIMATIONS
+       ============================================================ */
+    .animate-on-scroll {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+      height: 72px; display: flex; align-items: center;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(10,11,15,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--color-border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 24px; }
+    .nav-logo { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px; color: var(--color-text); flex-shrink: 0; letter-spacing: -0.5px; }
+    .nav-logo .logo-accent { color: var(--color-primary); }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: flex; align-items: center; gap: 4px; padding: 8px 14px;
+      font-size: 14px; font-weight: 500; color: var(--color-text-secondary);
+      border-radius: var(--radius-sm); transition: color 0.2s, background 0.2s; cursor: pointer;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--color-text); background: var(--color-bg-glass); }
+    .nav-link svg { width: 12px; height: 12px; transition: transform 0.2s; }
+    .nav-item:hover .nav-link svg { transform: rotate(180deg); }
+    .nav-link-plain { display: flex; align-items: center; padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--color-text-secondary); border-radius: var(--radius-sm); transition: color 0.2s, background 0.2s; }
+    .nav-link-plain:hover { color: var(--color-text); background: var(--color-bg-glass); }
+    .nav-link-plain.active { color: var(--color-primary); background: rgba(124,92,252,0.08); }
+
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+      min-width: 420px; background: rgba(15,17,23,0.98); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6); backdrop-filter: blur(20px);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      transform: translateX(-50%) translateY(-6px);
+    }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px; border-radius: var(--radius-sm); transition: background 0.2s; }
+    .nav-dropdown-item:hover { background: var(--color-bg-glass); }
+    .nav-dropdown-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .nav-dropdown-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 2px; }
+    .nav-dropdown-text span { font-size: 12px; color: var(--color-text-muted); }
+
+    .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-right .btn { font-size: 14px; padding: 10px 20px; }
+
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px; padding: 8px; border-radius: var(--radius-sm);
+      cursor: pointer; transition: background 0.2s; border: 1px solid var(--color-border);
+    }
+    .hamburger:hover { background: var(--color-bg-glass); }
+    .hamburger span { display: block; height: 2px; background: var(--color-text); border-radius: 2px; transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-nav {
+      position: fixed; inset: 0; z-index: 8999;
+      background: rgba(10,11,15,0.98); backdrop-filter: blur(20px);
+      display: flex; flex-direction: column; padding: 100px 24px 40px; overflow-y: auto;
+      transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav-plain { display: block; padding: 16px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid var(--color-border); color: var(--color-text); }
+    .mobile-nav-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .mobile-nav-buttons .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       HERO — Hostinger-style split layout
+       ============================================================ */
+    #gw-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 120px 0 80px;
+      background: var(--color-bg);
+    }
+    .gw-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 20% 30%, rgba(124,92,252,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 60%, rgba(0,229,255,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 50% 90%, rgba(66,133,244,0.1) 0%, transparent 50%);
+      z-index: 0;
+    }
+    .gw-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px; z-index: 1; pointer-events: none;
+    }
+    .gw-hero-blob {
+      position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0;
+      animation: gwBlobFloat 14s ease-in-out infinite;
+    }
+    .gw-blob-1 { width: 500px; height: 500px; background: rgba(124,92,252,0.18); top: -10%; left: 5%; }
+    .gw-blob-2 { width: 350px; height: 350px; background: rgba(0,229,255,0.10); bottom: 10%; right: 5%; animation-delay: 5s; }
+    .gw-blob-3 { width: 300px; height: 300px; background: rgba(66,133,244,0.12); top: 40%; right: 30%; animation-delay: 3s; }
+    @keyframes gwBlobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(15px,-15px) scale(1.04); }
+    }
+
+    /* Hero split layout */
+    .gw-hero-split {
+      position: relative; z-index: 4;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .gw-hero-left {}
+    .gw-hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 20px; border-radius: 50px;
+      border: 1px solid var(--color-primary);
+      background: rgba(124,92,252,0.08);
+      font-size: 13px; font-weight: 600; color: var(--color-primary);
+      margin-bottom: 28px;
+      animation: shimmerBorder 3s linear infinite;
+    }
+    @keyframes shimmerBorder {
+      0%,100% { box-shadow: 0 0 0 0 rgba(124,92,252,0.3); }
+      50% { box-shadow: 0 0 16px 2px rgba(124,92,252,0.4); }
+    }
+    .gw-hero-left h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 900; line-height: 1.08;
+      color: var(--color-text);
+      margin-bottom: 20px; letter-spacing: -1.5px;
+    }
+    .gw-google-text {
+      background: linear-gradient(135deg, var(--gw-blue), var(--gw-red), var(--gw-yellow), var(--gw-green));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .gw-hero-sub {
+      font-size: 18px; color: var(--color-text-secondary);
+      margin-bottom: 36px; font-weight: 400; line-height: 1.65;
+      max-width: 480px;
+    }
+    .gw-hero-cta-row {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .gw-hero-trust {
+      display: flex; flex-direction: column; gap: 10px;
+      font-size: 14px; color: var(--color-text-secondary);
+    }
+    .gw-hero-trust-item { display: flex; align-items: center; gap: 8px; }
+    .gw-hero-trust-icon {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(124,92,252,0.15); border: 1px solid rgba(124,92,252,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; flex-shrink: 0;
+      color: var(--color-primary);
+    }
+
+    /* Hero right — mock Gmail interface */
+    .gw-hero-right { position: relative; }
+    .gw-hero-mockup {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card), 0 0 60px rgba(124,92,252,0.15);
+      position: relative;
+    }
+    .gw-mockup-topbar {
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--color-border);
+      padding: 14px 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .gw-mockup-dots { display: flex; gap: 6px; }
+    .gw-mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .gw-mockup-dot:nth-child(1) { background: #FF5F57; }
+    .gw-mockup-dot:nth-child(2) { background: #FEBC2E; }
+    .gw-mockup-dot:nth-child(3) { background: #28C840; }
+    .gw-mockup-address {
+      flex: 1; background: rgba(255,255,255,0.06); border-radius: 6px;
+      padding: 5px 12px; font-size: 11px; color: var(--color-text-muted);
+      font-family: monospace;
+    }
+    .gw-mockup-body { padding: 0; }
+    .gw-gmail-header {
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .gw-gmail-logo {
+      font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700;
+      background: linear-gradient(135deg, var(--gw-blue), var(--gw-red), var(--gw-yellow), var(--gw-green));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .gw-gmail-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gw-blue), var(--gw-green));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+    }
+    .gw-gmail-search {
+      margin: 12px 20px; padding: 10px 16px;
+      background: rgba(255,255,255,0.06); border-radius: 24px;
+      border: 1px solid var(--color-border);
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--color-text-muted);
+    }
+    .gw-gmail-search span:first-child { font-size: 14px; }
+    .gw-inbox { padding: 0 0 8px; }
+    .gw-inbox-label { padding: 8px 20px 4px; font-size: 11px; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .gw-email-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.03);
+      transition: background 0.2s; cursor: pointer;
+    }
+    .gw-email-row:hover { background: rgba(255,255,255,0.03); }
+    .gw-email-row.unread .gw-sender { font-weight: 700; color: var(--color-text); }
+    .gw-email-row.unread .gw-subject { color: var(--color-text); }
+    .gw-email-avatar-sm {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+    }
+    .gw-email-info { flex: 1; min-width: 0; }
+    .gw-sender { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); display: block; }
+    .gw-subject { font-size: 13px; color: var(--color-text-muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .gw-email-time { font-size: 11px; color: var(--color-text-muted); flex-shrink: 0; }
+    .gw-mockup-compose {
+      position: absolute; bottom: 20px; right: 20px;
+      background: var(--gradient-brand);
+      color: #fff; padding: 12px 20px; border-radius: 50px;
+      font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px var(--color-primary-glow);
+      cursor: pointer;
+    }
+
+    /* Floating badge cards */
+    .gw-hero-float-cards { position: absolute; bottom: -20px; left: -20px; z-index: 5; }
+    .gw-float-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 10px;
+      backdrop-filter: blur(10px);
+      animation: floatCard 6s ease-in-out infinite;
+    }
+    .gw-float-card:nth-child(2) { animation-delay: 2s; margin-left: 20px; }
+    @keyframes floatCard {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .gw-float-icon { font-size: 22px; }
+    .gw-float-text { font-size: 12px; font-weight: 600; color: var(--color-text); }
+    .gw-float-sub { font-size: 10px; color: var(--color-text-muted); }
+
+    /* ============================================================
+       SHARED SECTION STYLES
+       ============================================================ */
+    .section { padding: 100px 0; }
+    .section-alt { background: var(--color-bg-alt); }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(28px, 4vw, 44px); font-weight: 800;
+      color: var(--color-text); margin-bottom: 16px; letter-spacing: -0.5px;
+    }
+    .section-header p { font-size: 17px; color: var(--color-text-secondary); max-width: 560px; margin: 0 auto; }
+
+    /* ============================================================
+       FEATURES — Hostinger-style alternating rows with real screenshots
+       ============================================================ */
+    .gw-feature-section { padding: 80px 0; }
+    .gw-feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .gw-feature-row:last-child { margin-bottom: 0; }
+    .gw-feature-text h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(26px, 3.2vw, 40px); font-weight: 800;
+      color: var(--color-text); margin-bottom: 18px; letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .gw-feature-text p { font-size: 17px; color: var(--color-text-secondary); margin-bottom: 32px; line-height: 1.7; }
+    .gw-feature-list { margin-bottom: 36px; display: flex; flex-direction: column; gap: 12px; }
+    .gw-feature-li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--color-text-secondary); }
+    .gw-feature-check {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(124,92,252,0.15); border: 1px solid rgba(124,92,252,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--color-primary); margin-top: 2px;
+    }
+
+    /* Screenshot showcase */
+    .gw-feature-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: visible;
+    }
+    .gw-feature-screen {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card), 0 0 40px rgba(124,92,252,0.12);
+    }
+    .gw-feature-screen-header {
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-border);
+      padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .gw-screen-dots { display: flex; gap: 5px; }
+    .gw-screen-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .gw-screen-dot:nth-child(1) { background: #FF5F57; }
+    .gw-screen-dot:nth-child(2) { background: #FEBC2E; }
+    .gw-screen-dot:nth-child(3) { background: #28C840; }
+    .gw-screen-tab {
+      font-size: 11px; color: var(--color-text-muted);
+      background: rgba(255,255,255,0.06); padding: 4px 12px; border-radius: 6px;
+    }
+    .gw-screen-body { padding: 20px; }
+
+    /* Gmail mockup screen */
+    .gw-sc-gmail .gw-screen-body { padding: 0; }
+    .gw-sc-gmail-nav {
+      display: flex; align-items: center; gap: 0; border-bottom: 1px solid var(--color-border);
+    }
+    .gw-sc-gmail-sidebar {
+      width: 180px; flex-shrink: 0; border-right: 1px solid var(--color-border); padding: 12px 0;
+    }
+    .gw-sc-gmail-item {
+      padding: 7px 16px; font-size: 12px; color: var(--color-text-muted);
+      display: flex; align-items: center; gap: 8px; border-radius: 0 24px 24px 0; margin-right: 8px;
+    }
+    .gw-sc-gmail-item.active {
+      background: rgba(124,92,252,0.12); color: var(--color-primary); font-weight: 600;
+    }
+    .gw-sc-gmail-count { margin-left: auto; font-size: 10px; font-weight: 700; }
+    .gw-sc-gmail-mails { flex: 1; }
+    .gw-sc-mail-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .gw-sc-mail-item.unread { background: rgba(124,92,252,0.04); }
+    .gw-sc-mail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gw-blue); flex-shrink: 0; }
+    .gw-sc-mail-avatar { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; }
+    .gw-sc-mail-body { flex: 1; min-width: 0; }
+    .gw-sc-mail-from { font-size: 11px; font-weight: 700; color: var(--color-text); }
+    .gw-sc-mail-preview { font-size: 10px; color: var(--color-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .gw-sc-mail-time { font-size: 10px; color: var(--color-text-muted); flex-shrink: 0; }
+
+    /* Meet mockup */
+    .gw-sc-meet-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+      background: #000; border-radius: 8px; overflow: hidden;
+    }
+    .gw-sc-meet-cell {
+      aspect-ratio: 4/3; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gw-sc-meet-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; }
+    .gw-sc-meet-name {
+      position: absolute; bottom: 8px; left: 8px;
+      font-size: 10px; font-weight: 600; color: #fff;
+      background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;
+    }
+    .gw-sc-meet-bar {
+      background: rgba(255,255,255,0.05); border-top: 1px solid var(--color-border);
+      padding: 12px 16px; display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .gw-sc-meet-btn {
+      width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+
+    /* Docs mockup */
+    .gw-sc-docs-toolbar {
+      background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--color-border);
+      padding: 8px 16px; display: flex; gap: 8px; align-items: center;
+    }
+    .gw-sc-docs-btn {
+      padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+      background: rgba(255,255,255,0.05); color: var(--color-text-muted);
+    }
+    .gw-sc-docs-body { padding: 20px; min-height: 200px; }
+    .gw-sc-docs-title { font-size: 16px; font-weight: 700; color: var(--color-text); margin-bottom: 12px; }
+    .gw-sc-docs-line { height: 9px; border-radius: 4px; margin-bottom: 8px; background: rgba(255,255,255,0.07); }
+    .gw-sc-docs-collaborators {
+      display: flex; gap: -8px; margin-bottom: 12px;
+    }
+    .gw-sc-docs-collab {
+      width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--color-bg-card);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: #fff; margin-left: -6px;
+    }
+    .gw-sc-docs-collab:first-child { margin-left: 0; }
+    .gw-sc-docs-cursor {
+      display: inline-block; width: 2px; height: 16px;
+      background: var(--gw-blue); animation: cursorBlink 1s infinite;
+      vertical-align: middle; margin-left: 2px;
+    }
+    @keyframes cursorBlink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Security mockup */
+    .gw-sc-security-content { padding: 20px; }
+    .gw-sc-security-status {
+      display: flex; align-items: center; gap: 12px; padding: 16px;
+      background: rgba(52,168,83,0.08); border: 1px solid rgba(52,168,83,0.2);
+      border-radius: var(--radius-md); margin-bottom: 16px;
+    }
+    .gw-sc-security-icon { font-size: 28px; }
+    .gw-sc-security-title { font-size: 14px; font-weight: 700; color: var(--color-text); }
+    .gw-sc-security-sub { font-size: 11px; color: var(--color-text-muted); }
+    .gw-sc-security-items { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gw-sc-security-item {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm); padding: 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .gw-sc-security-item-icon { font-size: 16px; }
+    .gw-sc-security-item-label { font-size: 11px; font-weight: 600; color: var(--color-text-secondary); }
+    .gw-sc-security-item-status { font-size: 10px; color: #34A853; }
+
+    /* Floating badge on feature images */
+    .gw-feature-badge {
+      position: absolute; z-index: 10;
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 10px 14px;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: var(--shadow-card); pointer-events: none;
+    }
+    .gw-feature-badge-pulse {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+      animation: badgePulse 2s ease-out infinite;
+    }
+    @keyframes badgePulse {
+      0% { box-shadow: 0 0 0 0 currentColor; }
+      70% { box-shadow: 0 0 0 6px transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    .gw-feature-badge-text { font-size: 12px; font-weight: 600; color: var(--color-text); }
+    .gw-feature-badge-sub { font-size: 10px; color: var(--color-text-muted); }
+
+    /* ============================================================
+       PRICING
+       ============================================================ */
+    #gw-pricing {}
+    .gw-pricing-note {
+      text-align: center; margin-bottom: 48px;
+      font-size: 14px; color: var(--color-text-muted);
+    }
+    .gw-pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start;
+    }
+    .gw-plan-card {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); padding: 36px 32px; position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gw-plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+    .gw-plan-card.popular {
+      border-color: var(--color-primary);
+      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(124,92,252,0.2), var(--shadow-card);
+    }
+    .gw-plan-card.popular:hover { transform: scale(1.03) translateY(-6px); }
+    .gw-popular-badge {
+      position: absolute; top: -14px; right: 24px;
+      background: var(--gradient-brand); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 5px 14px;
+      border-radius: 50px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .gw-plan-icon { font-size: 36px; margin-bottom: 16px; }
+    .gw-plan-name { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; color: var(--color-text); margin-bottom: 6px; }
+    .gw-plan-tagline { font-size: 13px; color: var(--color-text-muted); margin-bottom: 24px; }
+    .gw-plan-price-wrap { margin-bottom: 4px; }
+    .gw-plan-price { font-family: 'Unbounded', sans-serif; font-size: 36px; font-weight: 800; color: var(--color-text); }
+    .gw-plan-price-cur { font-size: 14px; vertical-align: super; font-weight: 600; margin-right: 2px; }
+    .gw-plan-period { font-size: 13px; color: var(--color-text-muted); margin-bottom: 28px; }
+    .gw-plan-cta { width: 100%; justify-content: center; margin-bottom: 28px; }
+    .gw-plan-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--color-text-secondary);
+      padding: 7px 0; border-bottom: 1px solid var(--color-border);
+    }
+    .gw-plan-features li:last-child { border-bottom: none; }
+    .gw-plan-check { color: var(--color-primary); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ============================================================
+       TOOLS GRID
+       ============================================================ */
+    .gw-tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .gw-tool-card {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 28px 24px; text-align: center; position: relative;
+      overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .gw-tool-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--gradient-card); opacity: 0; transition: opacity 0.25s;
+    }
+    .gw-tool-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); border-color: var(--color-border-hover); }
+    .gw-tool-card:hover::before { opacity: 1; }
+    .gw-tool-icon { font-size: 36px; margin-bottom: 14px; position: relative; z-index: 1; }
+    .gw-tool-card h3 { font-size: 15px; font-weight: 700; color: var(--color-text); margin-bottom: 8px; position: relative; z-index: 1; }
+    .gw-tool-card p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; position: relative; z-index: 1; }
+
+    /* ============================================================
+       BENEFITS / STATS BAR
+       ============================================================ */
+    .gw-stats-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--color-border); border-radius: var(--radius-md); overflow: hidden;
+    }
+    .gw-stat-box {
+      background: var(--color-bg-card); padding: 36px 24px; text-align: center;
+      transition: background 0.25s;
+    }
+    .gw-stat-box:hover { background: rgba(19,21,28,0.9); }
+    .gw-stat-num {
+      font-family: 'Unbounded', sans-serif; font-size: 32px; font-weight: 900;
+      background: var(--gradient-brand); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+      display: block; margin-bottom: 8px;
+    }
+    .gw-stat-label { font-size: 14px; font-weight: 600; color: var(--color-text); margin-bottom: 6px; display: block; }
+    .gw-stat-desc { font-size: 12px; color: var(--color-text-muted); line-height: 1.5; }
+
+    /* ============================================================
+       WHY BLACTEC SECTION
+       ============================================================ */
+    .gw-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .gw-why-card {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); padding: 32px 28px;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .gw-why-card:hover { transform: translateY(-4px); border-color: var(--color-border-hover); box-shadow: var(--shadow-card); }
+    .gw-why-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-md);
+      background: rgba(124,92,252,0.12); border: 1px solid rgba(124,92,252,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .gw-why-card h3 { font-family: 'Unbounded', sans-serif; font-size: 16px; font-weight: 700; color: var(--color-text); margin-bottom: 10px; }
+    .gw-why-card p { font-size: 14px; color: var(--color-text-muted); line-height: 1.65; }
+
+    /* ============================================================
+       CTA BANNER
+       ============================================================ */
+    .gw-cta-banner {
+      background: linear-gradient(135deg, rgba(124,92,252,0.12) 0%, rgba(0,229,255,0.06) 50%, rgba(66,133,244,0.08) 100%);
+      border-top: 1px solid rgba(124,92,252,0.2); border-bottom: 1px solid rgba(124,92,252,0.2);
+      padding: 80px 0;
+    }
+    .gw-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .gw-cta-text h2 { font-family: 'Unbounded', sans-serif; font-size: clamp(22px, 3vw, 36px); font-weight: 800; color: var(--color-text); margin-bottom: 10px; letter-spacing: -0.3px; }
+    .gw-cta-text p { font-size: 16px; color: var(--color-text-secondary); max-width: 480px; }
+    .gw-cta-actions { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+
+    /* ============================================================
+       FAQ
+       ============================================================ */
+    .gw-faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .gw-faq-item {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); overflow: hidden; transition: border-color 0.25s;
+    }
+    .gw-faq-item.open { border-color: rgba(124,92,252,0.4); }
+    .gw-faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; cursor: pointer; user-select: none; gap: 16px; width: 100%;
+    }
+    .gw-faq-question span { font-size: 16px; font-weight: 600; color: var(--color-text); text-align: left; }
+    .gw-faq-icon {
+      width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%;
+      background: rgba(124,92,252,0.1); border: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: var(--color-primary); transition: transform 0.3s, background 0.25s;
+    }
+    .gw-faq-item.open .gw-faq-icon { transform: rotate(45deg); background: var(--color-primary); color: #fff; }
+    .gw-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .gw-faq-item.open .gw-faq-answer { max-height: 500px; }
+    .gw-faq-answer p { padding: 0 24px 20px; font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; }
+
+    /* ============================================================
+       SCROLL TOP & WHATSAPP FAB
+       ============================================================ */
+    #scrollTop {
+      position: fixed; bottom: 32px; right: 32px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--gradient-brand); color: #fff; border: none; font-size: 20px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px var(--color-primary-glow); z-index: 7000;
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    }
+    #scrollTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    #scrollTop:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--color-primary-glow); }
+    #whatsappFab {
+      position: fixed; bottom: 90px; right: 32px;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: #25D366; color: #fff; border: none; font-size: 26px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 7001;
+      text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
+    }
+    #whatsappFab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.55); }
+    #whatsappFab::before {
+      content: ''; position: absolute; inset: -4px; border-radius: 50%;
+      border: 2px solid rgba(37,211,102,0.5);
+      animation: waPulse 2.5s ease-out infinite;
+    }
+    @keyframes waPulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    #footer { background: #060709; border-top: 1px solid var(--color-border); padding: 80px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 64px; }
+    .footer-brand-logo { font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 24px; color: var(--color-text); margin-bottom: 16px; display: block; }
+    .footer-brand-logo .lac { color: var(--color-primary); }
+    .footer-brand-desc { font-size: 14px; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 24px; max-width: 280px; }
+    .footer-socials { display: flex; gap: 12px; margin-bottom: 24px; }
+    .footer-social {
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      background: var(--color-bg-glass); border: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--color-text-secondary); transition: all 0.2s;
+    }
+    .footer-social:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-2px); }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: var(--color-text); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: var(--color-text-muted); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--color-primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--color-border); padding: 24px 0;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { font-size: 13px; color: var(--color-text-muted); }
+    .footer-bottom-links { display: flex; align-items: center; gap: 20px; }
+    .footer-bottom-links a { font-size: 13px; color: var(--color-text-muted); transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--color-primary); }
+    .payment-badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .pay-badge { padding: 4px 12px; border-radius: 50px; border: 1px solid var(--color-border); font-size: 11px; font-weight: 700; color: var(--color-text-muted); background: var(--color-bg-card); }
+    .pay-badge.mtn { color: #FFCC00; border-color: rgba(255,204,0,0.2); }
+    .pay-badge.airtel { color: #FF0000; border-color: rgba(255,0,0,0.2); }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1023px) {
+      .nav-links, .nav-right .btn-ghost, .nav-right .btn-primary { display: none; }
+      .hamburger { display: flex; }
+      .gw-hero-split { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+      .gw-hero-sub { max-width: 100%; }
+      .gw-hero-cta-row { justify-content: center; }
+      .gw-hero-trust { align-items: center; }
+      .gw-hero-right { order: -1; }
+      .gw-hero-float-cards { display: none; }
+      .gw-feature-row { grid-template-columns: 1fr; gap: 48px; }
+      .gw-pricing-grid { grid-template-columns: 1fr; gap: 28px; }
+      .gw-plan-card.popular { transform: none; }
+      .gw-plan-card.popular:hover { transform: translateY(-6px); }
+      .gw-tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .gw-stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .gw-why-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 767px) {
+      .section { padding: 72px 0; }
+      .gw-tools-grid { grid-template-columns: 1fr; }
+      .gw-stats-bar { grid-template-columns: 1fr; }
+      .gw-why-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .payment-badges { justify-content: center; }
+      .gw-cta-inner { flex-direction: column; text-align: center; }
+      .gw-cta-text p { max-width: 100%; }
+      .gw-cta-actions { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .nav-logo { font-size: 18px; }
+      #gw-hero { padding: 100px 0 60px; }
+      .gw-hero-left h1 { font-size: 30px; }
+      #scrollTop { bottom: 20px; right: 20px; }
+      #whatsappFab { bottom: 76px; right: 20px; width: 46px; height: 46px; font-size: 22px; }
+    }
+  </style>
+  <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div id="pageLoader" role="status" aria-label="Loading">
+  <div class="loader-logo">blac<span class="lac">tec</span>.</div>
+</div>
+
+<!-- Scroll to Top -->
+<button id="scrollTop" aria-label="Scroll to top" title="Back to top">↑</button>
+
+<!-- WhatsApp FAB -->
+<a id="whatsappFab"
+   href="https://wa.me/256750870755?text=Hello%2C%20I%27m%20interested%20in%20Google%20Workspace"
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp" title="Chat with us on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.127.554 4.195 1.604 6.015L.135 23.39l5.485-1.439a11.986 11.986 0 0 0 6.411 1.84h.005c6.645 0 12.03-5.385 12.03-12.03 0-3.218-1.254-6.248-3.533-8.528A12.001 12.001 0 0 0 12.031 0zm0 21.785h-.003a9.986 9.986 0 0 1-5.088-1.385l-.364-.216-3.784.992.997-3.69-.236-.375A9.957 9.957 0 0 1 2.016 12.03c0-5.525 4.496-10.021 10.017-10.021 2.678 0 5.195 1.042 7.087 2.936a10.018 10.018 0 0 1 2.932 7.085c-.001 5.523-4.498 10.02-10.02 10.02zm5.495-7.51c-.302-.15-1.787-.882-2.062-.982-.275-.1-.475-.15-.675.15-.201.3-.775.981-.95 1.182-.176.2-.351.225-.652.075-2.01-1.008-3.356-2.046-4.321-3.673-.102-.175.049-.247.199-.396.126-.126.275-.326.401-.501.126-.175.176-.3.251-.5.075-.2.038-.376-.038-.526-.075-.15-.675-1.626-.925-2.226-.244-.585-.492-.505-.675-.514-.175-.01-.375-.01-.575-.01s-.526.075-.801.375c-.275.3-1.051 1.026-1.051 2.502s1.076 2.898 1.226 3.098c.15.2 2.115 3.226 5.12 4.526 2.052.887 2.87.973 3.993.826 1.003-.131 3.078-1.258 3.504-2.472.426-1.215.426-2.257.301-2.472-.125-.215-.475-.34-.776-.49z"/></svg></a>
+
+<!-- ============================================================
+     STICKY NAVBAR
+     ============================================================ -->
+<header>
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="index.html" class="nav-logo" aria-label="BlacTec Home">blac<span class="logo-accent">tec</span>.</a>
+
+        <!-- Desktop Nav -->
+        <ul class="nav-links" role="list">
+          <!-- Hosting -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Hosting
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="index.html#pricing" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🌐</span>
+                <div class="nav-dropdown-text"><strong>Web Hosting</strong><span>Shared Linux hosting with cPanel</span></div>
+              </a>
+              <a href="index.html#pricing" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🎯</span>
+                <div class="nav-dropdown-text"><strong>WordPress Hosting</strong><span>Managed WordPress with 1-click install</span></div>
+              </a>
+              <a href="index.html#pricing" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">⚡</span>
+                <div class="nav-dropdown-text"><strong>VPS Hosting</strong><span>Full root access, scalable resources</span></div>
+              </a>
+              <a href="index.html#pricing" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">☁️</span>
+                <div class="nav-dropdown-text"><strong>Cloud Hosting</strong><span>Scale fast with cloud infrastructure</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- Solutions -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Solutions
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="index.html#services" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">📧</span>
+                <div class="nav-dropdown-text"><strong>Business Email</strong><span>Professional @yourdomain.ug addresses</span></div>
+              </a>
+              <a href="google-workspace.html" class="nav-dropdown-item" role="menuitem" style="background: rgba(124,92,252,0.06);">
+                <span class="nav-dropdown-icon">🔷</span>
+                <div class="nav-dropdown-text"><strong>Google Workspace</strong><span>Gmail, Drive, Meet & more for teams</span></div>
+              </a>
+              <a href="index.html#services" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔒</span>
+                <div class="nav-dropdown-text"><strong>SSL Certificates</strong><span>Encrypt & secure your website</span></div>
+              </a>
+              <a href="index.html#services" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔍</span>
+                <div class="nav-dropdown-text"><strong>SEO Services</strong><span>Rank higher on Google Search</span></div>
+              </a>
+            </div>
+          </li>
+          <li><a href="index.html#domains" class="nav-link-plain">Domains</a></li>
+          <li><a href="google-workspace.html" class="nav-link-plain active">Google Workspace</a></li>
+          <li><a href="index.html#about" class="nav-link-plain">About</a></li>
+          <li><a href="index.html#contact" class="nav-link-plain">Contact</a></li>
+        </ul>
+
+        <!-- Nav Right -->
+        <div class="nav-right">
+          <a href="index.html#contact" class="btn btn-ghost" style="display:none;" id="desktopLogin">Client Login</a>
+          <a href="#gw-pricing" class="btn btn-primary" style="display:none;" id="desktopGetStarted">Get Started</a>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="index.html" class="mobile-nav-plain">🏠 Home</a>
+  <a href="index.html#pricing" class="mobile-nav-plain">🌐 Web Hosting</a>
+  <a href="index.html#services" class="mobile-nav-plain">🎨 Web Services</a>
+  <a href="index.html#domains" class="mobile-nav-plain">🔍 Domains</a>
+  <a href="google-workspace.html" class="mobile-nav-plain" style="color: var(--color-primary);">🔷 Google Workspace</a>
+  <a href="index.html#about" class="mobile-nav-plain">ℹ️ About</a>
+  <a href="index.html#contact" class="mobile-nav-plain">📞 Contact</a>
+  <div class="mobile-nav-buttons">
+    <a href="index.html#contact" class="btn btn-ghost">Client Login</a>
+    <a href="#gw-pricing" class="btn btn-primary">Get Workspace</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============================================================
+       HERO — Hostinger-style split with Gmail mockup
+       ============================================================ -->
+  <section id="gw-hero" aria-label="Google Workspace Hero">
+    <div class="gw-hero-bg"></div>
+    <div class="gw-hero-grid"></div>
+    <div class="gw-hero-blob gw-blob-1"></div>
+    <div class="gw-hero-blob gw-blob-2"></div>
+    <div class="gw-hero-blob gw-blob-3"></div>
+
+    <div class="container">
+      <div class="gw-hero-split">
+
+        <!-- LEFT: Text content -->
+        <div class="gw-hero-left animate-on-scroll">
+          <div class="gw-hero-badge">🔷 Official Google Workspace Reseller</div>
+          <h1>
+            Get Gmail<br>
+            for <span class="gw-google-text">Business</span>
+          </h1>
+          <p class="gw-hero-sub">
+            Professional business email, cloud storage, video conferencing, and collaboration tools — all in one workspace. Set up in minutes with BlacTec.
+          </p>
+          <div class="gw-hero-cta-row">
+            <a href="#gw-pricing" class="btn btn-primary btn-lg">
+              Get Started — from $6.00/mo
+            </a>
+          </div>
+          <div class="gw-hero-trust">
+            <div class="gw-hero-trust-item">
+              <div class="gw-hero-trust-icon">✓</div>
+              <span>Custom email @yourdomain.com</span>
+            </div>
+            <div class="gw-hero-trust-item">
+              <div class="gw-hero-trust-icon">✓</div>
+              <span>30GB cloud storage per user</span>
+            </div>
+            <div class="gw-hero-trust-item">
+              <div class="gw-hero-trust-icon">✓</div>
+              <span>Pay with MTN MoMo or Airtel Money</span>
+            </div>
+            <div class="gw-hero-trust-item">
+              <div class="gw-hero-trust-icon">✓</div>
+              <span>BlacTec local support from Kampala</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Gmail interface mockup -->
+        <div class="gw-hero-right animate-on-scroll" style="transition-delay:0.15s; position:relative;">
+          <div class="gw-hero-mockup">
+            <!-- Browser chrome -->
+            <div class="gw-mockup-topbar">
+              <div class="gw-mockup-dots">
+                <div class="gw-mockup-dot"></div>
+                <div class="gw-mockup-dot"></div>
+                <div class="gw-mockup-dot"></div>
+              </div>
+              <div class="gw-mockup-address">mail.google.com/mail/u/0/</div>
+            </div>
+            <!-- Gmail UI -->
+            <div class="gw-mockup-body">
+              <div class="gw-gmail-header">
+                <div class="gw-gmail-logo">Gmail</div>
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <span style="font-size:11px; color:var(--color-text-muted);">john@yourbusiness.ug</span>
+                  <div class="gw-gmail-avatar">J</div>
+                </div>
+              </div>
+              <div class="gw-gmail-search">
+                <span>🔍</span>
+                <span>Search mail</span>
+              </div>
+              <div style="display:flex; height:auto; min-height:220px;">
+                <!-- Sidebar labels -->
+                <div style="width:150px; flex-shrink:0; border-right:1px solid var(--color-border); padding:8px 0;">
+                  <div class="gw-sc-gmail-item active">✉️ Inbox <span class="gw-sc-gmail-count" style="color:var(--color-primary);">12</span></div>
+                  <div class="gw-sc-gmail-item">⭐ Starred</div>
+                  <div class="gw-sc-gmail-item">📤 Sent</div>
+                  <div class="gw-sc-gmail-item">📁 Drafts <span class="gw-sc-gmail-count">3</span></div>
+                  <div class="gw-sc-gmail-item" style="margin-top:8px; color:var(--color-primary); font-weight:600;">+ More</div>
+                </div>
+                <!-- Emails list -->
+                <div style="flex:1; min-width:0;">
+                  <div class="gw-email-row unread">
+                    <div class="gw-email-avatar-sm" style="background: linear-gradient(135deg, #4285F4, #34A853);">S</div>
+                    <div class="gw-email-info">
+                      <span class="gw-sender">Sarah Nakamya</span>
+                      <span class="gw-subject">Q4 Report — Draft ready for review ✓</span>
+                    </div>
+                    <span class="gw-email-time">10:32</span>
+                  </div>
+                  <div class="gw-email-row unread">
+                    <div class="gw-email-avatar-sm" style="background: linear-gradient(135deg, #EA4335, #FBBC05);">M</div>
+                    <div class="gw-email-info">
+                      <span class="gw-sender">Meet Reminder</span>
+                      <span class="gw-subject">Team standup starts in 5 minutes</span>
+                    </div>
+                    <span class="gw-email-time">09:55</span>
+                  </div>
+                  <div class="gw-email-row">
+                    <div class="gw-email-avatar-sm" style="background: linear-gradient(135deg, #34A853, #4285F4);">K</div>
+                    <div class="gw-email-info">
+                      <span class="gw-sender">Kato Brian</span>
+                      <span class="gw-subject">Shared "Project Proposal 2026.docx"</span>
+                    </div>
+                    <span class="gw-email-time">Tue</span>
+                  </div>
+                  <div class="gw-email-row">
+                    <div class="gw-email-avatar-sm" style="background: linear-gradient(135deg, #FBBC05, #EA4335);">A</div>
+                    <div class="gw-email-info">
+                      <span class="gw-sender">admin@yourbusiness.ug</span>
+                      <span class="gw-subject">Welcome to Google Workspace!</span>
+                    </div>
+                    <span class="gw-email-time">Mon</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Compose button -->
+            <div style="padding: 12px 16px; border-top: 1px solid var(--color-border); display:flex; justify-content:flex-end;">
+              <button class="gw-mockup-compose" style="border:none; cursor:pointer;">✏️ Compose</button>
+            </div>
+          </div>
+
+          <!-- Floating indicator cards -->
+          <div style="position:absolute; bottom:-16px; left:-16px; z-index:10;">
+            <div class="gw-float-card">
+              <div class="gw-float-icon">🛡️</div>
+              <div>
+                <div class="gw-float-text">Enterprise Security</div>
+                <div class="gw-float-sub">99.9% uptime SLA</div>
+              </div>
+            </div>
+          </div>
+          <div style="position:absolute; top:-16px; right:-16px; z-index:10;">
+            <div class="gw-float-card">
+              <div class="gw-float-icon">☁️</div>
+              <div>
+                <div class="gw-float-text">30GB Storage</div>
+                <div class="gw-float-sub">Per user included</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       FEATURE 1: Get Gmail for Business
+       ============================================================ -->
+  <section class="gw-feature-section section" aria-label="Gmail for Business Feature">
+    <div class="container">
+      <div class="gw-feature-row animate-on-scroll">
+        <!-- Text -->
+        <div class="gw-feature-text">
+          <span class="section-label">PROFESSIONAL EMAIL</span>
+          <h2>Get Gmail for Business</h2>
+          <p>Make a lasting impression with a professional email address using your own domain — like info@yourbusiness.ug. Powered by Gmail's world-class interface, with powerful spam filtering and 30GB of storage.</p>
+          <div class="gw-feature-list">
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Custom email @yourdomain — no more @gmail.com</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>30GB of cloud storage per mailbox</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Advanced spam & phishing protection</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Works on mobile, desktop & Outlook</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>99.9% uptime SLA guarantee</span></div>
+          </div>
+          <a href="#gw-pricing" class="btn btn-primary">Start Now →</a>
+        </div>
+        <!-- Screen mockup -->
+        <div class="gw-feature-img-wrap">
+          <div class="gw-feature-screen">
+            <div class="gw-feature-screen-header">
+              <div class="gw-screen-dots"><div class="gw-screen-dot"></div><div class="gw-screen-dot"></div><div class="gw-screen-dot"></div></div>
+              <div class="gw-screen-tab">📧 Gmail — Inbox (12)</div>
+            </div>
+            <div style="display:flex; border-bottom:1px solid var(--color-border);">
+              <!-- Sidebar -->
+              <div style="width:160px; flex-shrink:0; padding:12px 0; border-right:1px solid var(--color-border);">
+                <button style="margin:0 8px 12px; padding:10px 16px; background:var(--gradient-brand); color:#fff; border:none; border-radius:24px; font-size:13px; font-weight:600; cursor:pointer; width:calc(100% - 16px);">✏️ Compose</button>
+                <div class="gw-sc-gmail-item active" style="padding:6px 12px; font-size:11px;">📥 Inbox <span class="gw-sc-gmail-count" style="color:var(--color-primary)">12</span></div>
+                <div class="gw-sc-gmail-item" style="padding:6px 12px; font-size:11px;">⭐ Starred</div>
+                <div class="gw-sc-gmail-item" style="padding:6px 12px; font-size:11px;">🕐 Snoozed</div>
+                <div class="gw-sc-gmail-item" style="padding:6px 12px; font-size:11px;">📤 Sent</div>
+                <div class="gw-sc-gmail-item" style="padding:6px 12px; font-size:11px;">📝 Drafts <span class="gw-sc-gmail-count">3</span></div>
+                <div style="margin:8px 12px; height:1px; background:var(--color-border);"></div>
+                <div style="padding:4px 12px; font-size:10px; color:var(--color-text-muted); font-weight:600;">LABELS</div>
+                <div class="gw-sc-gmail-item" style="padding:4px 12px; font-size:11px;"><span style="color:#4285F4;">●</span> Work</div>
+                <div class="gw-sc-gmail-item" style="padding:4px 12px; font-size:11px;"><span style="color:#34A853;">●</span> Clients</div>
+              </div>
+              <!-- Emails -->
+              <div style="flex:1; min-width:0;">
+                <div style="padding:8px 16px; font-size:11px; color:var(--color-text-muted); border-bottom:1px solid var(--color-border); display:flex; align-items:center; gap:8px;">
+                  <span>Primary</span> <span style="margin-left:8px; color:var(--gw-blue)">Promotions</span> <span style="margin-left:8px;">Updates</span>
+                </div>
+                <div class="gw-email-row unread">
+                  <div class="gw-email-avatar-sm" style="background:linear-gradient(135deg,#4285F4,#34A853);">S</div>
+                  <div class="gw-email-info">
+                    <span class="gw-sender">Sarah Nakamya</span>
+                    <span class="gw-subject">Q4 Report — Shared via Google Drive</span>
+                  </div>
+                  <span class="gw-email-time">10:32</span>
+                </div>
+                <div class="gw-email-row unread">
+                  <div class="gw-email-avatar-sm" style="background:linear-gradient(135deg,#EA4335,#FBBC05);">B</div>
+                  <div class="gw-email-info">
+                    <span class="gw-sender">Brian Kato</span>
+                    <span class="gw-subject">Re: Meeting at 2pm — confirmed ✓</span>
+                  </div>
+                  <span class="gw-email-time">09:15</span>
+                </div>
+                <div class="gw-email-row">
+                  <div class="gw-email-avatar-sm" style="background:linear-gradient(135deg,#34A853,#4285F4);">A</div>
+                  <div class="gw-email-info">
+                    <span class="gw-sender">Amara Okonkwo</span>
+                    <span class="gw-subject">Invoice #2047 — Payment received</span>
+                  </div>
+                  <span class="gw-email-time">Tue</span>
+                </div>
+                <div class="gw-email-row">
+                  <div class="gw-email-avatar-sm" style="background:linear-gradient(135deg,#FBBC05,#EA4335);">G</div>
+                  <div class="gw-email-info">
+                    <span class="gw-sender">Google Workspace</span>
+                    <span class="gw-subject">Your workspace is ready to use 🎉</span>
+                  </div>
+                  <span class="gw-email-time">Mon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Badge -->
+          <div class="gw-feature-badge" style="bottom:-12px; right:20px;">
+            <div class="gw-feature-badge-pulse" style="background:#34A853; color:#34A853;"></div>
+            <div>
+              <div class="gw-feature-badge-text">Spam blocked</div>
+              <div class="gw-feature-badge-sub">99.9% catch rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       FEATURE 2: Stay Connected — REVERSED
+       ============================================================ -->
+  <section class="gw-feature-section section section-alt" aria-label="Collaboration Feature">
+    <div class="container">
+      <div class="gw-feature-row animate-on-scroll" style="direction:rtl;">
+        <!-- Text -->
+        <div class="gw-feature-text" style="direction:ltr;">
+          <span class="section-label">REAL-TIME COLLABORATION</span>
+          <h2>Stay Connected With Your Team From Anywhere</h2>
+          <p>Whether your team is in Kampala, Nairobi, or across the globe — Google Workspace keeps everyone connected. Hold HD video meetings, edit documents together in real-time, and share files instantly.</p>
+          <div class="gw-feature-list">
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Google Meet HD video conferencing</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Real-time document co-editing</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Shared calendars & scheduling</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Team Chat & Spaces</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Works offline & syncs automatically</span></div>
+          </div>
+          <a href="#gw-pricing" class="btn btn-primary">Start Now →</a>
+        </div>
+        <!-- Screen mockup: Google Meet -->
+        <div class="gw-feature-img-wrap" style="direction:ltr;">
+          <img src="assets/meet_video_grid_1776241781191.png" alt="Google Meet Video Collaboration" class="gw-feature-screen" style="width: 100%; height: auto; display: block; object-fit: cover;">
+          <!-- Badge -->
+          <div class="gw-feature-badge" style="bottom:-12px; left:20px;">
+            <div class="gw-feature-badge-pulse" style="background:#4285F4; color:#4285F4;"></div>
+            <div>
+              <div class="gw-feature-badge-text">4 participants</div>
+              <div class="gw-feature-badge-sub">HD · Encrypted</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       FEATURE 3: Work Faster, Smarter
+       ============================================================ -->
+  <section class="gw-feature-section section" aria-label="Productivity Feature">
+    <div class="container">
+      <div class="gw-feature-row animate-on-scroll">
+        <!-- Text -->
+        <div class="gw-feature-text">
+          <span class="section-label">BOOST PRODUCTIVITY</span>
+          <h2>Work Faster, Work Smarter</h2>
+          <p>Google Workspace integrates AI-powered features to help you work more efficiently. Create documents, spreadsheets, and presentations collaboratively in real-time — from any device.</p>
+          <div class="gw-feature-list">
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Docs, Sheets & Slides — all collaborative</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Smart Compose in Gmail</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>AI-powered search across all apps</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Version history & auto-save</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Admin console for team management</span></div>
+          </div>
+          <a href="#gw-pricing" class="btn btn-primary">Start Now →</a>
+        </div>
+        <!-- Screen: Google Docs -->
+        <div class="gw-feature-img-wrap">
+          <img src="assets/docs_collaboration_1776242132656.png" alt="Google Docs Collaborative Editing" class="gw-feature-screen" style="width: 100%; height: auto; display: block; object-fit: cover;">
+          <!-- Badge -->
+          <div class="gw-feature-badge" style="bottom:-12px; right:20px;">
+            <div class="gw-feature-badge-pulse" style="background:#34A853; color:#34A853;"></div>
+            <div>
+              <div class="gw-feature-badge-text">3 editing now</div>
+              <div class="gw-feature-badge-sub">Changes auto-saved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       FEATURE 4: Security — REVERSED
+       ============================================================ -->
+  <section class="gw-feature-section section section-alt" aria-label="Security Feature">
+    <div class="container">
+      <div class="gw-feature-row animate-on-scroll" style="direction:rtl;">
+        <!-- Text -->
+        <div class="gw-feature-text" style="direction:ltr;">
+          <span class="section-label">ENTERPRISE SECURITY</span>
+          <h2>Designed to Protect You From Threats</h2>
+          <p>Google Workspace includes built-in security tools to protect your business. Advanced phishing detection, two-factor authentication, and data loss prevention keep your organisation secure.</p>
+          <div class="gw-feature-list">
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Advanced anti-malware & antivirus</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Two-factor authentication (2FA)</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Admin security & compliance centre</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Data encryption in transit & at rest</span></div>
+            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>99.9% SLA uptime guarantee</span></div>
+          </div>
+          <a href="#gw-pricing" class="btn btn-primary">Start Now →</a>
+        </div>
+        <!-- Screen: Security dashboard -->
+        <div class="gw-feature-img-wrap" style="direction:ltr;">
+          <img src="assets/security_dashboard_1776242222365.png" alt="Enterprise Security Dashboard" class="gw-feature-screen" style="width: 100%; height: auto; display: block; object-fit: cover;">
+          <!-- Badge -->
+          <div class="gw-feature-badge" style="bottom:-12px; left:20px;">
+            <div class="gw-feature-badge-pulse" style="background:#34A853; color:#34A853;"></div>
+            <div>
+              <div class="gw-feature-badge-text">Zero threats</div>
+              <div class="gw-feature-badge-sub">Protected by Google</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       PRICING
+       ============================================================ -->
+  <section id="gw-pricing" class="section" aria-labelledby="gw-pricing-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">PRICING PLANS</span>
+        <h2 id="gw-pricing-heading">Get Your Google Workspace Plan Now</h2>
+        <p>All plans are paid upfront. The monthly rate reflects the total plan price divided by the number of months in your plan.</p>
+      </div>
+
+      <div class="gw-pricing-grid">
+        <!-- Starter Google Workspace -->
+        <div class="gw-plan-card animate-on-scroll">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div class="gw-plan-name" style="font-size:18px;">Starter Google Workspace</div>
+            <div style="background:rgba(124,92,252,0.1); color:var(--color-primary); padding:4px 8px; border-radius:12px; font-size:11px; font-weight:700;">30% off</div>
+          </div>
+          <div style="color:var(--color-text-muted); text-decoration:line-through; font-size:13px; margin-top:16px;">$9.99</div>
+          <div class="gw-plan-price-wrap" style="margin-top:0;">
+            <span class="gw-plan-price"><span class="gw-plan-price-cur">$</span>6.99</span><span style="font-size:16px; font-weight:400;">/mo</span>
+          </div>
+          <div class="gw-plan-period">For 12 months. Renews at $6.99/mo for 12-month term.</div>
+          <a href="https://wa.me/256750870755?text=Hi%2C%20I%27d%20like%20to%20order%20Starter%20Google%20Workspace" target="_blank" rel="noopener" class="btn btn-ghost gw-plan-cta">Choose plan</a>
+          <ul class="gw-plan-features">
+            <li><span class="gw-plan-check">✓</span> Secure custom business email, you@your-company.com</li>
+            <li><span class="gw-plan-check">✓</span> <strong>30 GB storage</strong> per mailbox</li>
+            <li><span class="gw-plan-check">✓</span> 100 participant video meetings</li>
+            <li><span class="gw-plan-check">✓</span> Security and management controls</li>
+            <li><span class="gw-plan-check">✓</span> Standard support</li>
+            <li style="color:var(--color-text-muted);"><span style="margin-right:8px; opacity:0.5;">—</span> Appointment booking pages</li>
+            <li style="color:var(--color-text-muted);"><span style="margin-right:8px; opacity:0.5;">—</span> Email layouts and mail merge</li>
+          </ul>
+        </div>
+
+        <!-- Standard Google Workspace — POPULAR -->
+        <div class="gw-plan-card popular animate-on-scroll" style="transition-delay:0.1s">
+          <div class="gw-popular-badge">MOST POPULAR</div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div class="gw-plan-name" style="font-size:18px;">Standard Google Workspace</div>
+            <div style="background:rgba(124,92,252,0.1); color:var(--color-primary); padding:4px 8px; border-radius:12px; font-size:11px; font-weight:700;">30% off</div>
+          </div>
+          <div style="color:var(--color-text-muted); text-decoration:line-through; font-size:13px; margin-top:16px;">$19.99</div>
+          <div class="gw-plan-price-wrap" style="margin-top:0;">
+            <span class="gw-plan-price"><span class="gw-plan-price-cur">$</span>13.99</span><span style="font-size:16px; font-weight:400;">/mo</span>
+          </div>
+          <div class="gw-plan-period">For 12 months. Renews at $13.99/mo for 12-month term.</div>
+          <a href="https://wa.me/256750870755?text=Hi%2C%20I%27d%20like%20to%20order%20Standard%20Google%20Workspace" target="_blank" rel="noopener" class="btn btn-primary gw-plan-cta">Choose plan</a>
+          <ul class="gw-plan-features">
+            <li><span class="gw-plan-check">✓</span> Secure custom business email, you@your-company.com</li>
+            <li><span class="gw-plan-check">✓</span> <strong>2 TB storage</strong> per mailbox</li>
+            <li><span class="gw-plan-check">✓</span> 150 participant video meetings + recording, noise cancellation</li>
+            <li><span class="gw-plan-check">✓</span> Security and management controls</li>
+            <li><span class="gw-plan-check">✓</span> Standard support</li>
+            <li><span class="gw-plan-check">✓</span> Appointment booking pages</li>
+            <li><span class="gw-plan-check">✓</span> Email layouts and mail merge</li>
+          </ul>
+        </div>
+
+        <!-- Plus Google Workspace -->
+        <div class="gw-plan-card animate-on-scroll" style="transition-delay:0.2s">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div class="gw-plan-name" style="font-size:18px;">Plus Google Workspace</div>
+            <div style="background:rgba(124,92,252,0.1); color:var(--color-primary); padding:4px 8px; border-radius:12px; font-size:11px; font-weight:700;">27% off</div>
+          </div>
+          <div style="color:var(--color-text-muted); text-decoration:line-through; font-size:13px; margin-top:16px;">$29.99</div>
+          <div class="gw-plan-price-wrap" style="margin-top:0;">
+            <span class="gw-plan-price"><span class="gw-plan-price-cur">$</span>21.99</span><span style="font-size:16px; font-weight:400;">/mo</span>
+          </div>
+          <div class="gw-plan-period">For 12 months. Renews at $21.99/mo for 12-month term.</div>
+          <a href="https://wa.me/256750870755?text=Hi%2C%20I%27d%20like%20to%20order%20Plus%20Google%20Workspace" target="_blank" rel="noopener" class="btn btn-ghost gw-plan-cta">Choose plan</a>
+          <ul class="gw-plan-features">
+            <li><span class="gw-plan-check">✓</span> Secure custom business email, you@your-company.com</li>
+            <li><span class="gw-plan-check">✓</span> <strong>5 TB storage</strong> per mailbox</li>
+            <li><span class="gw-plan-check">✓</span> 500 participant video meetings + recording, noise cancellation</li>
+            <li><span class="gw-plan-check">✓</span> Enhanced security and management controls including Vault and advanced endpoint management</li>
+            <li><span class="gw-plan-check">✓</span> Standard support</li>
+            <li><span class="gw-plan-check">✓</span> Appointment booking pages</li>
+            <li><span class="gw-plan-check">✓</span> Email layouts and mail merge</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="animate-on-scroll" style="text-align:center;margin-top:36px;font-size:14px;color:var(--color-text-muted);">
+        Pay monthly or annually. MTN MoMo &amp; Airtel Money accepted. BlacTec setup included.
+      </p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       TOOLS GRID — All the tools
+       ============================================================ -->
+  <section id="gw-tools" class="section section-alt" aria-labelledby="gw-tools-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">WHAT'S INCLUDED</span>
+        <h2 id="gw-tools-heading">All the Google Tools You Love</h2>
+        <p>Every Google Workspace plan gives you access to the full suite of collaboration and productivity tools.</p>
+      </div>
+
+      <div class="gw-tools-grid">
+        <div class="gw-tool-card animate-on-scroll">
+          <img src="https://www.gstatic.com/images/branding/product/2x/gmail_48dp.png" alt="Gmail" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Gmail</h3>
+          <p>Professional business email with your domain name. Powerful spam filtering and 30GB storage.</p>
+        </div>
+        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.05s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/drive_48dp.png" alt="Google Drive" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Drive</h3>
+          <p>Secure cloud storage for your files. Share, sync, and access documents from any device.</p>
+        </div>
+        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.1s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/meet_48dp.png" alt="Google Meet" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Meet</h3>
+          <p>HD video conferencing with screen sharing, recording, and real-time captions.</p>
+        </div>
+        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.15s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/calendar_48dp.png" alt="Google Calendar" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Calendar</h3>
+          <p>Shared calendars for seamless scheduling. Set reminders and coordinate teams easily.</p>
+        </div>
+        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.2s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/docs_48dp.png" alt="Google Docs" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Docs</h3>
+          <p>Create and edit documents in real-time with your team. Smart suggestions built in.</p>
+        </div>
+        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.25s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/sheets_48dp.png" alt="Google Sheets" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Sheets</h3>
+          <p>Powerful spreadsheets with collaboration built in. Charts, formulas, and data analysis.</p>
+        </div>
+        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.3s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/slides_48dp.png" alt="Google Slides" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Slides</h3>
+          <p>Build stunning presentations together with templates, themes, and real-time co-editing.</p>
+        </div>
+        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.35s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/chat_48dp.png" alt="Google Chat" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Chat</h3>
+          <p>Instant messaging and team rooms — integrated with all Google Workspace apps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       STATS / SOCIAL PROOF
+       ============================================================ -->
+  <section class="section" aria-label="Statistics">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">WHY GOOGLE WORKSPACE</span>
+        <h2>Trusted by Millions of Businesses Worldwide</h2>
+        <p>From startups in Kampala to enterprises across the globe — Google Workspace powers how the world works.</p>
+      </div>
+      <div class="gw-stats-bar animate-on-scroll">
+        <div class="gw-stat-box">
+          <span class="gw-stat-num">10M+</span>
+          <span class="gw-stat-label">Businesses using Workspace</span>
+          <span class="gw-stat-desc">Trusted globally by organisations of every size</span>
+        </div>
+        <div class="gw-stat-box">
+          <span class="gw-stat-num">99.9%</span>
+          <span class="gw-stat-label">Uptime SLA</span>
+          <span class="gw-stat-desc">Google guarantees zero scheduled downtime</span>
+        </div>
+        <div class="gw-stat-box">
+          <span class="gw-stat-num">30GB</span>
+          <span class="gw-stat-label">Storage per user</span>
+          <span class="gw-stat-desc">On Starter plan — up to 5TB on Business Plus</span>
+        </div>
+        <div class="gw-stat-box">
+          <span class="gw-stat-num">24/7</span>
+          <span class="gw-stat-label">BlacTec support</span>
+          <span class="gw-stat-desc">Local experts available via WhatsApp or call</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       MID CTA BANNER
+       ============================================================ -->
+  <div class="gw-cta-banner">
+    <div class="container">
+      <div class="gw-cta-inner">
+        <div class="gw-cta-text animate-on-scroll">
+          <h2>Ready to Upgrade Your Business Email?</h2>
+          <p>Join thousands of businesses powering their productivity with Google Workspace through BlacTec. Setup takes just minutes.</p>
+        </div>
+        <div class="gw-cta-actions animate-on-scroll" style="transition-delay:0.1s">
+          <a href="#gw-pricing" class="btn btn-primary btn-lg">View Plans</a>
+          <a href="https://wa.me/256750870755?text=Hello%2C%20I%27m%20interested%20in%20Google%20Workspace" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="vertical-align: text-bottom; margin-right: 6px;"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.127.554 4.195 1.604 6.015L.135 23.39l5.485-1.439a11.986 11.986 0 0 0 6.411 1.84h.005c6.645 0 12.03-5.385 12.03-12.03 0-3.218-1.254-6.248-3.533-8.528A12.001 12.001 0 0 0 12.031 0zm0 21.785h-.003a9.986 9.986 0 0 1-5.088-1.385l-.364-.216-3.784.992.997-3.69-.236-.375A9.957 9.957 0 0 1 2.016 12.03c0-5.525 4.496-10.021 10.017-10.021 2.678 0 5.195 1.042 7.087 2.936a10.018 10.018 0 0 1 2.932 7.085c-.001 5.523-4.498 10.02-10.02 10.02zm5.495-7.51c-.302-.15-1.787-.882-2.062-.982-.275-.1-.475-.15-.675.15-.201.3-.775.981-.95 1.182-.176.2-.351.225-.652.075-2.01-1.008-3.356-2.046-4.321-3.673-.102-.175.049-.247.199-.396.126-.126.275-.326.401-.501.126-.175.176-.3.251-.5.075-.2.038-.376-.038-.526-.075-.15-.675-1.626-.925-2.226-.244-.585-.492-.505-.675-.514-.175-.01-.375-.01-.575-.01s-.526.075-.801.375c-.275.3-1.051 1.026-1.051 2.502s1.076 2.898 1.226 3.098c.15.2 2.115 3.226 5.12 4.526 2.052.887 2.87.973 3.993.826 1.003-.131 3.078-1.258 3.504-2.472.426-1.215.426-2.257.301-2.472-.125-.215-.475-.34-.776-.49z"/></svg>Chat With Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       WHY BLACTEC
+       ============================================================ -->
+  <section class="section section-alt" aria-labelledby="gw-why-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">WHY CHOOSE BLACTEC</span>
+        <h2 id="gw-why-heading">The BlacTec Advantage</h2>
+        <p>We're not just a reseller — we're your local Google Workspace partner, dedicated to your success.</p>
+      </div>
+      <div class="gw-why-grid">
+        <div class="gw-why-card animate-on-scroll">
+          <div class="gw-why-icon">🏆</div>
+          <h3>Official Reseller</h3>
+          <p>We are an authorised Google Workspace reseller. You get official licences, full support, and guaranteed access to all Google products.</p>
+        </div>
+        <div class="gw-why-card animate-on-scroll" style="transition-delay:0.1s">
+          <div class="gw-why-icon">⚡</div>
+          <h3>Fast Setup</h3>
+          <p>Our team handles the DNS configuration, domain verification, and account setup. You're live within hours, not days.</p>
+        </div>
+        <div class="gw-why-card animate-on-scroll" style="transition-delay:0.2s">
+          <div class="gw-why-icon">🌍</div>
+          <h3>Local Support</h3>
+          <p>Based in Kampala, Uganda. We understand East African businesses and provide support in your language, on your time zone.</p>
+        </div>
+        <div class="gw-why-card animate-on-scroll" style="transition-delay:0.3s">
+          <div class="gw-why-icon">💳</div>
+          <h3>Local Payments</h3>
+          <p>Pay easily with MTN MoMo, Airtel Money, Visa, or Mastercard — whatever payment method works best for you.</p>
+        </div>
+        <div class="gw-why-card animate-on-scroll" style="transition-delay:0.4s">
+          <div class="gw-why-icon">🔧</div>
+          <h3>Managed Service</h3>
+          <p>Need help managing users, setting up aliases, or configuring security policies? We're here to manage it all for you.</p>
+        </div>
+        <div class="gw-why-card animate-on-scroll" style="transition-delay:0.5s">
+          <div class="gw-why-icon">📈</div>
+          <h3>Scale With You</h3>
+          <p>Start with one user and grow to a hundred. Add users, upgrade plans, and expand capabilities as your business grows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section id="gw-faq" class="section" aria-labelledby="gw-faq-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">FREQUENTLY ASKED QUESTIONS</span>
+        <h2 id="gw-faq-heading">Google Workspace FAQ</h2>
+        <p>Answers to common questions about Google Workspace, setup, billing, and features.</p>
+      </div>
+
+      <div class="gw-faq-list">
+        <div class="gw-faq-item animate-on-scroll">
+          <button class="gw-faq-question" aria-expanded="false">
+            <span>What is Google Workspace?</span>
+            <div class="gw-faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="gw-faq-answer">
+            <p>Google Workspace (formerly G Suite) is a collection of cloud-based productivity and collaboration tools developed by Google. It comes with a custom email for your business. It's everything you need to get anything done, now in one place — including Gmail, Drive, Meet, Calendar, Docs, Sheets, Slides, Forms, Sites, and more.</p>
+          </div>
+        </div>
+
+        <div class="gw-faq-item animate-on-scroll" style="transition-delay:0.05s">
+          <button class="gw-faq-question" aria-expanded="false">
+            <span>What is the difference between G Suite and Google Workspace?</span>
+            <div class="gw-faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="gw-faq-answer">
+            <p>G Suite has been rebranded to Google Workspace to reflect the platform's vision to offer you an integrated experience across multiple communication and collaboration tools. However, most of G Suite's functionalities and programs remain the same — with additional features and improvements continuously added.</p>
+          </div>
+        </div>
+
+        <div class="gw-faq-item animate-on-scroll" style="transition-delay:0.1s">
+          <button class="gw-faq-question" aria-expanded="false">
+            <span>What do I get with Google Workspace?</span>
+            <div class="gw-faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="gw-faq-answer">
+            <p>You will get a Gmail connected with your business email address and other familiar tools — Calendar, Meet, Chat, Drive, Docs, Sheets, Slides, Forms, Sites, and more — all built with trusted Google security and best-in-class search technology.</p>
+          </div>
+        </div>
+
+        <div class="gw-faq-item animate-on-scroll" style="transition-delay:0.15s">
+          <button class="gw-faq-question" aria-expanded="false">
+            <span>How do I sign up for Google Workspace?</span>
+            <div class="gw-faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="gw-faq-answer">
+            <p>Choose the proposed package at our pricing table above. After reaching out via WhatsApp or our contact form, our team at BlacTec will set up your account, connect your domain, and have you running within hours. We handle all the technical setup so you can focus on your business.</p>
+          </div>
+        </div>
+
+        <div class="gw-faq-item animate-on-scroll" style="transition-delay:0.2s">
+          <button class="gw-faq-question" aria-expanded="false">
+            <span>When do I need to choose Google Workspace?</span>
+            <div class="gw-faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="gw-faq-answer">
+            <p>Whether you are just starting your own business or already running a small enterprise, Google Workspace is ready to fit your needs, including security tools, compliance features, and multiple cloud storage options. It's ideal when you need professional email, team collaboration, video conferencing, or cloud file management.</p>
+          </div>
+        </div>
+
+        <div class="gw-faq-item animate-on-scroll" style="transition-delay:0.25s">
+          <button class="gw-faq-question" aria-expanded="false">
+            <span>What Workspace plan do you offer?</span>
+            <div class="gw-faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="gw-faq-answer">
+            <p>We offer Google Workspace packages starting from Business Starter with 30GB storage per mailbox, antivirus feature and advanced malware protection — all the way to Business Plus with 5TB storage and advanced compliance tools. You can create a custom and secure email address based on your domain name in the format user@yourdomain.com.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       FINAL CTA
+       ============================================================ -->
+  <div class="gw-cta-banner">
+    <div class="container">
+      <div class="gw-cta-inner" style="flex-direction:column; text-align:center; gap:24px;">
+        <div class="gw-cta-text animate-on-scroll" style="text-align:center;">
+          <h2>Get Started With Google Workspace Today</h2>
+          <p style="max-width:600px; margin:0 auto;">Professional email, powerful collaboration tools, and enterprise-grade security — all managed by BlacTec from Kampala. Your success starts here.</p>
+        </div>
+        <div class="gw-cta-actions animate-on-scroll" style="transition-delay:0.1s; justify-content:center;">
+          <a href="#gw-pricing" class="btn btn-primary btn-lg">Choose Your Plan</a>
+          <a href="https://wa.me/256750870755?text=Hello%2C%20I%27m%20interested%20in%20Google%20Workspace" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="vertical-align: text-bottom; margin-right: 6px;"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.127.554 4.195 1.604 6.015L.135 23.39l5.485-1.439a11.986 11.986 0 0 0 6.411 1.84h.005c6.645 0 12.03-5.385 12.03-12.03 0-3.218-1.254-6.248-3.533-8.528A12.001 12.001 0 0 0 12.031 0zm0 21.785h-.003a9.986 9.986 0 0 1-5.088-1.385l-.364-.216-3.784.992.997-3.69-.236-.375A9.957 9.957 0 0 1 2.016 12.03c0-5.525 4.496-10.021 10.017-10.021 2.678 0 5.195 1.042 7.087 2.936a10.018 10.018 0 0 1 2.932 7.085c-.001 5.523-4.498 10.02-10.02 10.02zm5.495-7.51c-.302-.15-1.787-.882-2.062-.982-.275-.1-.475-.15-.675.15-.201.3-.775.981-.95 1.182-.176.2-.351.225-.652.075-2.01-1.008-3.356-2.046-4.321-3.673-.102-.175.049-.247.199-.396.126-.126.275-.326.401-.501.126-.175.176-.3.251-.5.075-.2.038-.376-.038-.526-.075-.15-.675-1.626-.925-2.226-.244-.585-.492-.505-.675-.514-.175-.01-.375-.01-.575-.01s-.526.075-.801.375c-.275.3-1.051 1.026-1.051 2.502s1.076 2.898 1.226 3.098c.15.2 2.115 3.226 5.12 4.526 2.052.887 2.87.973 3.993.826 1.003-.131 3.078-1.258 3.504-2.472.426-1.215.426-2.257.301-2.472-.125-.215-.475-.34-.776-.49z"/></svg>Talk to a Specialist</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div>
+        <span class="footer-brand-logo">blac<span class="lac">tec</span>.</span>
+        <p class="footer-brand-desc">Hosting the Future — Africa's most trusted web hosting, website design, and digital solutions provider. Based in Kampala, serving East Africa.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" aria-label="Twitter/X">𝕏</a>
+          <a href="#" class="footer-social" aria-label="Facebook">f</a>
+          <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
+          <a href="#" class="footer-social" aria-label="Instagram">◎</a>
+        </div>
+        <p style="font-size:12px;color:var(--color-text-muted);">© 2025 BlacTec. All rights reserved.</p>
+      </div>
+
+      <!-- Hosting -->
+      <div class="footer-col">
+        <h4>Hosting</h4>
+        <ul>
+          <li><a href="index.html#pricing">Shared Hosting</a></li>
+          <li><a href="index.html#pricing">WordPress Hosting</a></li>
+          <li><a href="index.html#pricing">VPS Hosting</a></li>
+          <li><a href="index.html#pricing">Cloud Hosting</a></li>
+          <li><a href="index.html#pricing">Reseller Hosting</a></li>
+          <li><a href="index.html#domains">Domain Registration</a></li>
+        </ul>
+      </div>
+
+      <!-- Solutions -->
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="index.html#design">Website Design</a></li>
+          <li><a href="index.html#services">Business Email</a></li>
+          <li><a href="google-workspace.html" style="color:var(--color-primary);">Google Workspace</a></li>
+          <li><a href="index.html#services">SSL Certificates</a></li>
+          <li><a href="index.html#services">SEO Services</a></li>
+          <li><a href="index.html#services">Bulk SMS</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About BlacTec</a></li>
+          <li><a href="index.html#contact">Our Portfolio</a></li>
+          <li><a href="index.html#contact">Blog &amp; Resources</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+          <li><a href="index.html#contact">Privacy Policy</a></li>
+          <li><a href="index.html#contact">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 BlacTec Technologies Ltd. Kampala, Uganda.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <div class="payment-badges">
+        <span class="pay-badge mtn">MTN MoMo</span>
+        <span class="pay-badge airtel">Airtel Money</span>
+        <span class="pay-badge">Visa</span>
+        <span class="pay-badge">Mastercard</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* 1. PAGE LOADER */
+  window.addEventListener('load', function () {
+    var loader = document.getElementById('pageLoader');
+    if (loader) {
+      setTimeout(function () { loader.classList.add('loaded'); }, 300);
+    }
+  });
+
+  /* 2. NAVBAR SCROLL */
+  var navbar = document.getElementById('navbar');
+  var desktopLogin = document.getElementById('desktopLogin');
+  var desktopGetStarted = document.getElementById('desktopGetStarted');
+
+  function updateDesktopButtons() {
+    var show = window.innerWidth >= 1024;
+    desktopLogin.style.display = show ? 'inline-flex' : 'none';
+    desktopGetStarted.style.display = show ? 'inline-flex' : 'none';
+  }
+  updateDesktopButtons();
+  window.addEventListener('resize', updateDesktopButtons);
+
+  window.addEventListener('scroll', function () {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  }, { passive: true });
+
+  /* 3. MOBILE HAMBURGER */
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', function () {
+    var isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    mobileNav.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileNav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* 4. SCROLL TO TOP */
+  document.getElementById('scrollTop').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* 5. FAQ ACCORDION */
+  document.querySelectorAll('.gw-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.gw-faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.gw-faq-item').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.gw-faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* 6. SCROLL ANIMATIONS */
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+      el.classList.add('visible');
+    });
+  }
+
+  /* 7. SMOOTH SCROLL */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offset = 80;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
