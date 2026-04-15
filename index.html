@@ -1772,6 +1772,9 @@
     /* ============================================================
        RESPONSIVE
        ============================================================ */
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
     @media (max-width: 1023px) {
       .nav-links, .nav-right .btn-ghost, .nav-right .btn-primary { display: none; }
       .hamburger { display: flex; }
@@ -1789,44 +1792,46 @@
       .spotlight-row.reverse { direction: ltr; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 400px; }
+      .cta-banner-inner { flex-direction: column; text-align: center; }
+      .cta-banner-text p { max-width: 100%; }
+      .cta-banner-actions { width: 100%; justify-content: center; }
     }
 
     @media (max-width: 767px) {
-      .section { padding: 72px 0; }
-      .hero h1 { font-size: 38px; }
-      .hero-sub { font-size: 16px; }
-      .hero-cta-row { flex-direction: column; }
-      .hero-cta-row .btn { width: 100%; justify-content: center; max-width: 340px; }
-      .hero-trust { font-size: 12px; gap: 6px 12px; }
+      .section { padding: 60px 0; }
+      .hero h1 { font-size: clamp(32px, 8vw, 42px); }
+      .hero-sub { font-size: 16px; margin-bottom: 24px; }
+      .hero-cta-row { flex-direction: column; gap: 12px; }
+      .hero-cta-row .btn { width: 100%; justify-content: center; max-width: 100%; }
+      .hero-trust { font-size: 12px; gap: 4px 12px; margin-bottom: 32px; }
       .services-grid { grid-template-columns: 1fr; }
       .domain-prices-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .payment-badges { justify-content: center; }
-      .geo-box { width: 240px; height: 240px; }
-      .geo-center { inset: 60px; }
-      .geo-letter { font-size: 36px; }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 360px; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .geo-box { width: 220px; height: 220px; }
+      .geo-center { inset: 50px; }
+      .geo-letter { font-size: 32px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 100%; border-radius: var(--radius-md); }
+      .domain-search-wrap { border-radius: 28px !important; }
+      .domain-input { padding: 14px 20px !important; font-size: 14px !important; }
+      .domain-search-btn { padding: 10px 20px !important; font-size: 14px !important; margin: 4px !important; }
     }
 
     @media (max-width: 480px) {
-      .container { padding: 0 16px; }
-      .nav-logo { font-size: 18px; }
-      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .container { padding: 0 20px; }
+      .nav-logo { font-size: 19px; }
+      #hero { padding: 100px 0 50px; }
+      .hero h1 { font-size: 28px; }
+      .hero-stat { padding: 16px 10px; }
+      .hero-stat-num { font-size: 18px; }
+      .domain-result-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .domain-result-action { width: 100%; }
+      #scrollTop { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+      .cta-banner { padding: 40px 0; }
     }
-    /* Extra mobile hero breathing room */
-    @media (max-width: 480px) {
-      #hero { padding: 100px 0 60px; }
-      .hero h1 { font-size: 32px; }
-      .hero-sub { font-size: 15px; }
-      .domain-search-wrap { border-radius: var(--radius-md) !important; }
-      .domain-input { padding: 14px 16px !important; }
-      .domain-search-btn { padding: 10px 18px !important; font-size: 14px !important; }
-      #scrollTop { bottom: 20px; right: 20px; }
-      .cta-banner { padding: 48px 0; }
-    }
+
     /* Services grid 2-col on tablet */
     @media (min-width: 768px) and (max-width: 1023px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }

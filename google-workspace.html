@@ -226,9 +226,24 @@
       transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
     }
     .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav-item { border-bottom: 1px solid var(--color-border); }
+    .mobile-nav-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; font-size: 18px; font-weight: 600; cursor: pointer; color: var(--color-text);
+    }
+    .mobile-nav-header svg { transition: transform 0.2s; }
+    .mobile-nav-header.open svg { transform: rotate(180deg); }
+    .mobile-sub-links { display: none; flex-direction: column; gap: 4px; padding-bottom: 12px; }
+    .mobile-sub-links.open { display: flex; }
+    .mobile-sub-link {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm);
+      font-size: 15px; color: var(--color-text-secondary); transition: all 0.2s;
+    }
+    .mobile-sub-link:hover { background: var(--color-bg-glass); color: var(--color-text); }
     .mobile-nav-plain { display: block; padding: 16px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid var(--color-border); color: var(--color-text); }
     .mobile-nav-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
     .mobile-nav-buttons .btn { width: 100%; justify-content: center; }
+
 
     /* ============================================================
        HERO — Hostinger-style split layout
@@ -830,12 +845,15 @@
       .nav-links, .nav-right .btn-ghost, .nav-right .btn-primary { display: none; }
       .hamburger { display: flex; }
       .gw-hero-split { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-      .gw-hero-sub { max-width: 100%; }
+      .gw-hero-sub { max-width: 100%; margin-left: auto; margin-right: auto; }
       .gw-hero-cta-row { justify-content: center; }
       .gw-hero-trust { align-items: center; }
-      .gw-hero-right { order: -1; }
+      .gw-hero-right { order: -1; max-width: 600px; margin: 0 auto; }
       .gw-hero-float-cards { display: none; }
       .gw-feature-row { grid-template-columns: 1fr; gap: 48px; }
+      .gw-feature-row[style*="direction:rtl"] { direction: ltr !important; }
+      .gw-feature-text { direction: ltr !important; text-align: center; }
+      .gw-feature-list { align-items: center; }
       .gw-pricing-grid { grid-template-columns: 1fr; gap: 28px; }
       .gw-plan-card.popular { transform: none; }
       .gw-plan-card.popular:hover { transform: translateY(-6px); }
@@ -844,8 +862,10 @@
       .gw-why-grid { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
+
     @media (max-width: 767px) {
-      .section { padding: 72px 0; }
+      .section { padding: 60px 0; }
+      .gw-hero-left h1 { font-size: clamp(30px, 8vw, 42px); }
       .gw-tools-grid { grid-template-columns: 1fr; }
       .gw-stats-bar { grid-template-columns: 1fr; }
       .gw-why-grid { grid-template-columns: 1fr; }
@@ -856,14 +876,21 @@
       .gw-cta-text p { max-width: 100%; }
       .gw-cta-actions { width: 100%; justify-content: center; }
     }
+
     @media (max-width: 480px) {
-      .container { padding: 0 16px; }
-      .nav-logo { font-size: 18px; }
+      .container { padding: 0 20px; }
+      .nav-logo { font-size: 19px; }
       #gw-hero { padding: 100px 0 60px; }
-      .gw-hero-left h1 { font-size: 30px; }
+      .gw-hero-left h1 { font-size: 28px; }
+      .gw-hero-mockup { border-radius: var(--radius-md); }
+      .gw-mockup-address { display: none; }
+      .gw-gmail-header { padding: 12px 16px; }
+      .gw-gmail-avatar { width: 28px; height: 28px; font-size: 11px; }
+      .gw-sc-gmail-item { padding: 6px 12px; font-size: 12px; }
       #scrollTop { bottom: 20px; right: 20px; }
       #whatsappFab { bottom: 76px; right: 20px; width: 46px; height: 46px; font-size: 22px; }
     }
+
   </style>
   <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -966,18 +993,37 @@
 
 <!-- Mobile nav overlay -->
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <a href="index.html" class="mobile-nav-plain">🏠 Home</a>
-  <a href="index.html#pricing" class="mobile-nav-plain">🌐 Web Hosting</a>
-  <a href="index.html#services" class="mobile-nav-plain">🎨 Web Services</a>
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-hosting" tabindex="0">Hosting
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-hosting">
+      <a href="index.html#pricing" class="mobile-sub-link">🌐 Web Hosting</a>
+      <a href="index.html#pricing" class="mobile-sub-link">🎯 WordPress Hosting</a>
+      <a href="index.html#pricing" class="mobile-sub-link">⚡ VPS Hosting</a>
+      <a href="index.html#pricing" class="mobile-sub-link">☁️ Cloud Hosting</a>
+    </div>
+  </div>
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-solutions" tabindex="0">Solutions
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-solutions">
+      <a href="index.html#services" class="mobile-sub-link">📧 Business Email</a>
+      <a href="google-workspace.html" class="mobile-sub-link">🔷 Google Workspace</a>
+      <a href="index.html#services" class="mobile-sub-link">🔒 SSL Certificates</a>
+      <a href="index.html#services" class="mobile-sub-link">🔍 SEO Services</a>
+    </div>
+  </div>
   <a href="index.html#domains" class="mobile-nav-plain">🔍 Domains</a>
-  <a href="google-workspace.html" class="mobile-nav-plain" style="color: var(--color-primary);">🔷 Google Workspace</a>
   <a href="index.html#about" class="mobile-nav-plain">ℹ️ About</a>
   <a href="index.html#contact" class="mobile-nav-plain">📞 Contact</a>
   <div class="mobile-nav-buttons">
     <a href="index.html#contact" class="btn btn-ghost">Client Login</a>
-    <a href="#gw-pricing" class="btn btn-primary">Get Workspace</a>
+    <a href="#gw-pricing" class="btn btn-primary">Get Started</a>
   </div>
 </div>
+
 
 <main>
 
@@ -1824,6 +1870,16 @@
       document.body.style.overflow = '';
     });
   });
+
+  /* Toggle mobile sub-links */
+  document.querySelectorAll('.mobile-nav-header').forEach(function (header) {
+    header.addEventListener('click', function () {
+      var subLinks = header.nextElementSibling;
+      var isOpen = subLinks.classList.toggle('open');
+      header.classList.toggle('open', isOpen);
+    });
+  });
+
 
   /* 4. SCROLL TO TOP */
   document.getElementById('scrollTop').addEventListener('click', function () {
