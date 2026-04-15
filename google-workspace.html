@@ -339,65 +339,97 @@
       color: var(--color-primary);
     }
 
-    /* Hero right — mock Gmail interface */
-    .gw-hero-right { position: relative; }
-    .gw-hero-mockup {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-card), 0 0 60px rgba(124,92,252,0.15);
+    /* Hero stylized icons */
+    .gw-hero-icons-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+    .gw-hero-icon {
+      position: absolute; width: 60px; height: 60px;
+      border: 1.5px solid var(--color-primary); border-radius: 12px;
+      background: rgba(124,92,252,0.1); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: gwIconFloat 6s ease-in-out infinite;
+    }
+    .gw-hi-1 { top: 15%; left: 45%; animation-delay: 0s; }
+    .gw-hi-2 { bottom: 20%; left: 55%; animation-delay: 2s; }
+    .gw-hi-3 { top: 30%; right: 5%; animation-delay: 4s; }
+    @keyframes gwIconFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-15px) rotate(4deg); }
+    }
+    .gw-hero-img-wrap {
+      position: relative; border-radius: var(--radius-xl); overflow: hidden;
+      box-shadow: var(--shadow-card); border: 1px solid var(--color-border);
+    }
+    .gw-hero-img-wrap img { width: 100%; height: auto; display: block; }
+    .gw-hero-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(10,11,15,0.4));
+    }
+
+    /* Modern Mockup Styles */
+    .gw-mockup-wrapper {
+      position: relative; width: 100%; max-width: 600px;
+      margin: 0 auto; perspective: 1000px;
+    }
+    .gw-modern-mockup {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-card); transition: transform 0.5s ease;
+    }
+    .gw-modern-mockup:hover { transform: translateY(-5px) rotateX(2deg); }
+
+    .gw-mockup-topbar {
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
       position: relative;
     }
-    .gw-mockup-topbar {
-      background: rgba(255,255,255,0.04);
-      border-bottom: 1px solid var(--color-border);
-      padding: 14px 20px;
-      display: flex; align-items: center; gap: 12px;
+    .gw-mockup-dots {
+      display: flex;
+      gap: 6px;
+      position: absolute;
+      left: 16px;
     }
-    .gw-mockup-dots { display: flex; gap: 6px; }
-    .gw-mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .gw-mockup-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
     .gw-mockup-dot:nth-child(1) { background: #FF5F57; }
-    .gw-mockup-dot:nth-child(2) { background: #FEBC2E; }
-    .gw-mockup-dot:nth-child(3) { background: #28C840; }
+    .gw-mockup-dot:nth-child(2) { background: #FFBD2E; }
+    .gw-mockup-dot:nth-child(3) { background: #28C940; }
     .gw-mockup-address {
-      flex: 1; background: rgba(255,255,255,0.06); border-radius: 6px;
-      padding: 5px 12px; font-size: 11px; color: var(--color-text-muted);
-      font-family: monospace;
-    }
-    .gw-mockup-body { padding: 0; }
-    .gw-gmail-header {
-      padding: 16px 20px 12px;
-      border-bottom: 1px solid var(--color-border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .gw-gmail-logo {
-      font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700;
-      background: linear-gradient(135deg, var(--gw-blue), var(--gw-red), var(--gw-yellow), var(--gw-green));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .gw-gmail-avatar {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--gw-blue), var(--gw-green));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700; color: #fff;
-    }
-    .gw-gmail-search {
-      margin: 12px 20px; padding: 10px 16px;
-      background: rgba(255,255,255,0.06); border-radius: 24px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: 11px;
+      color: var(--color-text-muted);
       border: 1px solid var(--color-border);
-      display: flex; align-items: center; gap: 10px;
-      font-size: 13px; color: var(--color-text-muted);
+      max-width: 200px;
+      text-align: center;
     }
-    .gw-gmail-search span:first-child { font-size: 14px; }
-    .gw-inbox { padding: 0 0 8px; }
-    .gw-inbox-label { padding: 8px 20px 4px; font-size: 11px; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
-    .gw-email-row {
-      display: flex; align-items: center; gap: 12px;
-      padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.03);
-      transition: background 0.2s; cursor: pointer;
+
+    /* Docs collaboration mockup (CSS) */
+    .docs-mockup { background: #fff; color: #333; height: 320px; padding: 32px; font-family: sans-serif; position: relative; }
+    .docs-line { height: 10px; background: #eee; border-radius: 5px; margin-bottom: 12px; }
+    .cursor-label {
+      position: absolute; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; color: #fff;
+      display: flex; align-items: center; gap: 4px; z-index: 10;
     }
-    .gw-email-row:hover { background: rgba(255,255,255,0.03); }
+    .cursor-label::before { content: ''; width: 2px; height: 18px; position: absolute; left: -2px; top: 0; }
+    .cl-kaori { background: #f06292; top: 80px; left: 140px; }
+    .cl-kaori::before { background: #f06292; }
+    .cl-tim { background: #4285f4; top: 140px; left: 220px; }
+    .cl-tim::before { background: #4285f4; }
+    .docs-comment-box {
+      position: absolute; top: 60px; right: -20px; width: 220px;
+      background: #fff; border: 1px solid #ddd; border-radius: 8px;
+      padding: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 20;
+    }
+
     .gw-email-row.unread .gw-sender { font-weight: 700; color: var(--color-text); }
     .gw-email-row.unread .gw-subject { color: var(--color-text); }
     .gw-email-avatar-sm {
@@ -418,27 +450,93 @@
       cursor: pointer;
     }
 
-    /* Floating badge cards */
-    .gw-hero-float-cards { position: absolute; bottom: -20px; left: -20px; z-index: 5; }
-    .gw-float-card {
+    /* ============================================================
+       HIGH-FIDELITY DASHBOARD MOCKUP (Gemini Interface)
+       ============================================================ */
+    .gw-hero-dashboard {
       background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(124,92,252,0.1);
+      display: flex;
+      flex-direction: column;
+      height: 440px;
+      position: relative;
+      background-clip: padding-box;
+    }
+    .gw-dash-header {
+      height: 48px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 12px;
+    }
+    .gw-dash-body { display: flex; flex: 1; overflow: hidden; }
+    .gw-dash-sidebar {
+      width: 64px;
+      border-right: 1px solid var(--color-border);
+      background: rgba(255,255,255,0.01);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0;
+      gap: 20px;
+    }
+    .gw-dash-main { flex: 1; padding: 24px; overflow-y: auto; background: #fff; color: #1f1f1f; }
+    .gw-dash-gemini {
+      width: 240px;
+      border-left: 1px solid var(--color-border);
+      background: rgba(124,92,252,0.02);
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .gemini-sparkle-icon {
+      width: 24px; height: 24px;
+      background: var(--gradient-brand);
+      mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3L14.5 9.5L21 12L14.5 14.5L12 21L9.5 14.5L3 12L9.5 9.5L12 3Z' fill='white'/%3E%3C/svg%3E") no-repeat center;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3L14.5 9.5L21 12L14.5 14.5L12 21L9.5 14.5L3 12L9.5 9.5L12 3Z' fill='white'/%3E%3C/svg%3E") no-repeat center;
+    }
+    .gemini-title { font-size: 14px; font-weight: 700; color: var(--color-text); margin-top: 12px; margin-bottom: 8px; }
+    .gemini-pill {
+      background: rgba(255,255,255,0.05);
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 12px 16px;
-      display: flex; align-items: center; gap: 10px;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 10px;
-      backdrop-filter: blur(10px);
-      animation: floatCard 6s ease-in-out infinite;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
     }
-    .gw-float-card:nth-child(2) { animation-delay: 2s; margin-left: 20px; }
-    @keyframes floatCard {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+    .gemini-pill:hover { background: rgba(124,92,252,0.1); border-color: var(--color-primary); }
+
+    .dash-email-sub { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #1f1f1f; }
+    .dash-email-line { height: 8px; background: #f1f3f4; border-radius: 4px; margin-bottom: 12px; width: 100%; }
+
+    /* Floating app icons (Official Logo Colors) */
+    .gw-floating-app {
+      position: absolute;
+      width: 44px; height: 44px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      animation: gwFloat 6s ease-in-out infinite;
     }
-    .gw-float-icon { font-size: 22px; }
-    .gw-float-text { font-size: 12px; font-weight: 600; color: var(--color-text); }
-    .gw-float-sub { font-size: 10px; color: var(--color-text-muted); }
+    .fa-gmail { top: -15px; left: 10%; animation-delay: 0s; }
+    .fa-drive { top: 20%; right: -20px; animation-delay: 1.5s; }
+    .fa-docs { bottom: 10%; left: -20px; animation-delay: 3s; }
+    .fa-gemini { bottom: -15px; right: 20%; animation-delay: 4.5s; }
+
+    @keyframes gwFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
 
     /* ============================================================
        SHARED SECTION STYLES
@@ -683,6 +781,7 @@
       background: var(--color-bg-card); border: 1px solid var(--color-border);
       border-radius: var(--radius-md); padding: 28px 24px; text-align: center; position: relative;
       overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      text-decoration: none; display: block; color: inherit;
     }
     .gw-tool-card::before {
       content: ''; position: absolute; inset: 0;
@@ -882,14 +981,17 @@
       .nav-logo { font-size: 19px; }
       #gw-hero { padding: 100px 0 60px; }
       .gw-hero-left h1 { font-size: 28px; }
-      .gw-hero-mockup { border-radius: var(--radius-md); }
-      .gw-mockup-address { display: none; }
-      .gw-gmail-header { padding: 12px 16px; }
-      .gw-gmail-avatar { width: 28px; height: 28px; font-size: 11px; }
-      .gw-sc-gmail-item { padding: 6px 12px; font-size: 12px; }
+      .gw-hero-img-wrap { border-radius: var(--radius-md); }
+      .gw-hero-icon { width: 40px; height: 40px; }
+      .gw-hero-icon svg { width: 16px; height: 16px; }
+      .docs-mockup { padding: 16px; height: 260px; }
+      .docs-comment-box { width: 180px; top: 100px; right: 0; }
+      .cl-kaori { left: 40px; }
+      .cl-tim { left: 100px; }
       #scrollTop { bottom: 20px; right: 20px; }
       #whatsappFab { bottom: 76px; right: 20px; width: 46px; height: 46px; font-size: 22px; }
     }
+
 
   </style>
   <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
@@ -1010,7 +1112,9 @@
     </div>
     <div class="mobile-sub-links" id="msl-solutions">
       <a href="index.html#services" class="mobile-sub-link">📧 Business Email</a>
-      <a href="google-workspace.html" class="mobile-sub-link">🔷 Google Workspace</a>
+      <a href="google-workspace.html" class="mobile-sub-link" style="color: var(--color-primary); font-weight: 700;">
+        <img src="https://www.gstatic.com/images/branding/product/2x/google_workspace_24dp.png" width="18" height="18" alt=""> Google Workspace
+      </a>
       <a href="index.html#services" class="mobile-sub-link">🔒 SSL Certificates</a>
       <a href="index.html#services" class="mobile-sub-link">🔍 SEO Services</a>
     </div>
@@ -1027,9 +1131,6 @@
 
 <main>
 
-  <!-- ============================================================
-       HERO — Hostinger-style split with Gmail mockup
-       ============================================================ -->
   <section id="gw-hero" aria-label="Google Workspace Hero">
     <div class="gw-hero-bg"></div>
     <div class="gw-hero-grid"></div>
@@ -1037,145 +1138,109 @@
     <div class="gw-hero-blob gw-blob-2"></div>
     <div class="gw-hero-blob gw-blob-3"></div>
 
+    <div class="gw-hero-icons-wrap">
+      <div class="gw-hero-icon gw-hi-1">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="gw-hero-icon gw-hi-2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="gw-hero-icon gw-hi-3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+    </div>
+
     <div class="container">
       <div class="gw-hero-split">
 
         <!-- LEFT: Text content -->
         <div class="gw-hero-left animate-on-scroll">
-          <div class="gw-hero-badge">🔷 Official Google Workspace Reseller</div>
           <h1>
-            Get Gmail<br>
-            for <span class="gw-google-text">Business</span>
+            Get professional email from<br>
+            <span class="gw-google-text">Google Workspace</span>
           </h1>
           <p class="gw-hero-sub">
-            Professional business email, cloud storage, video conferencing, and collaboration tools — all in one workspace. Set up in minutes with BlacTec.
+            Strengthen customer trust with custom business email. Boost team collaboration with familiar tools like Google Docs, Sheets, and Slides.
           </p>
-          <div class="gw-hero-cta-row">
-            <a href="#gw-pricing" class="btn btn-primary btn-lg">
-              Get Started — from $6.00/mo
-            </a>
+          <div style="margin-bottom: 24px;">
+            <div style="font-size: 14px; color: var(--color-text-muted); margin-bottom: 4px;">From</div>
+            <div style="display: flex; align-items: baseline; gap: 4px;">
+              <span style="font-size: 32px; font-weight: 800; color: var(--color-text);">$6.99</span>
+              <span style="font-size: 16px; color: var(--color-text-muted);">/mo</span>
+            </div>
           </div>
-          <div class="gw-hero-trust">
-            <div class="gw-hero-trust-item">
-              <div class="gw-hero-trust-icon">✓</div>
-              <span>Custom email @yourdomain.com</span>
-            </div>
-            <div class="gw-hero-trust-item">
-              <div class="gw-hero-trust-icon">✓</div>
-              <span>30GB cloud storage per user</span>
-            </div>
-            <div class="gw-hero-trust-item">
-              <div class="gw-hero-trust-icon">✓</div>
-              <span>Pay with MTN MoMo or Airtel Money</span>
-            </div>
-            <div class="gw-hero-trust-item">
-              <div class="gw-hero-trust-icon">✓</div>
-              <span>BlacTec local support from Kampala</span>
-            </div>
+          <div class="gw-hero-cta-row">
+            <a href="#gw-pricing" class="btn btn-primary btn-lg">Get started</a>
           </div>
         </div>
 
-        <!-- RIGHT: Gmail interface mockup -->
-        <div class="gw-hero-right animate-on-scroll" style="transition-delay:0.15s; position:relative;">
-          <div class="gw-hero-mockup">
-            <!-- Browser chrome -->
-            <div class="gw-mockup-topbar">
-              <div class="gw-mockup-dots">
-                <div class="gw-mockup-dot"></div>
-                <div class="gw-mockup-dot"></div>
-                <div class="gw-mockup-dot"></div>
-              </div>
-              <div class="gw-mockup-address">mail.google.com/mail/u/0/</div>
-            </div>
-            <!-- Gmail UI -->
-            <div class="gw-mockup-body">
-              <div class="gw-gmail-header">
-                <div class="gw-gmail-logo">Gmail</div>
-                <div style="display:flex; align-items:center; gap:12px;">
-                  <span style="font-size:11px; color:var(--color-text-muted);">john@yourbusiness.ug</span>
-                  <div class="gw-gmail-avatar">J</div>
-                </div>
-              </div>
-              <div class="gw-gmail-search">
-                <span>🔍</span>
-                <span>Search mail</span>
-              </div>
-              <div style="display:flex; height:auto; min-height:220px;">
-                <!-- Sidebar labels -->
-                <div style="width:150px; flex-shrink:0; border-right:1px solid var(--color-border); padding:8px 0;">
-                  <div class="gw-sc-gmail-item active">✉️ Inbox <span class="gw-sc-gmail-count" style="color:var(--color-primary);">12</span></div>
-                  <div class="gw-sc-gmail-item">⭐ Starred</div>
-                  <div class="gw-sc-gmail-item">📤 Sent</div>
-                  <div class="gw-sc-gmail-item">📁 Drafts <span class="gw-sc-gmail-count">3</span></div>
-                  <div class="gw-sc-gmail-item" style="margin-top:8px; color:var(--color-primary); font-weight:600;">+ More</div>
-                </div>
-                <!-- Emails list -->
-                <div style="flex:1; min-width:0;">
-                  <div class="gw-email-row unread">
-                    <div class="gw-email-avatar-sm" style="background: linear-gradient(135deg, #4285F4, #34A853);">S</div>
-                    <div class="gw-email-info">
-                      <span class="gw-sender">Sarah Nakamya</span>
-                      <span class="gw-subject">Q4 Report — Draft ready for review ✓</span>
-                    </div>
-                    <span class="gw-email-time">10:32</span>
-                  </div>
-                  <div class="gw-email-row unread">
-                    <div class="gw-email-avatar-sm" style="background: linear-gradient(135deg, #EA4335, #FBBC05);">M</div>
-                    <div class="gw-email-info">
-                      <span class="gw-sender">Meet Reminder</span>
-                      <span class="gw-subject">Team standup starts in 5 minutes</span>
-                    </div>
-                    <span class="gw-email-time">09:55</span>
-                  </div>
-                  <div class="gw-email-row">
-                    <div class="gw-email-avatar-sm" style="background: linear-gradient(135deg, #34A853, #4285F4);">K</div>
-                    <div class="gw-email-info">
-                      <span class="gw-sender">Kato Brian</span>
-                      <span class="gw-subject">Shared "Project Proposal 2026.docx"</span>
-                    </div>
-                    <span class="gw-email-time">Tue</span>
-                  </div>
-                  <div class="gw-email-row">
-                    <div class="gw-email-avatar-sm" style="background: linear-gradient(135deg, #FBBC05, #EA4335);">A</div>
-                    <div class="gw-email-info">
-                      <span class="gw-sender">admin@yourbusiness.ug</span>
-                      <span class="gw-subject">Welcome to Google Workspace!</span>
-                    </div>
-                    <span class="gw-email-time">Mon</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Compose button -->
-            <div style="padding: 12px 16px; border-top: 1px solid var(--color-border); display:flex; justify-content:flex-end;">
-              <button class="gw-mockup-compose" style="border:none; cursor:pointer;">✏️ Compose</button>
-            </div>
-          </div>
+        <!-- RIGHT: Live Prototype -->
+        <div class="gw-hero-right animate-on-scroll" style="transition-delay: 0.15s;">
+          <div class="gw-mockup-wrapper">
 
-          <!-- Floating indicator cards -->
-          <div style="position:absolute; bottom:-16px; left:-16px; z-index:10;">
-            <div class="gw-float-card">
-              <div class="gw-float-icon">🛡️</div>
-              <div>
-                <div class="gw-float-text">Enterprise Security</div>
-                <div class="gw-float-sub">99.9% uptime SLA</div>
+            <!-- Floating official app icons -->
+            <div class="gw-floating-app fa-gmail">
+              <img src="https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png" alt="Gmail" width="24" height="24">
+            </div>
+            <div class="gw-floating-app fa-drive">
+              <img src="https://www.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Drive" width="24" height="24">
+            </div>
+            <div class="gw-floating-app fa-docs">
+              <img src="https://www.gstatic.com/images/branding/product/2x/docs_2020q4_48dp.png" alt="Docs" width="24" height="24">
+            </div>
+            <div class="gw-floating-app fa-gemini" style="background: var(--color-bg-card); border: 1px solid var(--color-border);">
+              <div class="gemini-sparkle-icon"></div>
+            </div>
+
+            <!-- Main Dashboard Mockup -->
+            <div class="gw-hero-dashboard">
+              <div class="gw-dash-header">
+                <div class="gw-mockup-dots">
+                  <div class="gw-mockup-dot"></div>
+                  <div class="gw-mockup-dot"></div>
+                  <div class="gw-mockup-dot"></div>
+                </div>
+                <div class="gw-mockup-address" style="margin-left: 60px; max-width: 140px;">mail.google.com</div>
+              </div>
+              <div class="gw-dash-body">
+                <aside class="gw-dash-sidebar">
+                  <img src="https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png" width="20" height="20">
+                  <img src="https://www.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" width="20" height="20" style="opacity: 0.5;">
+                  <img src="https://www.gstatic.com/images/branding/product/2x/meet_2020q4_48dp.png" width="20" height="20" style="opacity: 0.5;">
+                </aside>
+                <main class="gw-dash-main">
+                  <div class="dash-email-sub">New Business proposal update ✨</div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px;">
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background: #4285F4; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700;">TD</div>
+                    <div>
+                      <div style="font-size: 13px; font-weight: 700;">Tim Dodds</div>
+                      <div style="font-size: 11px; color: #5f6368;">to me, Alan, Roger, Raymond, Lori</div>
+                    </div>
+                  </div>
+                  <div class="dash-email-line" style="width: 80%;"></div>
+                  <div class="dash-email-line"></div>
+                  <div class="dash-email-line" style="width: 90%;"></div>
+                  <div class="dash-email-line" style="width: 40%; margin-top: 24px;"></div>
+                </main>
+                <aside class="gw-dash-gemini">
+                  <div class="gemini-sparkle-icon"></div>
+                  <div class="gemini-title">Gemini</div>
+                  <div style="font-size: 11px; color: var(--color-text-muted); margin-bottom: 16px;">How can I help you today?</div>
+                  <div class="gemini-pill">✨ Suggest a reply to this email</div>
+                  <div class="gemini-pill">📝 Summarize this email thread</div>
+                  <div class="gemini-pill">📋 List action items from this email</div>
+                  <div style="margin-top: auto; background: rgba(255,255,255,0.05); border-radius: 4px; padding: 8px; font-size: 10px; color: var(--color-text-muted);">Enter a prompt here...</div>
+                </aside>
               </div>
             </div>
-          </div>
-          <div style="position:absolute; top:-16px; right:-16px; z-index:10;">
-            <div class="gw-float-card">
-              <div class="gw-float-icon">☁️</div>
-              <div>
-                <div class="gw-float-text">30GB Storage</div>
-                <div class="gw-float-sub">Per user included</div>
-              </div>
-            </div>
+
           </div>
         </div>
 
       </div>
     </div>
   </section>
+
 
   <div class="section-divider"></div>
 
@@ -1189,84 +1254,25 @@
         <div class="gw-feature-text">
           <span class="section-label">PROFESSIONAL EMAIL</span>
           <h2>Get Gmail for Business</h2>
-          <p>Make a lasting impression with a professional email address using your own domain — like info@yourbusiness.ug. Powered by Gmail's world-class interface, with powerful spam filtering and 30GB of storage.</p>
-          <div class="gw-feature-list">
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Custom email @yourdomain — no more @gmail.com</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>30GB of cloud storage per mailbox</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Advanced spam & phishing protection</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Works on mobile, desktop & Outlook</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>99.9% uptime SLA guarantee</span></div>
-          </div>
-          <a href="#gw-pricing" class="btn btn-primary">Start Now →</a>
+          <p>Leverage new admin controls, no ads and your own personalized professional addresses. Swap @gmail.com with sales@yourbusiness.ug.</p>
+          <a href="#gw-pricing" class="btn btn-primary">Start now</a>
         </div>
-        <!-- Screen mockup -->
+        <!-- Profile Mockup -->
         <div class="gw-feature-img-wrap">
-          <div class="gw-feature-screen">
-            <div class="gw-feature-screen-header">
-              <div class="gw-screen-dots"><div class="gw-screen-dot"></div><div class="gw-screen-dot"></div><div class="gw-screen-dot"></div></div>
-              <div class="gw-screen-tab">📧 Gmail — Inbox (12)</div>
-            </div>
-            <div style="display:flex; border-bottom:1px solid var(--color-border);">
-              <!-- Sidebar -->
-              <div style="width:160px; flex-shrink:0; padding:12px 0; border-right:1px solid var(--color-border);">
-                <button style="margin:0 8px 12px; padding:10px 16px; background:var(--gradient-brand); color:#fff; border:none; border-radius:24px; font-size:13px; font-weight:600; cursor:pointer; width:calc(100% - 16px);">✏️ Compose</button>
-                <div class="gw-sc-gmail-item active" style="padding:6px 12px; font-size:11px;">📥 Inbox <span class="gw-sc-gmail-count" style="color:var(--color-primary)">12</span></div>
-                <div class="gw-sc-gmail-item" style="padding:6px 12px; font-size:11px;">⭐ Starred</div>
-                <div class="gw-sc-gmail-item" style="padding:6px 12px; font-size:11px;">🕐 Snoozed</div>
-                <div class="gw-sc-gmail-item" style="padding:6px 12px; font-size:11px;">📤 Sent</div>
-                <div class="gw-sc-gmail-item" style="padding:6px 12px; font-size:11px;">📝 Drafts <span class="gw-sc-gmail-count">3</span></div>
-                <div style="margin:8px 12px; height:1px; background:var(--color-border);"></div>
-                <div style="padding:4px 12px; font-size:10px; color:var(--color-text-muted); font-weight:600;">LABELS</div>
-                <div class="gw-sc-gmail-item" style="padding:4px 12px; font-size:11px;"><span style="color:#4285F4;">●</span> Work</div>
-                <div class="gw-sc-gmail-item" style="padding:4px 12px; font-size:11px;"><span style="color:#34A853;">●</span> Clients</div>
-              </div>
-              <!-- Emails -->
-              <div style="flex:1; min-width:0;">
-                <div style="padding:8px 16px; font-size:11px; color:var(--color-text-muted); border-bottom:1px solid var(--color-border); display:flex; align-items:center; gap:8px;">
-                  <span>Primary</span> <span style="margin-left:8px; color:var(--gw-blue)">Promotions</span> <span style="margin-left:8px;">Updates</span>
+          <div class="gw-modern-mockup" style="background:var(--color-bg-card);">
+             <div class="gw-mockup-topbar">
+                <div class="gw-mockup-dots"><div class="gw-mockup-dot"></div><div class="gw-mockup-dot"></div><div class="gw-mockup-dot"></div></div>
+                <div class="gw-mockup-address">mail.google.com</div>
+             </div>
+             <div style="padding:40px; display:flex; align-items:center; justify-content:center;">
+                <div style="background:var(--color-bg-alt); border:1px solid var(--color-border); border-radius:16px; padding:24px; display:flex; align-items:center; gap:20px; box-shadow:0 20px 40px rgba(0,0,0,0.3); width:100%; max-width:340px;">
+                   <div style="width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg, #4285f4, #34a853); display:flex; align-items:center; justify-content:center; font-size:24px; color:#fff; font-weight:700;">TD</div>
+                   <div>
+                      <div style="font-size:18px; font-weight:700; color:var(--color-text);">Tim Dodds</div>
+                      <div style="font-size:14px; color:var(--color-text-muted);">tim.dodds@yourcompany.com</div>
+                   </div>
                 </div>
-                <div class="gw-email-row unread">
-                  <div class="gw-email-avatar-sm" style="background:linear-gradient(135deg,#4285F4,#34A853);">S</div>
-                  <div class="gw-email-info">
-                    <span class="gw-sender">Sarah Nakamya</span>
-                    <span class="gw-subject">Q4 Report — Shared via Google Drive</span>
-                  </div>
-                  <span class="gw-email-time">10:32</span>
-                </div>
-                <div class="gw-email-row unread">
-                  <div class="gw-email-avatar-sm" style="background:linear-gradient(135deg,#EA4335,#FBBC05);">B</div>
-                  <div class="gw-email-info">
-                    <span class="gw-sender">Brian Kato</span>
-                    <span class="gw-subject">Re: Meeting at 2pm — confirmed ✓</span>
-                  </div>
-                  <span class="gw-email-time">09:15</span>
-                </div>
-                <div class="gw-email-row">
-                  <div class="gw-email-avatar-sm" style="background:linear-gradient(135deg,#34A853,#4285F4);">A</div>
-                  <div class="gw-email-info">
-                    <span class="gw-sender">Amara Okonkwo</span>
-                    <span class="gw-subject">Invoice #2047 — Payment received</span>
-                  </div>
-                  <span class="gw-email-time">Tue</span>
-                </div>
-                <div class="gw-email-row">
-                  <div class="gw-email-avatar-sm" style="background:linear-gradient(135deg,#FBBC05,#EA4335);">G</div>
-                  <div class="gw-email-info">
-                    <span class="gw-sender">Google Workspace</span>
-                    <span class="gw-subject">Your workspace is ready to use 🎉</span>
-                  </div>
-                  <span class="gw-email-time">Mon</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Badge -->
-          <div class="gw-feature-badge" style="bottom:-12px; right:20px;">
-            <div class="gw-feature-badge-pulse" style="background:#34A853; color:#34A853;"></div>
-            <div>
-              <div class="gw-feature-badge-text">Spam blocked</div>
-              <div class="gw-feature-badge-sub">99.9% catch rate</div>
-            </div>
+             </div>
           </div>
         </div>
       </div>
@@ -1276,7 +1282,7 @@
   <div class="section-divider"></div>
 
   <!-- ============================================================
-       FEATURE 2: Stay Connected — REVERSED
+       FEATURE 2: Stay Connected
        ============================================================ -->
   <section class="gw-feature-section section section-alt" aria-label="Collaboration Feature">
     <div class="container">
@@ -1284,27 +1290,14 @@
         <!-- Text -->
         <div class="gw-feature-text" style="direction:ltr;">
           <span class="section-label">REAL-TIME COLLABORATION</span>
-          <h2>Stay Connected With Your Team From Anywhere</h2>
-          <p>Whether your team is in Kampala, Nairobi, or across the globe — Google Workspace keeps everyone connected. Hold HD video meetings, edit documents together in real-time, and share files instantly.</p>
-          <div class="gw-feature-list">
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Google Meet HD video conferencing</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Real-time document co-editing</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Shared calendars & scheduling</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Team Chat & Spaces</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Works offline & syncs automatically</span></div>
-          </div>
-          <a href="#gw-pricing" class="btn btn-primary">Start Now →</a>
+          <h2>Stay connected with your team from anywhere</h2>
+          <p>Meet safely with your team from anywhere, using the premium video conferencing built on Google's robust infrastructure.</p>
+          <a href="#gw-pricing" class="btn btn-primary">Start now</a>
         </div>
         <!-- Screen mockup: Google Meet -->
         <div class="gw-feature-img-wrap" style="direction:ltr;">
-          <img src="assets/meet_video_grid_1776241781191.png" alt="Google Meet Video Collaboration" class="gw-feature-screen" style="width: 100%; height: auto; display: block; object-fit: cover;">
-          <!-- Badge -->
-          <div class="gw-feature-badge" style="bottom:-12px; left:20px;">
-            <div class="gw-feature-badge-pulse" style="background:#4285F4; color:#4285F4;"></div>
-            <div>
-              <div class="gw-feature-badge-text">4 participants</div>
-              <div class="gw-feature-badge-sub">HD · Encrypted</div>
-            </div>
+          <div class="gw-modern-mockup">
+            <img src="assets/meet_mockup.png" alt="Google Meet Video Collaboration" style="width: 100%; height: auto; display: block;">
           </div>
         </div>
       </div>
@@ -1314,35 +1307,22 @@
   <div class="section-divider"></div>
 
   <!-- ============================================================
-       FEATURE 3: Work Faster, Smarter
+       FEATURE 3: Security
        ============================================================ -->
-  <section class="gw-feature-section section" aria-label="Productivity Feature">
+  <section class="gw-feature-section section" aria-label="Security Feature">
     <div class="container">
       <div class="gw-feature-row animate-on-scroll">
         <!-- Text -->
         <div class="gw-feature-text">
-          <span class="section-label">BOOST PRODUCTIVITY</span>
-          <h2>Work Faster, Work Smarter</h2>
-          <p>Google Workspace integrates AI-powered features to help you work more efficiently. Create documents, spreadsheets, and presentations collaboratively in real-time — from any device.</p>
-          <div class="gw-feature-list">
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Docs, Sheets & Slides — all collaborative</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Smart Compose in Gmail</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>AI-powered search across all apps</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Version history & auto-save</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Admin console for team management</span></div>
-          </div>
-          <a href="#gw-pricing" class="btn btn-primary">Start Now →</a>
+          <span class="section-label">ENTERPRISE SECURITY</span>
+          <h2>Designed to protect you from threats</h2>
+          <p>Gmail's machine learning models block 99.9% of spam, phishing and malware threats reaching your inbox, making Google Workspace safe and secure.</p>
+          <a href="#gw-pricing" class="btn btn-primary">Start now</a>
         </div>
-        <!-- Screen: Google Docs -->
+        <!-- Screen mockup: Security -->
         <div class="gw-feature-img-wrap">
-          <img src="assets/docs_collaboration_1776242132656.png" alt="Google Docs Collaborative Editing" class="gw-feature-screen" style="width: 100%; height: auto; display: block; object-fit: cover;">
-          <!-- Badge -->
-          <div class="gw-feature-badge" style="bottom:-12px; right:20px;">
-            <div class="gw-feature-badge-pulse" style="background:#34A853; color:#34A853;"></div>
-            <div>
-              <div class="gw-feature-badge-text">3 editing now</div>
-              <div class="gw-feature-badge-sub">Changes auto-saved</div>
-            </div>
+          <div class="gw-modern-mockup">
+            <img src="assets/security_mockup.png" alt="Gmail Security Warning Mockup" style="width: 100%; height: auto; display: block;">
           </div>
         </div>
       </div>
@@ -1352,40 +1332,48 @@
   <div class="section-divider"></div>
 
   <!-- ============================================================
-       FEATURE 4: Security — REVERSED
+       FEATURE 4: Work Faster, Smarter
        ============================================================ -->
-  <section class="gw-feature-section section section-alt" aria-label="Security Feature">
+  <section class="gw-feature-section section section-alt" aria-label="Productivity Feature">
     <div class="container">
       <div class="gw-feature-row animate-on-scroll" style="direction:rtl;">
         <!-- Text -->
         <div class="gw-feature-text" style="direction:ltr;">
-          <span class="section-label">ENTERPRISE SECURITY</span>
-          <h2>Designed to Protect You From Threats</h2>
-          <p>Google Workspace includes built-in security tools to protect your business. Advanced phishing detection, two-factor authentication, and data loss prevention keep your organisation secure.</p>
-          <div class="gw-feature-list">
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Advanced anti-malware & antivirus</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Two-factor authentication (2FA)</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Admin security & compliance centre</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>Data encryption in transit & at rest</span></div>
-            <div class="gw-feature-li"><div class="gw-feature-check">✓</div><span>99.9% SLA uptime guarantee</span></div>
-          </div>
-          <a href="#gw-pricing" class="btn btn-primary">Start Now →</a>
+          <span class="section-label">BOOST PRODUCTIVITY</span>
+          <h2>Work faster, work smarter</h2>
+          <p>Collaborate on files in real time, set up meetings in a few clicks, and get deadlines and calendar notifications. Google Workspace centralizes every tool you need to be productive.</p>
+          <a href="#gw-pricing" class="btn btn-primary">Start now</a>
         </div>
-        <!-- Screen: Security dashboard -->
+        <!-- Docs Mockup -->
         <div class="gw-feature-img-wrap" style="direction:ltr;">
-          <img src="assets/security_dashboard_1776242222365.png" alt="Enterprise Security Dashboard" class="gw-feature-screen" style="width: 100%; height: auto; display: block; object-fit: cover;">
-          <!-- Badge -->
-          <div class="gw-feature-badge" style="bottom:-12px; left:20px;">
-            <div class="gw-feature-badge-pulse" style="background:#34A853; color:#34A853;"></div>
-            <div>
-              <div class="gw-feature-badge-text">Zero threats</div>
-              <div class="gw-feature-badge-sub">Protected by Google</div>
+          <div class="gw-modern-mockup">
+            <div class="docs-mockup">
+               <div class="docs-line" style="width:60%"></div>
+               <div class="docs-line" style="width:90%"></div>
+               <div class="docs-line" style="width:80%"></div>
+               <div class="docs-line" style="width:40%"></div>
+               
+               <div class="cursor-label cl-kaori">Kaori Kim</div>
+               <div class="cursor-label cl-tim">Tim Dodds</div>
+               
+               <div class="docs-comment-box">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                     <div style="width:24px; height:24px; border-radius:50%; background:#f06292; display:flex; align-items:center; justify-content:center; font-size:10px; color:#fff;">KK</div>
+                     <strong>Kaori Kim</strong>
+                  </div>
+                  <p style="font-size:12px; color:#666; margin-bottom:12px;">Do we have any more info on this? Looking to confirm, thanks!</p>
+                  <div style="border-top:1px solid #eee; padding-top:8px; display:flex; justify-content:space-between;">
+                     <button style="color:var(--color-primary); font-size:11px; font-weight:700;">Reply</button>
+                     <button style="color:#999; font-size:11px;">Cancel</button>
+                  </div>
+               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
 
   <div class="section-divider"></div>
 
@@ -1492,46 +1480,66 @@
       </div>
 
       <div class="gw-tools-grid">
-        <div class="gw-tool-card animate-on-scroll">
-          <img src="https://www.gstatic.com/images/branding/product/2x/gmail_48dp.png" alt="Gmail" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+        <a href="https://workspace.google.com/products/gmail/" target="_blank" class="gw-tool-card animate-on-scroll">
+          <img src="https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png" alt="Gmail" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
           <h3>Gmail</h3>
-          <p>Professional business email with your domain name. Powerful spam filtering and 30GB storage.</p>
-        </div>
-        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.05s">
-          <img src="https://www.gstatic.com/images/branding/product/2x/drive_48dp.png" alt="Google Drive" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <p>Professional business email with your domain name. Powerful AI-driven spam filtering and 30GB storage.</p>
+        </a>
+        <a href="https://workspace.google.com/products/drive/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.05s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/drive_2020q4_48dp.png" alt="Google Drive" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
           <h3>Google Drive</h3>
           <p>Secure cloud storage for your files. Share, sync, and access documents from any device.</p>
-        </div>
-        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.1s">
-          <img src="https://www.gstatic.com/images/branding/product/2x/meet_48dp.png" alt="Google Meet" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+        </a>
+        <a href="https://workspace.google.com/products/meet/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.1s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/meet_2020q4_48dp.png" alt="Google Meet" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
           <h3>Google Meet</h3>
           <p>HD video conferencing with screen sharing, recording, and real-time captions.</p>
-        </div>
-        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.15s">
-          <img src="https://www.gstatic.com/images/branding/product/2x/calendar_48dp.png" alt="Google Calendar" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+        </a>
+        <a href="https://workspace.google.com/products/calendar/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.15s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/calendar_2020q4_48dp.png" alt="Google Calendar" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
           <h3>Google Calendar</h3>
           <p>Shared calendars for seamless scheduling. Set reminders and coordinate teams easily.</p>
-        </div>
-        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.2s">
-          <img src="https://www.gstatic.com/images/branding/product/2x/docs_48dp.png" alt="Google Docs" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
-          <h3>Google Docs</h3>
-          <p>Create and edit documents in real-time with your team. Smart suggestions built in.</p>
-        </div>
-        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.25s">
-          <img src="https://www.gstatic.com/images/branding/product/2x/sheets_48dp.png" alt="Google Sheets" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
-          <h3>Google Sheets</h3>
-          <p>Powerful spreadsheets with collaboration built in. Charts, formulas, and data analysis.</p>
-        </div>
-        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.3s">
-          <img src="https://www.gstatic.com/images/branding/product/2x/slides_48dp.png" alt="Google Slides" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
-          <h3>Google Slides</h3>
-          <p>Build stunning presentations together with templates, themes, and real-time co-editing.</p>
-        </div>
-        <div class="gw-tool-card animate-on-scroll" style="transition-delay:0.35s">
-          <img src="https://www.gstatic.com/images/branding/product/2x/chat_48dp.png" alt="Google Chat" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+        </a>
+        <a href="https://workspace.google.com/products/chat/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.2s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/chat_2020q4_48dp.png" alt="Google Chat" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
           <h3>Google Chat</h3>
           <p>Instant messaging and team rooms — integrated with all Google Workspace apps.</p>
-        </div>
+        </a>
+        <a href="https://workspace.google.com/solutions/ai/" target="_blank" class="gw-tool-card animate-on-scroll highlight" style="transition-delay:0.22s; border-color: rgba(124,92,252,0.4); background: rgba(124,92,252,0.05);">
+          <img src="https://www.gstatic.com/images/branding/product/2x/gemini_48dp.png" alt="Gemini AI" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Gemini AI</h3>
+          <p>Supercharge your productivity with AI built directly into your favorite Workspace apps.</p>
+        </a>
+        <a href="https://workspace.google.com/products/docs/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.25s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/docs_2020q4_48dp.png" alt="Google Docs" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Docs</h3>
+          <p>Create and edit documents in real-time with your team. Smart suggestions built in.</p>
+        </a>
+        <a href="https://workspace.google.com/products/sheets/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.3s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png" alt="Google Sheets" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Sheets</h3>
+          <p>Powerful spreadsheets with collaboration built in. Charts, formulas, and data analysis.</p>
+        </a>
+        <a href="https://workspace.google.com/products/slides/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.35s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/slides_2020q4_48dp.png" alt="Google Slides" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Slides</h3>
+          <p>Build stunning presentations together with templates, themes, and real-time co-editing.</p>
+        </a>
+        <a href="https://workspace.google.com/products/keep/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.4s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/keep_2020q4_48dp.png" alt="Google Keep" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Keep</h3>
+          <p>Capture what's on your mind. Create notes, lists, and set reminders on the go.</p>
+        </a>
+        <a href="https://workspace.google.com/products/sites/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.45s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/sites_2020q4_48dp.png" alt="Google Sites" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Sites</h3>
+          <p>Create high-quality sites for your team, project, or event without any coding.</p>
+        </a>
+        <a href="https://workspace.google.com/products/forms/" target="_blank" class="gw-tool-card animate-on-scroll" style="transition-delay:0.5s">
+          <img src="https://www.gstatic.com/images/branding/product/2x/forms_2020q4_48dp.png" alt="Google Forms" class="gw-tool-icon" style="width: 48px; height: 48px; display: block; margin: 0 auto 14px;">
+          <h3>Google Forms</h3>
+          <p>Plan events, make a survey, or collect information with easy-to-create forms.</p>
+        </a>
       </div>
     </div>
   </section>

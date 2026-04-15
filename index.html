@@ -41,7 +41,9 @@
       --radius-md:          14px;
       --radius-lg:          24px;
       --radius-xl:          36px;
-      --gradient-hero:      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,92,252,0.35) 0%, transparent 70%);
+      --gradient-hero:      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,92,252,0.35) 0%, transparent 70%),
+                            radial-gradient(circle at 0% 0%, rgba(0,229,255,0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 100% 100%, rgba(124,92,252,0.1) 0%, transparent 50%);
       --gradient-brand:     linear-gradient(135deg, #7C5CFC 0%, #00E5FF 100%);
       --gradient-card:      linear-gradient(135deg, rgba(124,92,252,0.08) 0%, rgba(0,229,255,0.04) 100%);
       --shadow-card:        0 4px 40px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05) inset;
@@ -172,12 +174,13 @@
       padding: 10px 20px;
       font-size: 14px;
     }
-    .btn-whatsapp {
-      background: #25D366;
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
-    }
+    .btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
     .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+    .btn-google {
+      background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+      color: #fff; box-shadow: 0 4px 24px rgba(66,133,244,0.3);
+    }
+    .btn-google:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(66,133,244,0.4); }
 
     /* ============================================================
        SCROLL ANIMATIONS
@@ -470,6 +473,25 @@
       0%,100% { transform: translate(0,0) scale(1); }
       50% { transform: translate(20px,-20px) scale(1.05); }
     }
+
+    /* Hero stylized icons */
+    .hero-icons-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+    .hero-icon {
+      position: absolute; width: 60px; height: 60px;
+      border: 1.5px solid var(--color-primary); border-radius: 12px;
+      background: rgba(124,92,252,0.1); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: heroIconFloat 6s ease-in-out infinite;
+      color: var(--color-primary);
+    }
+    .hi-1 { top: 18%; left: 10%; animation-delay: 0s; }
+    .hi-2 { bottom: 25%; left: 15%; animation-delay: 2s; }
+    .hi-3 { top: 25%; right: 10%; animation-delay: 4s; }
+    @keyframes heroIconFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-15px) rotate(4deg); }
+    }
     .hero-particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
     .particle {
       position: absolute;
@@ -517,12 +539,26 @@
     }
     .hero h1 {
       font-family: 'Unbounded', sans-serif;
-      font-size: clamp(42px, 6vw, 72px);
+      font-size: clamp(42px, 5.5vw, 68px); /* Slightly adjusted for one-line fit */
       font-weight: 900;
       line-height: 1.1;
       color: var(--color-text);
       margin-bottom: 24px;
-      letter-spacing: -1px;
+      letter-spacing: -2px; /* Tighter for bolder look */
+      text-shadow: 0 0 20px rgba(124,92,252,0.1);
+    }
+    .typing-cursor {
+      display: inline-block;
+      width: 4px;
+      height: 0.85em;
+      background-color: var(--color-primary);
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
     .hero-sub {
       font-size: 20px;
@@ -986,26 +1022,26 @@
     }
     .service-card {
       background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 28px 24px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       cursor: default;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .service-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--gradient-card);
+      background: radial-gradient(circle at top right, rgba(124,92,252,0.15), transparent 70%);
       opacity: 0;
-      transition: opacity 0.25s;
+      transition: opacity 0.4s;
     }
     .service-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
       box-shadow: var(--shadow-card);
-      border-color: var(--color-border-hover);
+      border-color: var(--color-primary);
     }
     .service-card:hover::before { opacity: 1; }
     .service-icon-wrap {
@@ -1129,9 +1165,11 @@
       margin-left: 8px;
       display: flex;
       align-items: center;
+      justify-content: center;
       padding: 0 12px;
-      font-size: 11px;
+      font-size: 10px;
       color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
     }
     .browser-body {
       padding: 24px;
@@ -1161,6 +1199,12 @@
       background: rgba(124,92,252,0.12);
       border-radius: var(--radius-sm);
       border: 1px solid rgba(124,92,252,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .mockup-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 30%;
+      background: rgba(255,255,255,0.05);
     }
 
     /* Old site mockup */
@@ -1192,16 +1236,17 @@
     }
     .old-site-overlay span {
       font-family: 'Unbounded', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      background: var(--gradient-brand);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 20px var(--color-primary-glow);
     }
     .old-site-overlay small {
-      font-size: 13px;
-      color: var(--color-text-secondary);
+      font-size: 14px;
+      color: var(--color-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .old-body {
       padding: 24px;
@@ -1230,15 +1275,17 @@
       background: var(--color-bg-card);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: all 0.25s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
     }
     .domain-price-card:hover {
-      border-color: var(--color-border-hover);
-      transform: translateY(-3px);
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4), 0 0 20px rgba(124,92,252,0.1);
     }
     .domain-ext {
       font-family: 'Unbounded', sans-serif;
@@ -1667,38 +1714,12 @@
     /* ============================================================
        FOOTER
        ============================================================ */
-    #footer {
-      background: #060709;
-      border-top: 1px solid var(--color-border);
-      padding: 80px 0 0;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding-bottom: 64px;
-    }
-    .footer-brand-logo {
-      font-family: 'Unbounded', sans-serif;
-      font-weight: 800;
-      font-size: 24px;
-      color: var(--color-text);
-      margin-bottom: 16px;
-      display: block;
-    }
+    #footer { background: #060709; border-top: 1px solid var(--color-border); padding: 80px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 64px; }
+    .footer-brand-logo { font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 24px; color: var(--color-text); margin-bottom: 16px; display: block; }
     .footer-brand-logo .lac { color: var(--color-primary); }
-    .footer-brand-desc {
-      font-size: 14px;
-      color: var(--color-text-muted);
-      line-height: 1.7;
-      margin-bottom: 24px;
-      max-width: 280px;
-    }
-    .footer-socials {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
+    .footer-brand-desc { font-size: 14px; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 24px; max-width: 280px; }
+    .footer-socials { display: flex; gap: 12px; margin-bottom: 24px; }
     .footer-social {
       width: 36px; height: 36px;
       border-radius: var(--radius-sm);
@@ -2074,13 +2095,22 @@
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-particles" id="heroParticles"></div>
 
+    <div class="hero-icons-wrap">
+      <div class="hero-icon hi-1">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y1="6"/><line x1="6" y1="18" x2="6.01" y1="18"/></svg>
+      </div>
+      <div class="hero-icon hi-2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="hero-icon hi-3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+    </div>
+
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge">🌍 Africa's #1 Tech Partner</div>
         <h1>
-          Host Smarter.<br>
-          Build Better.<br>
-          Grow <span class="gradient-text">Faster.</span>
+          Host Smarter. Build Better. Grow <span class="gradient-text" id="typewriter">Faster.</span><span class="typing-cursor"></span>
         </h1>
         <p class="hero-sub">
           From blazing-fast web hosting and domain registration to stunning website design and modernisation — BlacTec powers the online presence of businesses across Africa and East Africa.
@@ -3236,6 +3266,46 @@
       }, 1800);
     });
   });
+
+  /* ============================================================
+     14. HERO TYPEWRITER
+  ============================================================ */
+  var typeTarget = document.getElementById('typewriter');
+  if (typeTarget) {
+    var words = ["Faster.", "Smarter.", "Better."];
+    var wordIndex = 0;
+    var charIndex = words[0].length;
+    var isDeleting = false;
+    var typeSpeed = 150;
+
+    function type() {
+      var currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        typeTarget.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 100;
+      } else {
+        typeTarget.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 150;
+      }
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+    
+    // Start after initial delay
+    setTimeout(type, 2000);
+  }
 
 })();
 </script>
