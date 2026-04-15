@@ -683,6 +683,28 @@
       transition: all 0.2s;
     }
     .domain-result-action:hover { transform: scale(1.04); }
+    .domain-result-avail.taken { color: #f87171; }
+    .domain-result-action.taken-btn {
+      background: transparent;
+      border: 1.5px solid var(--color-border);
+      color: var(--color-text-muted);
+      cursor: default;
+    }
+    .domain-result-action.taken-btn:hover { transform: none; box-shadow: none; }
+    .domain-result-item.checking { opacity: 0.6; }
+    .domain-search-loading {
+      display: none; text-align: center; padding: 20px;
+      color: var(--color-text-secondary); font-size: 14px;
+    }
+    .domain-search-loading.active { display: block; }
+    .spinner {
+      display: inline-block; width: 18px; height: 18px; margin-right: 8px;
+      border: 2px solid rgba(124,92,252,0.2);
+      border-top-color: var(--color-primary);
+      border-radius: 50%; animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Hero stats */
     .hero-stats {
@@ -1900,23 +1922,23 @@
               <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
             </div>
             <div class="nav-dropdown" role="menu">
-              <a href="#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">🌐</span>
                 <div class="nav-dropdown-text"><strong>Web Hosting</strong><span>Shared Linux hosting with cPanel</span></div>
               </a>
-              <a href="#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">🎯</span>
                 <div class="nav-dropdown-text"><strong>WordPress Hosting</strong><span>Managed WordPress with 1-click install</span></div>
               </a>
-              <a href="#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">⚡</span>
                 <div class="nav-dropdown-text"><strong>VPS Hosting</strong><span>Full root access, scalable resources</span></div>
               </a>
-              <a href="#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">☁️</span>
                 <div class="nav-dropdown-text"><strong>Cloud Hosting</strong><span>Scale fast with cloud infrastructure</span></div>
               </a>
-              <a href="#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">🏢</span>
                 <div class="nav-dropdown-text"><strong>Reseller Hosting</strong><span>Start your own hosting business</span></div>
               </a>
@@ -2015,7 +2037,6 @@
 
         <!-- Nav Right -->
         <div class="nav-right">
-          <a href="#contact" class="btn btn-ghost" style="display:none;" id="desktopLogin">Client Login</a>
           <a href="#pricing" class="btn btn-primary" style="display:none;" id="desktopGetStarted">Get Started</a>
           <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -2033,11 +2054,11 @@
       <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
     </div>
     <div class="mobile-sub-links" id="msl-hosting">
-      <a href="#pricing" class="mobile-sub-link">🌐 Web Hosting</a>
-      <a href="#pricing" class="mobile-sub-link">🎯 WordPress Hosting</a>
-      <a href="#pricing" class="mobile-sub-link">⚡ VPS Hosting</a>
-      <a href="#pricing" class="mobile-sub-link">☁️ Cloud Hosting</a>
-      <a href="#pricing" class="mobile-sub-link">🏢 Reseller Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">🌐 Web Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">🎯 WordPress Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">⚡ VPS Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">☁️ Cloud Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">🏢 Reseller Hosting</a>
     </div>
   </div>
   <div class="mobile-nav-item">
@@ -2079,7 +2100,6 @@
   <a href="#about" class="mobile-nav-plain">About</a>
   <a href="#contact" class="mobile-nav-plain">Blog</a>
   <div class="mobile-nav-buttons">
-    <a href="#contact" class="btn btn-ghost">Client Login</a>
     <a href="#pricing" class="btn btn-primary">Get Started</a>
   </div>
 </div>
@@ -2146,6 +2166,9 @@
           Popular: <a href="#domains">.com</a> <a href="#domains">.ug</a> <a href="#domains">.co.ug</a> <a href="#domains">.net</a> <a href="#domains">.org</a> <a href="#domains">.shop</a>
         </div>
         <div class="domain-results" id="heroDomainResults"></div>
+        <div class="domain-search-loading" id="heroLoadingIndicator">
+          <span class="spinner"></span> Checking availability across registries…
+        </div>
 
         <!-- Hero stats -->
         <div class="hero-stats animate-on-scroll">
@@ -2301,7 +2324,7 @@
           <p>Join 500+ African businesses already powered by BlacTec. Get started in minutes — no technical skills needed.</p>
         </div>
         <div class="cta-banner-actions animate-on-scroll" style="transition-delay:0.1s">
-          <a href="#pricing" class="btn btn-primary btn-lg">View Hosting Plans</a>
+          <a href="web-hosting.html" class="btn btn-primary btn-lg">View Hosting Plans</a>
           <a href="#contact" class="btn btn-ghost btn-lg">Talk to Us</a>
         </div>
       </div>
@@ -2325,7 +2348,7 @@
           <div class="service-icon-wrap">🌐</div>
           <h3>Web Hosting</h3>
           <p>Fast, reliable Linux hosting with cPanel, SSD storage, and 99.9% uptime. Perfect for any website.</p>
-          <a href="#pricing" class="service-link">Learn More →</a>
+          <a href="web-hosting.html" class="service-link">Learn More →</a>
         </div>
         <div class="service-card animate-on-scroll" style="transition-delay:0.05s">
           <div class="service-icon-wrap">🎨</div>
@@ -2495,6 +2518,9 @@
         </div>
       </div>
       <div class="domain-results" id="domainResults"></div>
+      <div class="domain-search-loading" id="sectionLoadingIndicator" style="max-width:680px;margin:0 auto;">
+        <span class="spinner"></span> Checking availability across registries…
+      </div>
 
       <!-- Domain price grid -->
       <div class="domain-prices-grid animate-on-scroll">
@@ -2956,16 +2982,13 @@
      1. NAVBAR SCROLL
   ============================================================ */
   const navbar = document.getElementById('navbar');
-  const desktopLogin = document.getElementById('desktopLogin');
   const desktopGetStarted = document.getElementById('desktopGetStarted');
 
   // Show desktop buttons on large screens
   function updateDesktopButtons() {
     if (window.innerWidth >= 1024) {
-      desktopLogin.style.display = 'inline-flex';
       desktopGetStarted.style.display = 'inline-flex';
     } else {
-      desktopLogin.style.display = 'none';
       desktopGetStarted.style.display = 'none';
     }
   }
@@ -3154,39 +3177,181 @@
     });
   });
 
-  /* ============================================================
-     9. DOMAIN SEARCH (unified)
-  ============================================================ */
-  var domainPrices = { '.ug': 95000, '.com': 85000, '.net': 80000, '.org': 78000 };
 
-  function buildDomainResults(raw, resultEl) {
-    resultEl.classList.add('show');
-    resultEl.innerHTML = Object.keys(domainPrices).map(function (ext) {
-      var domain = raw + ext;
-      var p = domainPrices[ext];
-      return '<div class="domain-result-item">' +
-        '<span class="domain-result-name">' + domain + '</span>' +
-        '<span class="domain-result-avail">&#10003; Available</span>' +
-        '<span class="domain-result-price">$' + p.toLocaleString() + '</span>' +
-        '<button class="domain-result-action" onclick="this.textContent=\'Added \u2713\';this.style.background=\'#4ade80\';this.disabled=true;">Add to Cart</button>' +
-        '</div>';
-    }).join('');
+  /* ============================================================
+     9. DOMAIN SEARCH — Live RDAP + UG Registry API
+  ============================================================ */
+
+  // Pricing table (USD, per year)
+  var domainPrices = {
+    '.ug':    25.99,
+    '.co.ug': 18.99,
+    '.com':   22.99,
+    '.net':   21.99,
+    '.org':   20.99
+  };
+
+  // Official UG Registry API (no auth required for availability check)
+  var UG_REGISTRY_API = 'https://new.registry.co.ug/api/v2/domains/check-availability';
+
+  // RDAP endpoints for gTLDs (CORS-enabled)
+  var rdapEndpoints = {
+    '.com': 'https://rdap.verisign.com/com/v1/domain/',
+    '.net': 'https://rdap.verisign.com/net/v1/domain/',
+    '.org': 'https://rdap.publicinterestregistry.org/rdap/domain/'
+  };
+
+  /* ── UG Registry API check for .ug / .co.ug ─────────────────── */
+  function checkUgDomain(sld, ext) {
+    var fullDomain = sld + ext;
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 7000) : null;
+    var opts = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ domains: [{ name: fullDomain }] })
+    };
+    if (controller) opts.signal = controller.signal;
+
+    return fetch(UG_REGISTRY_API, opts)
+      .then(function (res) {
+        if (timer) clearTimeout(timer);
+        if (!res.ok) throw new Error('API error');
+        return res.json();
+      })
+      .then(function (json) {
+        if (json && json.status === 'success' && json.data && json.data.length) {
+          var entry = json.data[0];
+          // available: 1 = free, available: 0 = taken
+          return {
+            domain: fullDomain,
+            available: entry.available === 1 || entry.available === true,
+            price: domainPrices[ext],
+            source: 'registry'
+          };
+        }
+        throw new Error('Unexpected response');
+      })
+      .catch(function () {
+        if (timer) clearTimeout(timer);
+        // CORS blocked or API error — surface a deep-link to whois.co.ug
+        return {
+          domain: fullDomain,
+          available: null,
+          price: domainPrices[ext],
+          whoisLink: 'https://whois.co.ug/?search=' + encodeURIComponent(fullDomain)
+        };
+      });
   }
 
-  function wireDomainSearch(inputId, btnId, resultsId) {
+  /* ── RDAP check for gTLDs (.com / .net / .org) ──────────────── */
+  function checkRdapDomain(sld, ext) {
+    var fullDomain = sld + ext;
+    var url = rdapEndpoints[ext] + encodeURIComponent(fullDomain);
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 6000) : null;
+    var opts = { method: 'GET', headers: { 'Accept': 'application/rdap+json, application/json' } };
+    if (controller) opts.signal = controller.signal;
+    return fetch(url, opts)
+      .then(function (res) {
+        if (timer) clearTimeout(timer);
+        if (res.status === 404) return { domain: fullDomain, available: true,  price: domainPrices[ext] };
+        if (res.ok)             return { domain: fullDomain, available: false, price: domainPrices[ext] };
+        return { domain: fullDomain, available: null, price: domainPrices[ext] };
+      })
+      .catch(function () {
+        if (timer) clearTimeout(timer);
+        return { domain: fullDomain, available: null, price: domainPrices[ext] };
+      });
+  }
+
+  /* ── Unified dispatcher ──────────────────────────────────────── */
+  function checkDomain(sld, ext) {
+    if (ext === '.ug' || ext === '.co.ug') {
+      return checkUgDomain(sld, ext);
+    }
+    return checkRdapDomain(sld, ext);
+  }
+
+
+  function renderDomainRow(result) {
+    var availHtml, actionHtml;
+    var whatsappOrder = 'https://wa.me/256750870755?text=Hi%2C%20I%27d%20like%20to%20register%20' +
+      encodeURIComponent(result.domain);
+
+    if (result.available === true) {
+      availHtml  = '<span class="domain-result-avail">&#10003; Available</span>';
+      actionHtml = '<a href="' + whatsappOrder + '" target="_blank" rel="noopener" ' +
+        'class="domain-result-action">Register Now</a>';
+    } else if (result.available === false) {
+      availHtml  = '<span class="domain-result-avail taken">&#10007; Taken</span>';
+      actionHtml = '<button class="domain-result-action taken-btn" disabled>Unavailable</button>';
+    } else if (result.whoisLink) {
+      // UG Registry CORS fallback — deep-link directly to whois.co.ug result
+      availHtml  = '<span class="domain-result-avail" style="color:#f59e0b">&#9888; Check Below</span>';
+      actionHtml = '<a href="' + result.whoisLink + '" target="_blank" rel="noopener" ' +
+        'class="domain-result-action" style="background:linear-gradient(135deg,#d97706,#f59e0b);">' +
+        'Check on whois.co.ug</a>';
+    } else {
+      availHtml  = '<span class="domain-result-avail" style="color:var(--color-text-muted)">&#63; Unknown</span>';
+      actionHtml = '<a href="https://whois.co.ug" target="_blank" rel="noopener" class="domain-result-action">Check Manually</a>';
+    }
+
+    return '<div class="domain-result-item">' +
+      '<span class="domain-result-name">' + result.domain + '</span>' +
+      availHtml +
+      '<span class="domain-result-price">$' + Number(result.price).toFixed(2) + '/yr</span>' +
+      actionHtml +
+      '</div>';
+  }
+
+  function runDomainSearch(raw, resultEl, loadingEl) {
+    if (!raw) return;
+    // Clean the input
+    var sld = raw.toLowerCase().replace(/\s+/g,'').replace(/\.[a-z.]+$/,'');
+    if (!sld) return;
+
+    // Show loading, clear old results
+    resultEl.classList.remove('show');
+    resultEl.innerHTML = '';
+    if (loadingEl) { loadingEl.classList.add('active'); }
+
+    var extensions = Object.keys(domainPrices);
+    var total = extensions.length;
+    var done  = 0;
+    var rows  = {}; // keyed by ext to maintain order
+
+    extensions.forEach(function (ext) {
+      checkDomain(sld, ext).then(function (result) {
+        rows[ext] = renderDomainRow(result);
+        done++;
+        if (done === total) {
+          // All checks complete — render in order
+          if (loadingEl) { loadingEl.classList.remove('active'); }
+          resultEl.innerHTML = extensions.map(function (e) { return rows[e]; }).join('');
+          resultEl.classList.add('show');
+        }
+      });
+    });
+  }
+
+  function wireDomainSearch(inputId, btnId, resultsId, loadingId) {
     var inp = document.getElementById(inputId);
     var btn = document.getElementById(btnId);
     var res = document.getElementById(resultsId);
+    var ldr = loadingId ? document.getElementById(loadingId) : null;
     if (!inp || !btn || !res) return;
     btn.addEventListener('click', function () {
-      var raw = inp.value.trim().toLowerCase().replace(/\s+/g, '').replace(/\.[a-z.]+$/, '');
-      if (raw) buildDomainResults(raw, res);
+      runDomainSearch(inp.value.trim(), res, ldr);
     });
     inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') btn.click(); });
   }
 
-  wireDomainSearch('heroDomainInput', 'heroDomainBtn', 'heroDomainResults');
-  wireDomainSearch('domainInput', 'domainSearchBtn', 'domainResults');
+  wireDomainSearch('heroDomainInput', 'heroDomainBtn', 'heroDomainResults', 'heroLoadingIndicator');
+  wireDomainSearch('domainInput', 'domainSearchBtn', 'domainResults', 'sectionLoadingIndicator');
 
 
   /* ============================================================

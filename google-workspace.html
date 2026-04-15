@@ -1031,19 +1031,19 @@
               <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
             </div>
             <div class="nav-dropdown" role="menu">
-              <a href="index.html#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">🌐</span>
                 <div class="nav-dropdown-text"><strong>Web Hosting</strong><span>Shared Linux hosting with cPanel</span></div>
               </a>
-              <a href="index.html#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">🎯</span>
                 <div class="nav-dropdown-text"><strong>WordPress Hosting</strong><span>Managed WordPress with 1-click install</span></div>
               </a>
-              <a href="index.html#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">⚡</span>
                 <div class="nav-dropdown-text"><strong>VPS Hosting</strong><span>Full root access, scalable resources</span></div>
               </a>
-              <a href="index.html#pricing" class="nav-dropdown-item" role="menuitem">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">☁️</span>
                 <div class="nav-dropdown-text"><strong>Cloud Hosting</strong><span>Scale fast with cloud infrastructure</span></div>
               </a>
@@ -1082,7 +1082,6 @@
 
         <!-- Nav Right -->
         <div class="nav-right">
-          <a href="index.html#contact" class="btn btn-ghost" style="display:none;" id="desktopLogin">Client Login</a>
           <a href="#gw-pricing" class="btn btn-primary" style="display:none;" id="desktopGetStarted">Get Started</a>
           <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -1100,10 +1099,10 @@
       <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
     </div>
     <div class="mobile-sub-links" id="msl-hosting">
-      <a href="index.html#pricing" class="mobile-sub-link">🌐 Web Hosting</a>
-      <a href="index.html#pricing" class="mobile-sub-link">🎯 WordPress Hosting</a>
-      <a href="index.html#pricing" class="mobile-sub-link">⚡ VPS Hosting</a>
-      <a href="index.html#pricing" class="mobile-sub-link">☁️ Cloud Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">🌐 Web Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">🎯 WordPress Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">⚡ VPS Hosting</a>
+      <a href="web-hosting.html" class="mobile-sub-link">☁️ Cloud Hosting</a>
     </div>
   </div>
   <div class="mobile-nav-item">
@@ -1123,7 +1122,6 @@
   <a href="index.html#about" class="mobile-nav-plain">ℹ️ About</a>
   <a href="index.html#contact" class="mobile-nav-plain">📞 Contact</a>
   <div class="mobile-nav-buttons">
-    <a href="index.html#contact" class="btn btn-ghost">Client Login</a>
     <a href="#gw-pricing" class="btn btn-primary">Get Started</a>
   </div>
 </div>
@@ -1770,11 +1768,11 @@
       <div class="footer-col">
         <h4>Hosting</h4>
         <ul>
-          <li><a href="index.html#pricing">Shared Hosting</a></li>
-          <li><a href="index.html#pricing">WordPress Hosting</a></li>
-          <li><a href="index.html#pricing">VPS Hosting</a></li>
-          <li><a href="index.html#pricing">Cloud Hosting</a></li>
-          <li><a href="index.html#pricing">Reseller Hosting</a></li>
+          <li><a href="web-hosting.html">Shared Hosting</a></li>
+          <li><a href="web-hosting.html">WordPress Hosting</a></li>
+          <li><a href="web-hosting.html">VPS Hosting</a></li>
+          <li><a href="web-hosting.html">Cloud Hosting</a></li>
+          <li><a href="web-hosting.html">Reseller Hosting</a></li>
           <li><a href="index.html#domains">Domain Registration</a></li>
         </ul>
       </div>
@@ -1841,12 +1839,10 @@
 
   /* 2. NAVBAR SCROLL */
   var navbar = document.getElementById('navbar');
-  var desktopLogin = document.getElementById('desktopLogin');
   var desktopGetStarted = document.getElementById('desktopGetStarted');
 
   function updateDesktopButtons() {
     var show = window.innerWidth >= 1024;
-    desktopLogin.style.display = show ? 'inline-flex' : 'none';
     desktopGetStarted.style.display = show ? 'inline-flex' : 'none';
   }
   updateDesktopButtons();
