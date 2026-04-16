@@ -874,16 +874,75 @@
     /* ============================================================
        SCROLL TOP & WHATSAPP FAB
        ============================================================ */
-    
+    /* ============================================================
+       SCROLL TO TOP BUTTON
+       ============================================================ */
+    #scrollTop {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gradient-brand);
+      color: #fff;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px var(--color-primary-glow);
+      z-index: 7000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    }
+    #scrollTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    #scrollTop:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--color-primary-glow); }
+
+    /* ============================================================
+       WHATSAPP FAB
+       ============================================================ */
+    #whatsappFab {
+      position: fixed;
+      bottom: 90px;
+      right: 32px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 7001;
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
     #whatsappFab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.55); }
     #whatsappFab::before {
-      content: ''; position: absolute; inset: -4px; border-radius: 50%;
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
       border: 2px solid rgba(37,211,102,0.5);
       animation: waPulse 2.5s ease-out infinite;
     }
     @keyframes waPulse {
       0% { transform: scale(1); opacity: 0.7; }
       100% { transform: scale(1.5); opacity: 0; }
+    }
+    @media (max-width: 480px) {
+      #whatsappFab { bottom: 76px; right: 20px; width: 46px; height: 46px; font-size: 22px; }
+      #scrollTop { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+    }
+100% { transform: scale(1.5); opacity: 0; }
     }
 
     /* ============================================================
@@ -914,13 +973,97 @@
     .footer-bottom-links a { font-size: 13px; color: var(--color-text-muted); transition: color 0.2s; }
     .footer-bottom-links a:hover { color: var(--color-primary); }
     
-\n  
+
+
+    /* ============================================================
+       FOOTER LAYOUT
+       ============================================================ */
+    #footer { background: #060709; border-top: 1px solid var(--color-border); padding: 80px 0 0; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 64px;
+    }
+    @media (max-width: 1100px) {
+      .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
     /* Hide scrollbars site-wide while maintaining scroll functionality */
     *::-webkit-scrollbar { display: none; }
     * { -ms-overflow-style: none; scrollbar-width: none; }
 
   </style>
-  <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
+  <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }
+    /* ============================================================
+       PREMIUM HERO THEME (Propagated)
+       ============================================================ */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-hero);
+      z-index: 0;
+    }
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      animation: blobFloat 12s ease-in-out infinite;
+    }
+    .hero-blob-1 { width: 500px; height: 500px; background: rgba(124,92,252,0.18); top: -10%; left: 20%; animation-delay: 0s; }
+    .hero-blob-2 { width: 350px; height: 350px; background: rgba(0,229,255,0.10); top: 30%; right: 10%; animation-delay: 4s; }
+    @keyframes blobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(20px,-20px) scale(1.05); }
+    }
+    .hero-icons-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 5; opacity: 0.5; }
+    .hero-icon {
+      position: absolute; width: 60px; height: 60px;
+      border: 1.5px solid var(--color-primary); border-radius: 12px;
+      background: rgba(124,92,252,0.1); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: heroIconFloat 6s ease-in-out infinite;
+      color: var(--color-primary);
+    }
+    .hi-1 { top: 18%; left: 10%; animation-delay: 0s; }
+    .hi-2 { bottom: 25%; left: 15%; animation-delay: 2s; }
+    .hi-3 { top: 25%; right: 10%; animation-delay: 4s; }
+    @keyframes heroIconFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-15px) rotate(4deg); }
+    }
+    .hero-particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      animation: particleFloat linear infinite;
+    }
+    @keyframes particleFloat {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
+    }
+
+    [id*="-hero"], .hero-section { position: relative; overflow: hidden; }
+</style></noscript>
 </head>
 <body>
 
@@ -947,8 +1090,67 @@
         <a href="index.html" class="nav-logo" aria-label="BlacTec Home">blac<span class="logo-accent">tec</span>.</a>
 
         <!-- Desktop Nav -->
-        <ul class="nav-links" role="list">
-          <!-- Hosting -->
+                <ul class="nav-links" role="list">
+          <!-- BUILD (Web & App Development — #1 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Build
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+                <div class="nav-dropdown-text"><strong>Web &amp; App Development</strong><span>Custom websites, web apps &amp; digital platforms</span></div>
+              </a>
+              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔄</span>
+                <div class="nav-dropdown-text"><strong>Website Redesign</strong><span>Modernise &amp; rebuild your existing site</span></div>
+              </a>
+              <a href="ecommerce-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🛒</span>
+                <div class="nav-dropdown-text"><strong>E-commerce Development</strong><span>Online stores with MoMo &amp; Airtel integration</span></div>
+              </a>
+              <a href="wordpress-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
+                <div class="nav-dropdown-text"><strong>WordPress Development</strong><span>CMS-powered websites &amp; blogs</span></div>
+              </a>
+              <a href="website-maintenance.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔧</span>
+                <div class="nav-dropdown-text"><strong>Website Maintenance</strong><span>Updates, backups &amp; ongoing support</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- EMAIL SOLUTIONS (#2 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Email
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="business-email.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">✉️</span>
+                <div class="nav-dropdown-text"><strong>Business Email</strong><span>Professional @yourdomain.ug addresses</span></div>
+              </a>
+              <a href="google-workspace.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+</svg></span>
+                <div class="nav-dropdown-text"><strong>Google Workspace</strong><span>Gmail, Drive, Meet &amp; more for teams</span></div>
+              </a>
+              <a href="zoho-mail.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#ffffff" stroke-width="2" fill="none"/></svg></span>
+                <div class="nav-dropdown-text"><strong>Zoho Mail</strong><span>Ad-free, secure email &amp; workplace</span></div>
+              </a>
+              <a href="microsoft-365.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg></span>
+                <div class="nav-dropdown-text"><strong>Microsoft 365</strong><span>Word, Excel, Teams &amp; Outlook</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- HOSTING (#3 priority) -->
           <li class="nav-item">
             <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
               Hosting
@@ -972,37 +1174,12 @@
                 <div class="nav-dropdown-text"><strong>Cloud Hosting</strong><span>Scale fast with cloud infrastructure</span></div>
               </a>
               <a href="reseller-hosting.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg></span>
+                <span class="nav-dropdown-icon">🏢</span>
                 <div class="nav-dropdown-text"><strong>Reseller Hosting</strong><span>Start your own hosting business</span></div>
               </a>
             </div>
           </li>
-          <!-- Web Services -->
-          <li class="nav-item">
-            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
-              Web Services
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-            </div>
-            <div class="nav-dropdown" role="menu">
-              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
-                <div class="nav-dropdown-text"><strong>Web Development</strong><span>Build new apps or redesign existing sites</span></div>
-              </a>
-              <a href="ecommerce-development.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🛒</span>
-                <div class="nav-dropdown-text"><strong>E-commerce Development</strong><span>Stores with MoMo &amp; Airtel integration</span></div>
-              </a>
-              <a href="wordpress-development.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">📝</span>
-                <div class="nav-dropdown-text"><strong>WordPress Development</strong><span>CMS-powered websites &amp; blogs</span></div>
-              </a>
-              <a href="website-maintenance.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🔧</span>
-                <div class="nav-dropdown-text"><strong>Website Maintenance</strong><span>Updates, backups &amp; ongoing support</span></div>
-              </a>
-            </div>
-          </li>
-          <!-- Domains -->
+          <!-- DOMAINS (#4) -->
           <li class="nav-item">
             <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
               Domains
@@ -1010,7 +1187,7 @@
             </div>
             <div class="nav-dropdown" role="menu">
               <a href="domain-search.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                <span class="nav-dropdown-icon">🔍</span>
                 <div class="nav-dropdown-text"><strong>Domain Search</strong><span>Find &amp; register your perfect domain</span></div>
               </a>
               <a href="ug-domains.html" class="nav-dropdown-item" role="menuitem">
@@ -1022,34 +1199,18 @@
                 <div class="nav-dropdown-text"><strong>Domain Transfer</strong><span>Move your domain to BlacTec</span></div>
               </a>
               <a href="whois-privacy.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+                <span class="nav-dropdown-icon">🔒</span>
                 <div class="nav-dropdown-text"><strong>Free WHOIS Privacy</strong><span>Protect your registration info</span></div>
               </a>
             </div>
           </li>
-          <!-- Solutions -->
+          <!-- MORE (#5) -->
           <li class="nav-item">
             <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
-              Solutions
+              More
               <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
             </div>
             <div class="nav-dropdown" role="menu">
-              <a href="business-email.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
-                <div class="nav-dropdown-text"><strong>Business Email</strong><span>Professional @yourdomain.ug addresses</span></div>
-              </a>
-              <a href="google-workspace.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><img src="https://www.gstatic.com/images/branding/product/2x/google_workspace_24dp.png" width="18" height="18" alt="Google Workspace"></span>
-                <div class="nav-dropdown-text"><strong>Google Workspace</strong><span>Gmail, Drive, Meet & more for teams</span></div>
-              </a>
-              <a href="zoho-mail.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#ffffff" stroke-width="2" fill="none"/></svg></span>
-                <div class="nav-dropdown-text"><strong>Zoho Mail</strong><span>Ad-free, secure email & workplace</span></div>
-              </a>
-              <a href="microsoft-365.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg></span>
-                <div class="nav-dropdown-text"><strong>Microsoft 365</strong><span>Word, Excel, Teams & Outlook</span></div>
-              </a>
               <a href="ssl-certificates.html" class="nav-dropdown-item" role="menuitem">
                 <span class="nav-dropdown-icon">🔒</span>
                 <div class="nav-dropdown-text"><strong>SSL Certificates</strong><span>Encrypt &amp; secure your website</span></div>
@@ -1059,11 +1220,11 @@
                 <div class="nav-dropdown-text"><strong>SEO Services</strong><span>Rank higher on Google Search</span></div>
               </a>
               <a href="bulk-sms.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
+                <span class="nav-dropdown-icon">💬</span>
                 <div class="nav-dropdown-text"><strong>Bulk SMS</strong><span>Reach customers via SMS marketing</span></div>
               </a>
               <a href="website-security.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+                <span class="nav-dropdown-icon">🛡️</span>
                 <div class="nav-dropdown-text"><strong>Website Security</strong><span>Firewalls, malware scanning &amp; protection</span></div>
               </a>
             </div>
@@ -1084,10 +1245,33 @@
 </header>
 
 <!-- Mobile nav overlay -->
-
-
-<!-- Mobile nav overlay -->
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <!-- BUILD -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-build" tabindex="0">Build
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-build">
+      <a href="web-development.html" class="mobile-sub-link">💻 Web &amp; App Development</a>
+      <a href="web-development.html" class="mobile-sub-link">🔄 Website Redesign</a>
+      <a href="ecommerce-development.html" class="mobile-sub-link">🛒 E-commerce Development</a>
+      <a href="wordpress-development.html" class="mobile-sub-link">📝 WordPress Development</a>
+      <a href="website-maintenance.html" class="mobile-sub-link">🔧 Website Maintenance</a>
+    </div>
+  </div>
+  <!-- EMAIL -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-email" tabindex="0">Email
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-email">
+      <a href="business-email.html" class="mobile-sub-link">✉️ Business Email</a>
+      <a href="google-workspace.html" class="mobile-sub-link">🔷 Google Workspace</a>
+      <a href="zoho-mail.html" class="mobile-sub-link">📧 Zoho Mail</a>
+      <a href="microsoft-365.html" class="mobile-sub-link">🏢 Microsoft 365</a>
+    </div>
+  </div>
+  <!-- HOSTING -->
   <div class="mobile-nav-item">
     <div class="mobile-nav-header" id="mnh-hosting" tabindex="0">Hosting
       <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
@@ -1100,17 +1284,7 @@
       <a href="reseller-hosting.html" class="mobile-sub-link">🏢 Reseller Hosting</a>
     </div>
   </div>
-  <div class="mobile-nav-item">
-    <div class="mobile-nav-header" id="mnh-web" tabindex="0">Web Services
-      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-    </div>
-    <div class="mobile-sub-links" id="msl-web">
-      <a href="web-development.html" class="mobile-sub-link">💻 Web Development</a>
-      <a href="ecommerce-development.html" class="mobile-sub-link">🛒 E-commerce Development</a>
-      <a href="wordpress-development.html" class="mobile-sub-link">📝 WordPress Development</a>
-      <a href="website-maintenance.html" class="mobile-sub-link">🔧 Website Maintenance</a>
-    </div>
-  </div>
+  <!-- DOMAINS -->
   <div class="mobile-nav-item">
     <div class="mobile-nav-header" id="mnh-domain" tabindex="0">Domains
       <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
@@ -1122,30 +1296,38 @@
       <a href="whois-privacy.html" class="mobile-sub-link">🔒 Free WHOIS Privacy</a>
     </div>
   </div>
+  <!-- MORE -->
   <div class="mobile-nav-item">
-    <div class="mobile-nav-header" id="mnh-solutions" tabindex="0">Solutions
+    <div class="mobile-nav-header" id="mnh-more" tabindex="0">More
       <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
     </div>
-    <div class="mobile-sub-links" id="msl-solutions">
-      <a href="business-email.html" class="mobile-sub-link"><svg width="16" height="16" style="vertical-align:text-bottom; margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Business Email</a>
-      <a href="google-workspace.html" class="mobile-sub-link">🔷 Google Workspace</a>
-      <a href="zoho-mail.html" class="mobile-sub-link">✉️ Zoho Mail</a>
-      <a href="microsoft-365.html" class="mobile-sub-link">🏢 Microsoft 365</a>
-      <a href="ssl-certificates.html" class="mobile-sub-link"><svg width="16" height="16" style="vertical-align:text-bottom; margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> SSL Certificates</a>
-      <a href="seo-services.html" class="mobile-sub-link"><svg width="16" height="16" style="vertical-align:text-bottom; margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> SEO Services</a>
-      <a href="bulk-sms.html" class="mobile-sub-link"><svg width="16" height="16" style="vertical-align:text-bottom; margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Bulk SMS</a>
-      <a href="website-security.html" class="mobile-sub-link"><svg width="16" height="16" style="vertical-align:text-bottom; margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Website Security</a>
+    <div class="mobile-sub-links" id="msl-more">
+      <a href="ssl-certificates.html" class="mobile-sub-link">🔒 SSL Certificates</a>
+      <a href="seo-services.html" class="mobile-sub-link">🔍 SEO Services</a>
+      <a href="bulk-sms.html" class="mobile-sub-link">💬 Bulk SMS</a>
+      <a href="website-security.html" class="mobile-sub-link">🛡️ Website Security</a>
     </div>
   </div>
   <a href="index.html#about" class="mobile-nav-plain">About</a>
   <div class="mobile-nav-buttons">
-    <a href="index.html#pricing" class="btn btn-primary">Get Started</a>
+    <a href="web-development.html" class="btn btn-primary">Start Your Project</a>
   </div>
 </div>
 
 <main>
 
   <section id="gw-hero" aria-label="Google Workspace Hero">
+    
+    <div class="hero-bg"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-icons-wrap">
+      <div class="hero-icon hi-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6M12 5v14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="hero-icon hi-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="hero-icon hi-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    </div>
     <div class="gw-hero-bg"></div>
     <div class="gw-hero-grid"></div>
     <div class="gw-hero-blob gw-blob-1"></div>
@@ -1772,7 +1954,7 @@
       <!-- Brand -->
       <div>
         <span class="footer-brand-logo">blac<span class="lac">tec</span>.</span>
-        <p class="footer-brand-desc">Hosting the Future — Africa's most trusted web hosting, website design, and digital solutions provider. Based in Kampala, serving East Africa.</p>
+        <p class="footer-brand-desc">Building the Digital Future — Africa's leading web development, email solutions &amp; hosting provider. Based in Kampala, serving businesses across East Africa.</p>
         <div class="footer-socials">
           <a href="#" class="footer-social" aria-label="Twitter/X">𝕏</a>
           <a href="#" class="footer-social" aria-label="Facebook">f</a>
@@ -1782,33 +1964,40 @@
         <p style="font-size:12px;color:var(--color-text-muted);">© 2026 BlacTec. All rights reserved.</p>
       </div>
 
-      <!-- Hosting -->
+      <!-- Build (Web Dev — #1 priority) -->
       <div class="footer-col">
-        <h4>Hosting</h4>
+        <h4>Build</h4>
+        <ul>
+          <li><a href="web-development.html">Web &amp; App Development</a></li>
+          <li><a href="web-development.html">Website Redesign</a></li>
+          <li><a href="ecommerce-development.html">E-commerce Development</a></li>
+          <li><a href="wordpress-development.html">WordPress Development</a></li>
+          <li><a href="website-maintenance.html">Website Maintenance</a></li>
+        </ul>
+      </div>
+
+      <!-- Email & Solutions (#2 priority) -->
+      <div class="footer-col">
+        <h4>Email &amp; Solutions</h4>
+        <ul>
+          <li><a href="business-email.html">Business Email</a></li>
+          <li><a href="google-workspace.html">Google Workspace</a></li>
+          <li><a href="zoho-mail.html"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#fff" stroke-width="2" fill="none"/></svg>Zoho Mail</a></li>
+          <li><a href="microsoft-365.html"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg>Microsoft 365</a></li>
+          <li><a href="ssl-certificates.html">SSL Certificates</a></li>
+        </ul>
+      </div>
+
+      <!-- Hosting & Domains (#3 priority) -->
+      <div class="footer-col">
+        <h4>Hosting &amp; Domains</h4>
         <ul>
           <li><a href="web-hosting.html">Shared Hosting</a></li>
           <li><a href="wordpress-hosting.html">WordPress Hosting</a></li>
           <li><a href="vps-hosting.html">VPS Hosting</a></li>
           <li><a href="cloud-hosting.html">Cloud Hosting</a></li>
-          <li><a href="reseller-hosting.html">Reseller Hosting</a></li>
           <li><a href="domain-search.html">Domain Registration</a></li>
-        </ul>
-      </div>
-
-      <!-- Web Services -->
-      <div class="footer-col">
-        <h4>Web Services</h4>
-        <ul>
-          <li><a href="web-development.html">Web Development</a></li>
-          <li><a href="ecommerce-development.html">E-commerce Development</a></li>
-          <li><a href="business-email.html">Business Email</a></li>
-          <li><a href="google-workspace.html">Google Workspace</a></li>
-          <li><a href="zoho-mail.html"><svg width="16" height="16" style="vertical-align:text-bottom; margin-right:6px;" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#ffffff" stroke-width="2" fill="none"/></svg> Zoho Mail</a></li>
-          <li><a href="microsoft-365.html"><svg width="16" height="16" style="vertical-align:text-bottom; margin-right:6px;" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg> Microsoft 365</a></li>
-          <li><a href="ssl-certificates.html">SSL Certificates</a></li>
-          <li><a href="seo-services.html">SEO Services</a></li>
-          <li><a href="bulk-sms.html">Bulk SMS</a></li>
-          <li><a href="website-maintenance.html">Website Maintenance</a></li>
+          <li><a href="ug-domains.html">.UG Domains</a></li>
         </ul>
       </div>
 
@@ -1826,39 +2015,12 @@
       </div>
     </div>
 
-    <!-- Footer bottom -->
     <div class="footer-bottom">
       <span class="footer-copy">© 2026 BlacTec Technologies Ltd. Kampala, Uganda.</span>
       <div class="footer-bottom-links">
-        <a href="index.html#contact">Privacy Policy</a>
-        <a href="index.html#contact">Terms of Service</a>
-        <a href="#">Sitemap</a>
-      </div>
-      
-        <!-- Airtel Money -->
-        <div class="payment-badge" title="Airtel Money">
-          <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="40" rx="6" fill="#e11900"/>
-            <circle cx="30" cy="20" r="12" fill="#fff"/>
-            <path d="M30 14c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z" fill="#e11900"/>
-            <text x="70" y="24" font-family="Arial, sans-serif" font-weight="bold" font-size="14" text-anchor="middle" fill="#fff">airtel</text>
-          </svg>
-        </div>
-        <!-- Visa -->
-        <div class="payment-badge" title="Visa">
-          <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="40" rx="6" fill="#fff"/>
-            <path d="M35 12h5l3 16h-5l-3-16zm25.5 0c-2.3-1-5-1.5-8-1.5-8.5 0-14.5 4.5-14.5 11 0 5 4.5 7.5 8 9 3.5 1.5 4.5 2.5 4.5 4 0 2-2.5 3-5 3-4.5 0-7-1.5-8.5-2.5l-1.5 6.5c2 1 6 2 10.5 2 9 0 15-4.5 15-11.5 0-4-3-6.5-7.5-8.5-3-1.5-5-2.5-5-4 0-1.5 1.5-2.5 4.5-2.5 3 0 5.5 1 7.5 2l1-6.5z M85 12l-6.5 16h-5.5l-3-11.5-1-4.5h8.5l2 9.5 3.5-9.5h5.5z M23 12h-6.5c-1.5 0-2.5 1-3 2.5l-11.5 13.5h6L11 22.5h7L19 28h6l-1.5-16zm-7.5 7l2-5.5.5-1.5 1.5 7h-4z" fill="#1a1f71"/>
-          </svg>
-        </div>
-        <!-- Mastercard -->
-        <div class="payment-badge" title="Mastercard">
-          <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="40" rx="6" fill="#141823"/>
-            <circle cx="42" cy="20" r="11" fill="#eb001b"/>
-            <circle cx="58" cy="20" r="11" fill="#f79e1b" fill-opacity="0.8"/>
-          </svg>
-        </div>
+        <a href="index.html#contact">Privacy</a>
+        <a href="index.html#contact">Terms</a>
+        <a href="https://wa.me/256750870755">Support</a>
       </div>
     </div>
   </div>
@@ -1876,17 +2038,7 @@
    title="Chat with us on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.127.554 4.195 1.604 6.015L.135 23.39l5.485-1.439a11.986 11.986 0 0 0 6.411 1.84h.005c6.645 0 12.03-5.385 12.03-12.03 0-3.218-1.254-6.248-3.533-8.528A12.001 12.001 0 0 0 12.031 0zm0 21.785h-.003a9.986 9.986 0 0 1-5.088-1.385l-.364-.216-3.784.992.997-3.69-.236-.375A9.957 9.957 0 0 1 2.016 12.03c0-5.525 4.496-10.021 10.017-10.021 2.678 0 5.195 1.042 7.087 2.936a10.018 10.018 0 0 1 2.932 7.085c-.001 5.523-4.498 10.02-10.02 10.02zm5.495-7.51c-.302-.15-1.787-.882-2.062-.982-.275-.1-.475-.15-.675.15-.201.3-.775.981-.95 1.182-.176.2-.351.225-.652.075-2.01-1.008-3.356-2.046-4.321-3.673-.102-.175.049-.247.199-.396.126-.126.275-.326.401-.501.126-.175.176-.3.251-.5.075-.2.038-.376-.038-.526-.075-.15-.675-1.626-.925-2.226-.244-.585-.492-.505-.675-.514-.175-.01-.375-.01-.575-.01s-.526.075-.801.375c-.275.3-1.051 1.026-1.051 2.502s1.076 2.898 1.226 3.098c.15.2 2.115 3.226 5.12 4.526 2.052.887 2.87.973 3.993.826 1.003-.131 3.078-1.258 3.504-2.472.426-1.215.426-2.257.301-2.472-.125-.215-.475-.34-.776-.49z"/></svg></a>
 
 
-<!-- Scroll to Top -->
 
-
-<!-- WhatsApp FAB -->
-
-
-
-<!-- Scroll to Top -->
-
-
-<!-- WhatsApp FAB -->
 
 
 
@@ -1910,6 +2062,7 @@
   var desktopGetStarted = document.getElementById('desktopGetStarted');
 
   function updateDesktopButtons() {
+    if (!desktopGetStarted) return;
     var show = window.innerWidth >= 1024;
     desktopGetStarted.style.display = show ? 'inline-flex' : 'none';
   }
@@ -2010,5 +2163,27 @@
 })();
 </script>
 
-</body>
+
+    <script>
+    function initParticles() {
+      const container = document.getElementById('heroParticles');
+      if(!container) return;
+      const particleCount = 20;
+      for(let i=0; i<particleCount; i++){
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 3 + 2;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.background = 'rgba(124,92,252,' + (Math.random() * 0.3 + 0.1) + ')';
+        p.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        p.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(p);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initParticles);
+    </script>
+    </body>
 </html>
