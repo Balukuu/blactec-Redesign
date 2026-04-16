@@ -1,0 +1,3560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlacTec | Hosting the Future — Web Hosting &amp; Website Design Africa</title>
+  <meta name="description" content="BlacTec is Africa's trusted web hosting, domain registration, website design and digital solutions provider. Fast, secure hosting from Kampala for businesses across East Africa.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="BlacTec | Hosting the Future — Web Hosting &amp; Website Design Africa">
+  <meta property="og:description" content="Africa's most trusted web hosting, domain registration, website design and digital solutions provider. Powered from Kampala, Uganda.">
+  <meta property="og:image" content="https://blactec.ug/og-image.jpg">
+  <meta property="og:url" content="https://blactec.ug">
+  <meta property="og:type" content="website">
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+       ============================================================ */
+    :root {
+      --color-bg:           #0A0B0F;
+      --color-bg-alt:       #0F1117;
+      --color-bg-card:      #13151C;
+      --color-bg-glass:     rgba(255,255,255,0.04);
+      --color-primary:      #7C5CFC;
+      --color-primary-dark: #5B3FD4;
+      --color-primary-glow: rgba(124,92,252,0.25);
+      --color-accent:       #00E5FF;
+      --color-accent-soft:  rgba(0,229,255,0.12);
+      --color-text:         #FFFFFF;
+      --color-text-secondary: #A0A4B8;
+      --color-text-muted:   #5A5F75;
+      --color-border:       rgba(255,255,255,0.07);
+      --color-border-hover: rgba(124,92,252,0.4);
+      --radius-sm:          8px;
+      --radius-md:          14px;
+      --radius-lg:          24px;
+      --radius-xl:          36px;
+      --gradient-hero:      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,92,252,0.35) 0%, transparent 70%),
+                            radial-gradient(circle at 0% 0%, rgba(0,229,255,0.15) 0%, transparent 50%),
+                            radial-gradient(circle at 100% 100%, rgba(124,92,252,0.1) 0%, transparent 50%);
+      --gradient-brand:     linear-gradient(135deg, #7C5CFC 0%, #00E5FF 100%);
+      --gradient-card:      linear-gradient(135deg, rgba(124,92,252,0.08) 0%, rgba(0,229,255,0.04) 100%);
+      --shadow-card:        0 4px 40px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05) inset;
+      --shadow-glow:        0 0 60px rgba(124,92,252,0.3);
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4,h5,h6 { line-height: 1.15; font-weight: 700; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ============================================================
+       ACCESSIBILITY
+       ============================================================ */
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Page loader */
+    #pageLoader {
+      position: fixed;
+      inset: 0;
+      background: var(--color-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #pageLoader.loaded { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--color-text);
+      animation: loaderPulse 1.2s ease-in-out infinite;
+    }
+    .loader-logo .lac { color: var(--color-primary); }
+    @keyframes loaderPulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.95); }
+    }
+
+    /* ============================================================
+       UTILITIES
+       ============================================================ */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .gradient-text {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 12px;
+    }
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+      opacity: 0.15;
+      margin: 0;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--gradient-brand);
+      color: #fff;
+      box-shadow: 0 4px 24px var(--color-primary-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--color-primary-glow);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+    }
+    .btn-ghost:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+    .btn-lg {
+      padding: 16px 36px;
+      font-size: 18px;
+    }
+    .btn-sm {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+    .btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
+    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+    .btn-google {
+      background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+      color: #fff; box-shadow: 0 4px 24px rgba(66,133,244,0.3);
+    }
+    .btn-google:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(66,133,244,0.4); }
+
+    /* ============================================================
+       SCROLL ANIMATIONS
+       ============================================================ */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9000;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(10,11,15,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--color-border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 24px;
+    }
+    /* Logo */
+    .nav-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--color-text);
+      flex-shrink: 0;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo .logo-accent { color: var(--color-primary); }
+
+    /* Desktop nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--color-text); background: var(--color-bg-glass); }
+    .nav-link svg { width: 12px; height: 12px; transition: transform 0.2s; }
+    .nav-item:hover .nav-link svg { transform: rotate(180deg); }
+    .nav-link-plain {
+      display: flex;
+      align-items: center;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-link-plain:hover { color: var(--color-text); background: var(--color-bg-glass); }
+
+    /* Dropdown */
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 420px;
+      background: rgba(15,17,23,0.98);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      transform: translateX(-50%) translateY(-6px);
+    }
+    .nav-item:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s;
+    }
+    .nav-dropdown-item:hover { background: var(--color-bg-glass); }
+    .nav-dropdown-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+    }
+    .nav-dropdown-icon svg,
+    .nav-dropdown-icon img {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .nav-dropdown-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 2px;
+    }
+    .nav-dropdown-text span {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    /* Nav right */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .nav-right .btn { font-size: 14px; padding: 10px 20px; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.2s;
+      border: 1px solid var(--color-border);
+    }
+    .hamburger:hover { background: var(--color-bg-glass); }
+    .hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile menu overlay */
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 8999;
+      background: rgba(10,11,15,0.98);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      padding: 100px 24px 40px;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+    .mobile-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--color-text);
+    }
+    .mobile-nav-header svg { transition: transform 0.2s; }
+    .mobile-nav-header.open svg { transform: rotate(180deg); }
+    .mobile-sub-links {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding-bottom: 12px;
+    }
+    .mobile-sub-links.open { display: flex; }
+    .mobile-sub-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      transition: all 0.2s;
+    }
+    .mobile-sub-link:hover { background: var(--color-bg-glass); color: var(--color-text); }
+    .mobile-nav-plain {
+      display: block;
+      padding: 16px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text);
+    }
+    .mobile-nav-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .mobile-nav-buttons .btn { width: 100%; justify-content: center; }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 120px 0 80px;
+      background: var(--color-bg);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-hero);
+      z-index: 0;
+    }
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      animation: blobFloat 12s ease-in-out infinite;
+    }
+    .hero-blob-1 {
+      width: 500px; height: 500px;
+      background: rgba(124,92,252,0.18);
+      top: -10%; left: 20%;
+      animation-delay: 0s;
+    }
+    .hero-blob-2 {
+      width: 350px; height: 350px;
+      background: rgba(0,229,255,0.10);
+      top: 30%; right: 10%;
+      animation-delay: 4s;
+    }
+    @keyframes blobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(20px,-20px) scale(1.05); }
+    }
+
+    /* Hero stylized icons */
+    .hero-icons-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+    .hero-icon {
+      position: absolute; width: 60px; height: 60px;
+      border: 1.5px solid var(--color-primary); border-radius: 12px;
+      background: rgba(124,92,252,0.1); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: heroIconFloat 6s ease-in-out infinite;
+      color: var(--color-primary);
+    }
+    .hi-1 { top: 18%; left: 10%; animation-delay: 0s; }
+    .hi-2 { bottom: 25%; left: 15%; animation-delay: 2s; }
+    .hi-3 { top: 25%; right: 10%; animation-delay: 4s; }
+    @keyframes heroIconFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-15px) rotate(4deg); }
+    }
+    .hero-particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: particleFloat linear infinite;
+    }
+    @keyframes particleFloat {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
+    }
+    .hero-clip {
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 80px;
+      clip-path: polygon(0 100%, 100% 100%, 100% 20%, 0 100%);
+      background: var(--color-bg-alt);
+      z-index: 3;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: 50px;
+      border: 1px solid var(--color-primary);
+      background: rgba(124,92,252,0.08);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 28px;
+      animation: shimmerBorder 3s linear infinite;
+    }
+    @keyframes shimmerBorder {
+      0%,100% { box-shadow: 0 0 0 0 rgba(124,92,252,0.3); }
+      50% { box-shadow: 0 0 16px 2px rgba(124,92,252,0.4); }
+    }
+    .hero h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(42px, 5.5vw, 68px); /* Slightly adjusted for one-line fit */
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--color-text);
+      margin-bottom: 24px;
+      letter-spacing: -2px; /* Tighter for bolder look */
+      text-shadow: 0 0 20px rgba(124,92,252,0.1);
+    }
+    .typing-cursor {
+      display: inline-block;
+      width: 4px;
+      height: 0.85em;
+      background-color: var(--color-primary);
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .hero-sub {
+      font-size: 20px;
+      color: var(--color-text-secondary);
+      max-width: 640px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-bottom: 40px;
+    }
+    .hero-trust span { display: flex; align-items: center; gap: 5px; }
+    .hero-trust .dot { color: var(--color-text-muted); }
+
+    /* Domain search bar */
+    .domain-search-wrap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      max-width: 620px;
+      margin: 0 auto 12px;
+      transition: box-shadow 0.25s;
+    }
+    .domain-search-wrap:focus-within {
+      box-shadow: 0 0 0 2px var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    .domain-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 18px 24px;
+      font-size: 15px;
+      color: var(--color-text);
+      font-family: 'DM Sans', sans-serif;
+      min-width: 0;
+    }
+    .domain-input::placeholder { color: var(--color-text-muted); }
+    .domain-search-btn {
+      background: var(--gradient-brand);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      margin: 6px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .domain-search-btn:hover { transform: scale(1.03); box-shadow: 0 4px 20px var(--color-primary-glow); }
+    .domain-popular {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .domain-popular a {
+      color: var(--color-text-secondary);
+      margin: 0 4px;
+      transition: color 0.2s;
+    }
+    .domain-popular a:hover { color: var(--color-primary); }
+
+    /* Domain search results */
+    .domain-results {
+      display: none;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      max-width: 620px;
+      margin: 0 auto 24px;
+      animation: fadeDown 0.3s ease;
+    }
+    .domain-results.show { display: block; }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .domain-result-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--color-border);
+      gap: 12px;
+    }
+    .domain-result-item:last-child { border-bottom: none; }
+    .domain-result-name { font-weight: 600; font-size: 15px; }
+    .domain-result-avail { font-size: 13px; color: #4ade80; display: flex; align-items: center; gap: 4px; }
+    .domain-result-price { font-size: 14px; font-weight: 600; color: var(--color-text-secondary); }
+    .domain-result-action {
+      padding: 8px 16px;
+      background: var(--gradient-brand);
+      color: #fff;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .domain-result-action:hover { transform: scale(1.04); }
+    .domain-result-avail.taken { color: #f87171; }
+    .domain-result-action.taken-btn {
+      background: transparent;
+      border: 1.5px solid var(--color-border);
+      color: var(--color-text-muted);
+      cursor: default;
+    }
+    .domain-result-action.taken-btn:hover { transform: none; box-shadow: none; }
+    .domain-result-item.checking { opacity: 0.6; }
+    .domain-search-loading {
+      display: none; text-align: center; padding: 20px;
+      color: var(--color-text-secondary); font-size: 14px;
+    }
+    .domain-search-loading.active { display: block; }
+    .spinner {
+      display: inline-block; width: 18px; height: 18px; margin-right: 8px;
+      border: 2px solid rgba(124,92,252,0.2);
+      border-top-color: var(--color-primary);
+      border-radius: 50%; animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Hero stats */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .hero-stat {
+      background: var(--color-bg-card);
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      display: block;
+    }
+
+    /* ============================================================
+       TRUST STRIP
+       ============================================================ */
+    #trust {
+      background: var(--color-bg-alt);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+      overflow: hidden;
+    }
+    .trust-track {
+      display: flex;
+      gap: 48px;
+      animation: marquee 25s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      white-space: nowrap;
+    }
+    .trust-item span:first-child { font-size: 18px; }
+
+    /* ============================================================
+       SHARED SECTION STYLES
+       ============================================================ */
+    .section { padding: 100px 0; }
+    .section-alt { background: var(--color-bg-alt); }
+
+    /* ============================================================
+       SCROLL TO TOP BUTTON
+       ============================================================ */
+    #scrollTop {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gradient-brand);
+      color: #fff;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px var(--color-primary-glow);
+      z-index: 7000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    }
+    #scrollTop.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    #scrollTop:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--color-primary-glow); }
+
+    /* ============================================================
+       WHATSAPP FAB
+       ============================================================ */
+    #whatsappFab {
+      position: fixed;
+      bottom: 90px;
+      right: 32px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 7001;
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    #whatsappFab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.55); }
+    #whatsappFab::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid rgba(37,211,102,0.5);
+      animation: waPulse 2.5s ease-out infinite;
+    }
+    @keyframes waPulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    @media (max-width: 480px) {
+      #whatsappFab { bottom: 76px; right: 20px; width: 46px; height: 46px; font-size: 22px; }
+    }
+
+    /* ============================================================
+       MID-PAGE CTA BANNER
+       ============================================================ */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(124,92,252,0.15) 0%, rgba(0,229,255,0.08) 100%);
+      border-top: 1px solid rgba(124,92,252,0.2);
+      border-bottom: 1px solid rgba(124,92,252,0.2);
+      padding: 64px 0;
+    }
+    .cta-banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cta-banner-text h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .cta-banner-text p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      max-width: 480px;
+    }
+    .cta-banner-actions {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 767px) {
+      .cta-banner-inner { flex-direction: column; text-align: center; }
+      .cta-banner-text p { max-width: 100%; }
+      .cta-banner-actions { width: 100%; justify-content: center; }
+    }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .section-header p {
+      font-size: 17px;
+      color: var(--color-text-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ============================================================
+       HOSTING PLANS (PRICING)
+       ============================================================ */
+    #pricing {}
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 48px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      padding: 4px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .toggle-btn {
+      padding: 10px 28px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+      color: var(--color-text-secondary);
+      border: none;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .toggle-btn.active {
+      background: var(--gradient-brand);
+      color: #fff;
+      box-shadow: 0 4px 16px var(--color-primary-glow);
+    }
+    .save-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(124,92,252,0.15);
+      color: var(--color-primary);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 50px;
+      margin-left: 6px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .plan-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+    }
+    .plan-card.popular {
+      border-color: var(--color-primary);
+      transform: scale(1.03);
+      box-shadow: 0 0 40px var(--color-primary-glow), var(--shadow-card);
+    }
+    .plan-card.popular:hover {
+      transform: scale(1.03) translateY(-6px);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      right: 24px;
+      background: var(--gradient-brand);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .plan-name {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 6px;
+    }
+    .plan-tagline {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+    }
+    .plan-price-wrap { margin-bottom: 8px; }
+    .plan-price {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--color-text);
+    }
+    .plan-price-cur { font-size: 16px; vertical-align: super; font-weight: 600; }
+    .plan-period {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 28px;
+    }
+    .plan-cta { width: 100%; justify-content: center; margin-bottom: 28px; }
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-check { color: var(--color-primary); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .pricing-note {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+
+    /* ============================================================
+       SERVICES GRID
+       ============================================================ */
+    #services {}
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(124,92,252,0.15), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-card);
+      border-color: var(--color-primary);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-sm);
+      background: rgba(124,92,252,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      transition: box-shadow 0.25s;
+      position: relative;
+      z-index: 1;
+    }
+    .service-card:hover .service-icon-wrap {
+      box-shadow: 0 0 20px var(--color-primary-glow);
+    }
+    .service-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .service-card p {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .service-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+    .service-link:hover { gap: 8px; }
+
+    /* ============================================================
+       DESIGN SPOTLIGHT (ALTERNATING)
+       ============================================================ */
+    #design {}
+    .spotlight-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .spotlight-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .spotlight-row.reverse { direction: rtl; }
+    .spotlight-row.reverse > * { direction: ltr; }
+    .spotlight-text {}
+    .spotlight-text h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    .spotlight-text p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .spotlight-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .spotlight-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    .spotlight-feature span { color: var(--color-primary); font-weight: 700; }
+
+    /* CSS Art: browser mockup */
+    .browser-mockup {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .browser-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .bd-red { background: #FF5F57; }
+    .bd-yellow { background: #FFBD2E; }
+    .bd-green { background: #28C940; }
+    .browser-url {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50px;
+      height: 24px;
+      margin-left: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      font-size: 10px;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+    }
+    .browser-body {
+      padding: 24px;
+      min-height: 280px;
+    }
+    .mockup-hero-bar {
+      height: 12px;
+      background: var(--gradient-brand);
+      border-radius: 50px;
+      margin-bottom: 16px;
+      width: 60%;
+    }
+    .mockup-line {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+    .mockup-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .mockup-card {
+      height: 70px;
+      background: rgba(124,92,252,0.12);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(124,92,252,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .mockup-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 30%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Old site mockup */
+    .old-site-mockup {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .old-site-mockup::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10,11,15,0.72);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-md);
+    }
+    .old-site-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      gap: 8px;
+    }
+    .old-site-overlay span {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 20px var(--color-primary-glow);
+    }
+    .old-site-overlay small {
+      font-size: 14px;
+      color: var(--color-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .old-body {
+      padding: 24px;
+      min-height: 280px;
+      filter: grayscale(1);
+      opacity: 0.25;
+    }
+    .old-line {
+      height: 8px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+
+    /* ============================================================
+       DOMAIN SECTION
+       ============================================================ */
+    #domains {}
+    .domain-prices-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .domain-price-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+    }
+    .domain-price-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4), 0 0 20px rgba(124,92,252,0.1);
+    }
+    .domain-ext {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .domain-price-info { text-align: right; }
+    .domain-price-ugx {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-primary);
+      display: block;
+    }
+    .domain-price-period { font-size: 11px; color: var(--color-text-muted); }
+    .domain-add-btn {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(124,92,252,0.15);
+      border: 1px solid var(--color-border);
+      color: var(--color-primary);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .domain-add-btn:hover { background: var(--color-primary); color: #fff; }
+    .domain-includes {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+    .domain-includes span { color: var(--color-text-secondary); margin: 0 4px; }
+
+    /* ============================================================
+       TESTIMONIALS
+       ============================================================ */
+    #testimonials {}
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 64px;
+    }
+    .stat-box {
+      background: var(--color-bg-card);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      overflow: hidden;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+    }
+    .testimonial-quote-mark {
+      position: absolute;
+      top: -10px; right: 20px;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 120px;
+      font-weight: 900;
+      color: var(--color-primary);
+      opacity: 0.06;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .testimonial-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 16px;
+    }
+    .testimonial-stars span { color: #F59E0B; font-size: 16px; }
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .testimonial-author strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .testimonial-author span {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    /* ============================================================
+       ABOUT SECTION
+       ============================================================ */
+    #about {}
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-text h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 24px;
+      letter-spacing: -0.3px;
+    }
+    .about-text p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .about-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+      margin-bottom: 36px;
+    }
+    .about-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 50px;
+      background: rgba(124,92,252,0.1);
+      border: 1px solid rgba(124,92,252,0.2);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    /* CSS Geometric visual */
+    .about-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .geo-box {
+      position: relative;
+      width: 340px;
+      height: 340px;
+    }
+    .geo-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(124,92,252,0.3);
+    }
+    .geo-c1 { inset: 0; }
+    .geo-c2 { inset: 30px; border-color: rgba(0,229,255,0.2); animation: rotateSlow 20s linear infinite; }
+    .geo-c3 { inset: 60px; border-color: rgba(124,92,252,0.15); animation: rotateSlow 15s linear infinite reverse; }
+    .geo-center {
+      position: absolute;
+      inset: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,92,252,0.3) 0%, rgba(0,229,255,0.1) 70%, transparent 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .geo-letter {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .geo-dot {
+      position: absolute;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      box-shadow: 0 0 12px var(--color-primary-glow);
+    }
+    .gd1 { top: 0; left: 50%; transform: translateX(-50%); }
+    .gd2 { top: 50%; right: 0; transform: translateY(-50%); background: var(--color-accent); box-shadow: 0 0 12px rgba(0,229,255,0.4); }
+    .gd3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .gd4 { top: 50%; left: 0; transform: translateY(-50%); background: var(--color-accent); box-shadow: 0 0 12px rgba(0,229,255,0.4); }
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ============================================================
+       FAQ
+       ============================================================ */
+    #faq {}
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.25s;
+    }
+    .faq-item.open { border-color: var(--color-border-hover); }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+      gap: 16px;
+    }
+    .faq-question span {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    .faq-icon {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(124,92,252,0.1);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--color-primary);
+      transition: transform 0.3s, background 0.25s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--color-primary);
+      color: #fff;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 500px; }
+    .faq-answer p {
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       CONTACT SECTION
+       ============================================================ */
+    #contact {}
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .contact-form-box {}
+    .contact-form-box h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+    .contact-form-box .sub { font-size: 15px; color: var(--color-text-secondary); margin-bottom: 36px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      letter-spacing: 0.03em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--color-bg-glass);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 15px;
+      color: var(--color-text);
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(124,92,252,0.15);
+    }
+    .form-group select option { background: var(--color-bg-alt); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-error { font-size: 12px; color: #f87171; margin-top: 4px; display: none; }
+    .form-group.has-error input,
+    .form-group.has-error select,
+    .form-group.has-error textarea { border-color: #f87171; }
+    .form-group.has-error .form-error { display: block; }
+    .contact-submit { width: 100%; justify-content: center; margin-top: 8px; }
+    .contact-success {
+      display: none;
+      background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.3);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      font-size: 16px;
+      color: #4ade80;
+      font-weight: 500;
+    }
+
+    /* Contact info panel */
+    .contact-info-box {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .contact-decorative {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,92,252,0.2) 0%, rgba(0,229,255,0.05) 60%, transparent 100%);
+      border: 1px solid rgba(124,92,252,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 0 auto;
+    }
+    .contact-decorative::before {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      background-image: radial-gradient(rgba(124,92,252,0.15) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .contact-decorative-inner {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      z-index: 1;
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 16px; }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      background: rgba(124,92,252,0.1);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .contact-detail-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 2px;
+    }
+    .contact-detail-text span, .contact-detail-text a {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    .contact-detail-text a:hover { color: var(--color-primary); }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    #footer { background: #060709; border-top: 1px solid var(--color-border); padding: 80px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 64px; }
+    .footer-brand-logo { font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 24px; color: var(--color-text); margin-bottom: 16px; display: block; }
+    .footer-brand-logo .lac { color: var(--color-primary); }
+    .footer-brand-desc { font-size: 14px; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 24px; max-width: 280px; }
+    .footer-socials { display: flex; gap: 12px; margin-bottom: 24px; }
+    .footer-social {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: #141823;
+      border: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .footer-social:hover { 
+      background: var(--color-primary); 
+      color: #fff; 
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 16px rgba(124,92,252,0.3);
+    }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--color-primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--color-border);
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .footer-bottom-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .footer-bottom-links a {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      transition: color 0.2s;
+    }
+    .footer-bottom-links a:hover { color: var(--color-primary); }
+    /* Hide scrollbars site-wide while maintaining scroll functionality */
+    *::-webkit-scrollbar { display: none; }
+    * { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1023px) {
+      .nav-links, .nav-right .btn-ghost, .nav-right .btn-primary { display: none; }
+      .hamburger { display: flex; }
+      .plans-grid { grid-template-columns: 1fr; gap: 28px; }
+      .plan-card.popular { transform: none; }
+      .plan-card.popular:hover { transform: translateY(-6px); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .domain-prices-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-visual { order: -1; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .spotlight-row { grid-template-columns: 1fr; gap: 40px; }
+      .spotlight-row.reverse { direction: ltr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 400px; }
+      .cta-banner-inner { flex-direction: column; text-align: center; }
+      .cta-banner-text p { max-width: 100%; }
+      .cta-banner-actions { width: 100%; justify-content: center; }
+    }
+
+    @media (max-width: 767px) {
+      .section { padding: 60px 0; }
+      .hero h1 { font-size: clamp(32px, 8vw, 42px); }
+      .hero-sub { font-size: 16px; margin-bottom: 24px; }
+      .hero-cta-row { flex-direction: column; gap: 12px; }
+      .hero-cta-row .btn { width: 100%; justify-content: center; max-width: 100%; }
+      .hero-trust { font-size: 12px; gap: 4px 12px; margin-bottom: 32px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .domain-prices-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .payment-badges { justify-content: center; }
+      .geo-box { width: 220px; height: 220px; }
+      .geo-center { inset: 50px; }
+      .geo-letter { font-size: 32px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 100%; border-radius: var(--radius-md); }
+      .domain-search-wrap { border-radius: 28px !important; }
+      .domain-input { padding: 14px 20px !important; font-size: 14px !important; }
+      .domain-search-btn { padding: 10px 20px !important; font-size: 14px !important; margin: 4px !important; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .nav-logo { font-size: 19px; }
+      #hero { padding: 100px 0 50px; }
+      .hero h1 { font-size: 28px; }
+      .hero-stat { padding: 16px 10px; }
+      .hero-stat-num { font-size: 18px; }
+      .domain-result-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .domain-result-action { width: 100%; }
+      #scrollTop { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+      .cta-banner { padding: 40px 0; }
+    }
+
+    /* Services grid 2-col on tablet */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .domain-prices-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+  <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div id="pageLoader" role="status" aria-label="Loading">
+  <div class="loader-logo">blac<span class="lac">tec</span>.</div>
+</div>
+
+<!-- Scroll to Top -->
+
+
+<!-- WhatsApp FAB -->
+
+
+<!-- ============================================================
+     STICKY NAVBAR
+     ============================================================ -->
+
+<header>
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="#" class="nav-logo" aria-label="BlacTec Home">blac<span class="logo-accent">tec</span>.</a>
+
+        <!-- Desktop Nav -->
+                <ul class="nav-links" role="list">
+          <!-- BUILD (Web & App Development — #1 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Build
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+                <div class="nav-dropdown-text"><strong>Web &amp; App Development</strong><span>Custom websites, web apps &amp; digital platforms</span></div>
+              </a>
+              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔄</span>
+                <div class="nav-dropdown-text"><strong>Website Redesign</strong><span>Modernise &amp; rebuild your existing site</span></div>
+              </a>
+              <a href="ecommerce-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🛒</span>
+                <div class="nav-dropdown-text"><strong>E-commerce Development</strong><span>Online stores with MoMo &amp; Airtel integration</span></div>
+              </a>
+              <a href="wordpress-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
+                <div class="nav-dropdown-text"><strong>WordPress Development</strong><span>CMS-powered websites &amp; blogs</span></div>
+              </a>
+              <a href="website-maintenance.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔧</span>
+                <div class="nav-dropdown-text"><strong>Website Maintenance</strong><span>Updates, backups &amp; ongoing support</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- EMAIL SOLUTIONS (#2 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Email
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="business-email.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">✉️</span>
+                <div class="nav-dropdown-text"><strong>Business Email</strong><span>Professional @yourdomain.ug addresses</span></div>
+              </a>
+              <a href="google-workspace.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+</svg></span>
+                <div class="nav-dropdown-text"><strong>Google Workspace</strong><span>Gmail, Drive, Meet &amp; more for teams</span></div>
+              </a>
+              <a href="zoho-mail.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#ffffff" stroke-width="2" fill="none"/></svg></span>
+                <div class="nav-dropdown-text"><strong>Zoho Mail</strong><span>Ad-free, secure email &amp; workplace</span></div>
+              </a>
+              <a href="microsoft-365.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg></span>
+                <div class="nav-dropdown-text"><strong>Microsoft 365</strong><span>Word, Excel, Teams &amp; Outlook</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- HOSTING (#3 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Hosting
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🌐</span>
+                <div class="nav-dropdown-text"><strong>Web Hosting</strong><span>Shared Linux hosting with cPanel</span></div>
+              </a>
+              <a href="wordpress-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
+                <div class="nav-dropdown-text"><strong>WordPress Hosting</strong><span>Managed WordPress with 1-click install</span></div>
+              </a>
+              <a href="vps-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">⚡</span>
+                <div class="nav-dropdown-text"><strong>VPS Hosting</strong><span>Full root access, scalable resources</span></div>
+              </a>
+              <a href="cloud-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">☁️</span>
+                <div class="nav-dropdown-text"><strong>Cloud Hosting</strong><span>Scale fast with cloud infrastructure</span></div>
+              </a>
+              <a href="reseller-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🏢</span>
+                <div class="nav-dropdown-text"><strong>Reseller Hosting</strong><span>Start your own hosting business</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- DOMAINS (#4) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Domains
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="domain-search.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔍</span>
+                <div class="nav-dropdown-text"><strong>Domain Search</strong><span>Find &amp; register your perfect domain</span></div>
+              </a>
+              <a href="ug-domains.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🇺🇬</span>
+                <div class="nav-dropdown-text"><strong>.UG Domains</strong><span>Official Uganda country domain</span></div>
+              </a>
+              <a href="domain-transfer.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔁</span>
+                <div class="nav-dropdown-text"><strong>Domain Transfer</strong><span>Move your domain to BlacTec</span></div>
+              </a>
+              <a href="whois-privacy.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔒</span>
+                <div class="nav-dropdown-text"><strong>Free WHOIS Privacy</strong><span>Protect your registration info</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- MORE (#5) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              More
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="ssl-certificates.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔒</span>
+                <div class="nav-dropdown-text"><strong>SSL Certificates</strong><span>Encrypt &amp; secure your website</span></div>
+              </a>
+              <a href="seo-services.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔍</span>
+                <div class="nav-dropdown-text"><strong>SEO Services</strong><span>Rank higher on Google Search</span></div>
+              </a>
+              <a href="bulk-sms.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">💬</span>
+                <div class="nav-dropdown-text"><strong>Bulk SMS</strong><span>Reach customers via SMS marketing</span></div>
+              </a>
+              <a href="website-security.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🛡️</span>
+                <div class="nav-dropdown-text"><strong>Website Security</strong><span>Firewalls, malware scanning &amp; protection</span></div>
+              </a>
+            </div>
+          </li>
+          <li><a href="index.html#about" class="nav-link-plain">About</a></li>
+        </ul>
+
+        <!-- Nav Right -->
+        <div class="nav-right">
+          <a href="#pricing" class="btn btn-primary" style="display:none;" id="desktopGetStarted">Get Started</a>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <!-- BUILD -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-build" tabindex="0">Build
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-build">
+      <a href="web-development.html" class="mobile-sub-link">💻 Web &amp; App Development</a>
+      <a href="web-development.html" class="mobile-sub-link">🔄 Website Redesign</a>
+      <a href="ecommerce-development.html" class="mobile-sub-link">🛒 E-commerce Development</a>
+      <a href="wordpress-development.html" class="mobile-sub-link">📝 WordPress Development</a>
+      <a href="website-maintenance.html" class="mobile-sub-link">🔧 Website Maintenance</a>
+    </div>
+  </div>
+  <!-- EMAIL -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-email" tabindex="0">Email
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-email">
+      <a href="business-email.html" class="mobile-sub-link">✉️ Business Email</a>
+      <a href="google-workspace.html" class="mobile-sub-link">🔷 Google Workspace</a>
+      <a href="zoho-mail.html" class="mobile-sub-link">📧 Zoho Mail</a>
+      <a href="microsoft-365.html" class="mobile-sub-link">🏢 Microsoft 365</a>
+    </div>
+  </div>
+  <!-- HOSTING -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-hosting" tabindex="0">Hosting
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-hosting">
+      <a href="web-hosting.html" class="mobile-sub-link">🌐 Web Hosting</a>
+      <a href="wordpress-hosting.html" class="mobile-sub-link">🎯 WordPress Hosting</a>
+      <a href="vps-hosting.html" class="mobile-sub-link">⚡ VPS Hosting</a>
+      <a href="cloud-hosting.html" class="mobile-sub-link">☁️ Cloud Hosting</a>
+      <a href="reseller-hosting.html" class="mobile-sub-link">🏢 Reseller Hosting</a>
+    </div>
+  </div>
+  <!-- DOMAINS -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-domain" tabindex="0">Domains
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-domain">
+      <a href="domain-search.html" class="mobile-sub-link">🔍 Domain Search</a>
+      <a href="ug-domains.html" class="mobile-sub-link">🇺🇬 .UG Domains</a>
+      <a href="domain-transfer.html" class="mobile-sub-link">🔁 Domain Transfer</a>
+      <a href="whois-privacy.html" class="mobile-sub-link">🔒 Free WHOIS Privacy</a>
+    </div>
+  </div>
+  <!-- MORE -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-more" tabindex="0">More
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-more">
+      <a href="ssl-certificates.html" class="mobile-sub-link">🔒 SSL Certificates</a>
+      <a href="seo-services.html" class="mobile-sub-link">🔍 SEO Services</a>
+      <a href="bulk-sms.html" class="mobile-sub-link">💬 Bulk SMS</a>
+      <a href="website-security.html" class="mobile-sub-link">🛡️ Website Security</a>
+    </div>
+  </div>
+  <a href="index.html#about" class="mobile-nav-plain">About</a>
+  <div class="mobile-nav-buttons">
+    <a href="web-development.html" class="btn btn-primary">Start Your Project</a>
+  </div>
+</div>
+
+<main>
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section id="hero" aria-label="Hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <div class="hero-icons-wrap">
+      <div class="hero-icon hi-1">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y1="6"/><line x1="6" y1="18" x2="6.01" y1="18"/></svg>
+      </div>
+      <div class="hero-icon hi-2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="hero-icon hi-3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <h1>
+          We Build <span class="gradient-text" id="typewriter">Websites.</span><span class="typing-cursor"></span><br>
+          Apps. Emails. Digital Futures.
+        </h1>
+        <p class="hero-sub">
+          From custom web &amp; app development and website redesigns to professional email solutions and lightning-fast hosting — BlacTec powers the digital presence of businesses across Africa.
+        </p>
+
+        <div class="hero-cta-row">
+          <a href="web-development.html" class="btn btn-primary btn-lg">Start Your Project</a>
+          <a href="#services" class="btn btn-ghost btn-lg">View All Services</a>
+        </div>
+
+        <div class="hero-trust">
+          <span>✓ Web &amp; App Development</span>
+          <span class="dot">·</span>
+          <span>✓ Free SSL Certificate</span>
+          <span class="dot">·</span>
+          <span>✓ 99.9% Uptime</span>
+          <span class="dot">·</span>
+          <span>✓ MTN MoMo &amp; Airtel Accepted</span>
+        </div>
+
+        <!-- Domain search -->
+        <div class="domain-search-wrap" id="heroSearchWrap">
+          <input
+            type="text"
+            class="domain-input"
+            id="heroDomainInput"
+            placeholder="Search for your perfect domain name..."
+            aria-label="Search domain name"
+          >
+          <button class="domain-search-btn" id="heroDomainBtn" type="button">Search</button>
+        </div>
+        <div class="domain-popular">
+          Popular: <a href="#domains">.com</a> <a href="#domains">.ug</a> <a href="#domains">.co.ug</a> <a href="#domains">.net</a> <a href="#domains">.org</a> <a href="#domains">.shop</a>
+        </div>
+        <div class="domain-results" id="heroDomainResults"></div>
+        <div class="domain-search-loading" id="heroLoadingIndicator">
+          <span class="spinner"></span> Checking availability across registries…
+        </div>
+
+        <!-- Hero stats -->
+        <div class="hero-stats animate-on-scroll">
+          <div class="hero-stat">
+            <span class="hero-stat-num">10,000+</span>
+            <span class="hero-stat-label">Websites Hosted</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">99.9%</span>
+            <span class="hero-stat-label">Uptime SLA</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">24/7</span>
+            <span class="hero-stat-label">Expert Support</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">500+</span>
+            <span class="hero-stat-label">Clients Served</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-clip"></div>
+  </section>
+
+  <!-- ============================================================
+       TRUST STRIP
+       ============================================================ -->
+  <section id="trust" aria-label="Features strip">
+    <div class="trust-track" id="trustTrack">
+      <span class="trust-item"><span>🔒</span> Free SSL on Every Plan</span>
+      <span class="trust-item"><span>⚡</span> NVMe SSD Storage</span>
+      <span class="trust-item"><span>🌍</span> Africa-Based Support</span>
+      <span class="trust-item"><span>💳</span> MTN MoMo &amp; Airtel Money</span>
+      <span class="trust-item"><span>🔄</span> 99.9% Uptime Guarantee</span>
+      <span class="trust-item"><span>📧</span> Free Business Email</span>
+      <span class="trust-item"><span>🌐</span> 500+ Domain Extensions</span>
+      <span class="trust-item"><span>🛡️</span> Daily Backups Included</span>
+      <!-- Duplicate for seamless scroll -->
+      <span class="trust-item"><span>🔒</span> Free SSL on Every Plan</span>
+      <span class="trust-item"><span>⚡</span> NVMe SSD Storage</span>
+      <span class="trust-item"><span>🌍</span> Africa-Based Support</span>
+      <span class="trust-item"><span>💳</span> MTN MoMo &amp; Airtel Money</span>
+      <span class="trust-item"><span>🔄</span> 99.9% Uptime Guarantee</span>
+      <span class="trust-item"><span>📧</span> Free Business Email</span>
+      <span class="trust-item"><span>🌐</span> 500+ Domain Extensions</span>
+      <span class="trust-item"><span>🛡️</span> Daily Backups Included</span>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       HOSTING PLANS
+       ============================================================ -->
+  <section id="pricing" class="section" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">HOSTING PLANS</span>
+        <h2 id="pricing-heading">Powerful Hosting, Affordable Prices</h2>
+        <p>Plans designed for African businesses — from personal blogs to enterprise websites. Pay with Mobile Money.</p>
+      </div>
+
+      <!-- Toggle -->
+      <div class="pricing-toggle" role="group" aria-label="Billing period">
+        <button class="toggle-btn active" id="annualBtn" type="button">Annual <span class="save-badge">SAVE 30%</span></button>
+        <button class="toggle-btn" id="monthlyBtn" type="button">Monthly</button>
+      </div>
+
+      <div class="plans-grid">
+        <!-- STARTER -->
+        <div class="plan-card animate-on-scroll">
+          <div class="plan-name">STARTER</div>
+          <div class="plan-tagline">Best for personal sites &amp; blogs</div>
+          <div class="plan-price-wrap">
+            <span class="plan-price"><span class="plan-price-cur">$</span> <span class="price-val" data-annual="18.99" data-monthly="1.99">1.99</span></span>
+          </div>
+          <div class="plan-period"><span class="period-label" data-annual="/year" data-monthly="/month">/year</span> &mdash; <span class="save-msg" data-annual="Annual plan" data-monthly="Monthly plan">Annual plan</span></div>
+          <a href="#contact" class="btn btn-ghost plan-cta">Get Started</a>
+          <ul class="plan-features">
+            <li><span class="plan-check">✓</span> 1 Website</li>
+            <li><span class="plan-check">✓</span> 5GB SSD Storage</li>
+            <li><span class="plan-check">✓</span> Free SSL Certificate</li>
+            <li><span class="plan-check">✓</span> Free .ug Domain (1 year)</li>
+            <li><span class="plan-check">✓</span> Unlimited Bandwidth</li>
+            <li><span class="plan-check">✓</span> 5 Email Accounts</li>
+            <li><span class="plan-check">✓</span> cPanel Control Panel</li>
+            <li><span class="plan-check">✓</span> 99.9% Uptime Guarantee</li>
+            <li><span class="plan-check">✓</span> 24/7 Support</li>
+            <li><span class="plan-check">✓</span> Daily Backups</li>
+          </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="plan-card popular animate-on-scroll" style="transition-delay:0.1s">
+          <div class="popular-badge">MOST POPULAR</div>
+          <div class="plan-name">BUSINESS</div>
+          <div class="plan-tagline">Best for growing businesses</div>
+          <div class="plan-price-wrap">
+            <span class="plan-price"><span class="plan-price-cur">$</span> <span class="price-val" data-annual="39.99" data-monthly="3.99">3.99</span></span>
+          </div>
+          <div class="plan-period"><span class="period-label" data-annual="/year" data-monthly="/month">/year</span> &mdash; <span class="save-msg" data-annual="Annual plan" data-monthly="Monthly plan">Annual plan</span></div>
+          <a href="#contact" class="btn btn-primary plan-cta">Get Started</a>
+          <ul class="plan-features">
+            <li><span class="plan-check">✓</span> 5 Websites</li>
+            <li><span class="plan-check">✓</span> 20GB SSD Storage</li>
+            <li><span class="plan-check">✓</span> Free SSL Certificate</li>
+            <li><span class="plan-check">✓</span> Free .ug Domain (1 year)</li>
+            <li><span class="plan-check">✓</span> Unlimited Bandwidth</li>
+            <li><span class="plan-check">✓</span> Unlimited Email Accounts</li>
+            <li><span class="plan-check">✓</span> cPanel + WordPress 1-Click</li>
+            <li><span class="plan-check">✓</span> Free Website Migration</li>
+            <li><span class="plan-check">✓</span> Priority Support</li>
+            <li><span class="plan-check">✓</span> Daily Backups + Malware Scan</li>
+          </ul>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="plan-card animate-on-scroll" style="transition-delay:0.2s">
+          <div class="plan-name">ENTERPRISE</div>
+          <div class="plan-tagline">For large sites &amp; agencies</div>
+          <div class="plan-price-wrap">
+            <span class="plan-price"><span class="plan-price-cur">$</span> <span class="price-val" data-annual="79.99" data-monthly="7.99">7.99</span></span>
+          </div>
+          <div class="plan-period"><span class="period-label" data-annual="/year" data-monthly="/month">/year</span> &mdash; <span class="save-msg" data-annual="Annual plan" data-monthly="Monthly plan">Annual plan</span></div>
+          <a href="#contact" class="btn btn-ghost plan-cta">Get Started</a>
+          <ul class="plan-features">
+            <li><span class="plan-check">✓</span> Unlimited Websites</li>
+            <li><span class="plan-check">✓</span> 50GB SSD Storage</li>
+            <li><span class="plan-check">✓</span> Free SSL Certificate</li>
+            <li><span class="plan-check">✓</span> Free Domain (1 year)</li>
+            <li><span class="plan-check">✓</span> Unlimited Bandwidth</li>
+            <li><span class="plan-check">✓</span> Unlimited Email Accounts</li>
+            <li><span class="plan-check">✓</span> cPanel + WordPress Hosting</li>
+            <li><span class="plan-check">✓</span> Priority Support</li>
+            <li><span class="plan-check">✓</span> Daily Backups &amp; SSL Mgmt</li>
+            <li><span class="plan-check">✓</span> Dedicated IP + White-Label</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pricing-note animate-on-scroll">All plans include 30-day money-back guarantee. No hidden fees. Cancel anytime.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA BANNER (between Pricing & Services)
+       ============================================================ -->
+  <div class="cta-banner">
+    <div class="container">
+      <div class="cta-banner-inner">
+        <div class="cta-banner-text animate-on-scroll">
+          <h2>Ready to Start Your Project?</h2>
+          <p>Join 500+ African businesses already powered by BlacTec. Whether you need a new website, app, email solution or hosting — we make it happen fast.</p>
+        </div>
+        <div class="cta-banner-actions animate-on-scroll" style="transition-delay:0.1s">
+          <a href="web-development.html" class="btn btn-primary btn-lg">Start Your Project</a>
+          <a href="#contact" class="btn btn-ghost btn-lg">Talk to Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       SERVICES GRID
+       ============================================================ -->
+  <section id="services" class="section section-alt" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">OUR SERVICES</span>
+        <h2 id="services-heading">Complete Digital Services for African Businesses</h2>
+        <p>From custom web &amp; app development and website redesigns to email solutions, hosting and domains — BlacTec handles it all.</p>
+      </div>
+            <div class="services-grid">
+        <!-- 1. Web & App Development -->
+        <div class="service-card animate-on-scroll">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <h3>Web &amp; App Development</h3>
+          <p>Custom websites, web applications and digital platforms built from scratch. Fast, modern, and tailored to your business goals.</p>
+          <a href="web-development.html" class="service-link">Learn More →</a>
+        </div>
+        <!-- 2. Website Redesign -->
+        <div class="service-card animate-on-scroll" style="transition-delay:0.05s">
+          <div class="service-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
+          </div>
+          <h3>Website Redesign</h3>
+          <p>Is your old website hurting your business? We rebuild and modernise existing sites to current standards — faster, mobile-first, and converting.</p>
+          <a href="web-development.html" class="service-link">Learn More →</a>
+        </div>
+        <!-- 3. E-commerce -->
+        <div class="service-card animate-on-scroll" style="transition-delay:0.1s">
+          <div class="service-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <h3>E-commerce Development</h3>
+          <p>Launch your online store with secure payment integration including MTN MoMo and Airtel Money.</p>
+          <a href="ecommerce-development.html" class="service-link">Learn More →</a>
+        </div>
+        <!-- 4. Business Email -->
+        <div class="service-card animate-on-scroll" style="transition-delay:0.15s">
+          <div class="service-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <h3>Business Email</h3>
+          <p>Professional email addresses @yourdomain.ug. Reliable, spam-free, and works on all devices. Powered by Google, Zoho, or Microsoft.</p>
+          <a href="business-email.html" class="service-link">Learn More →</a>
+        </div>
+        <!-- 5. Google Workspace -->
+        <div class="service-card animate-on-scroll" style="transition-delay:0.2s">
+          <div class="service-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg>
+          </div>
+          <h3>Google Workspace</h3>
+          <p>Transform teamwork with Gmail, Drive, Meet and the full Google apps suite for your business.</p>
+          <a href="google-workspace.html" class="service-link">Learn More →</a>
+        </div>
+        <!-- 6. Web Hosting -->
+        <div class="service-card animate-on-scroll" style="transition-delay:0.25s">
+          <div class="service-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y1="6"/><line x1="6" y1="18" x2="6.01" y1="18"/></svg>
+          </div>
+          <h3>Web Hosting</h3>
+          <p>Fast, reliable Linux hosting with cPanel, SSD storage, and 99.9% uptime. Perfect for any website.</p>
+          <a href="web-hosting.html" class="service-link">Learn More →</a>
+        </div>
+        <!-- 7. Domain Registration -->
+        <div class="service-card animate-on-scroll" style="transition-delay:0.28s">
+          <div class="service-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Domain Registration</h3>
+          <p>Register .ug, .co.ug, .com and 500+ domain extensions. Includes free WHOIS privacy protection.</p>
+          <a href="domain-search.html" class="service-link">Learn More →</a>
+        </div>
+        <!-- 8. SEO Services -->
+        <div class="service-card animate-on-scroll" style="transition-delay:0.3s">
+          <div class="service-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>SEO Services</h3>
+          <p>Get found on Google. Our SEO experts optimise your site for local and international search results.</p>
+          <a href="seo-services.html" class="service-link">Learn More →</a>
+        </div>
+        <!-- 9. Bulk SMS -->
+        <div class="service-card animate-on-scroll" style="transition-delay:0.35s">
+          <div class="service-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Bulk SMS Marketing</h3>
+          <p>Reach your customers directly on their phones with targeted SMS campaigns across Africa.</p>
+          <a href="bulk-sms.html" class="service-link">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       DESIGN & MODERNISATION SPOTLIGHT
+       ============================================================ -->
+  <section id="design" class="section" aria-labelledby="design-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">WEBSITE DEVELOPMENT &amp; REDESIGN</span>
+        <h2 id="design-heading">Websites That Work as Hard as You Do</h2>
+        <p>Design &amp; modernisation services crafted for African businesses ready to compete online.</p>
+      </div>
+
+      <!-- Sub A: Design -->
+      <div class="spotlight-row animate-on-scroll">
+        <div class="spotlight-text">
+          <span class="section-label">WEBSITE DESIGN</span>
+          <h2>Get a Website That Converts Visitors Into Customers</h2>
+          <p>BlacTec builds fast, stunning, mobile-first websites tailored to your business goals. Whether you're a startup, NGO, school, restaurant, or enterprise — our designers craft websites that convert visitors into customers. Every site includes free hosting for the first year, SSL security, and ongoing support.</p>
+          <div class="spotlight-features">
+            <div class="spotlight-feature"><span>✓</span> Custom design tailored to your brand</div>
+            <div class="spotlight-feature"><span>✓</span> Mobile-responsive on all devices</div>
+            <div class="spotlight-feature"><span>✓</span> SEO-optimised from day one</div>
+            <div class="spotlight-feature"><span>✓</span> Fast turnaround — live in 7–14 days</div>
+            <div class="spotlight-feature"><span>✓</span> Built on WordPress or custom HTML/CSS</div>
+            <div class="spotlight-feature"><span>✓</span> Free 1-year hosting included</div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Request a Free Quote</a>
+        </div>
+        <div>
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <div class="browser-dot bd-red"></div>
+              <div class="browser-dot bd-yellow"></div>
+              <div class="browser-dot bd-green"></div>
+              <div class="browser-url">https://yourbusiness.ug</div>
+            </div>
+            <div class="browser-body">
+              <div class="mockup-hero-bar"></div>
+              <div class="mockup-line" style="width:80%"></div>
+              <div class="mockup-line" style="width:55%"></div>
+              <div class="mockup-line" style="width:40%;background:var(--gradient-brand);height:10px;border-radius:50px;"></div>
+              <div class="mockup-cards">
+                <div class="mockup-card"></div>
+                <div class="mockup-card" style="background:rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.2);"></div>
+                <div class="mockup-card"></div>
+              </div>
+              <div style="height:12px;background:rgba(255,255,255,0.04);border-radius:4px;margin-top:16px;"></div>
+              <div style="height:12px;background:rgba(255,255,255,0.04);border-radius:4px;margin-top:8px;width:70%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub B: Modernisation -->
+      <div class="spotlight-row reverse animate-on-scroll">
+        <div class="spotlight-text">
+          <span class="section-label">WEBSITE MODERNISATION</span>
+          <h2>Is Your Old Website Hurting Your Business?</h2>
+          <p>A slow, outdated website drives customers away. BlacTec's Website Modernisation service rebuilds your existing site from the ground up — preserving your content and brand while delivering modern design, blazing speed, and mobile compatibility. We work with sites of any age or platform.</p>
+          <div class="spotlight-features">
+            <div class="spotlight-feature"><span>✓</span> Full redesign with modern UI/UX</div>
+            <div class="spotlight-feature"><span>✓</span> Speed optimisation &amp; Core Web Vitals</div>
+            <div class="spotlight-feature"><span>✓</span> Mobile-first responsive rebuild</div>
+            <div class="spotlight-feature"><span>✓</span> SEO audit &amp; restructuring included</div>
+            <div class="spotlight-feature"><span>✓</span> Content migration — nothing is lost</div>
+            <div class="spotlight-feature"><span>✓</span> Launch support &amp; 3-month aftercare</div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Modernise My Website</a>
+        </div>
+        <div>
+          <div class="old-site-mockup">
+            <div class="old-body">
+              <div class="old-line" style="width:90%;height:16px;background:rgba(255,255,255,0.4);"></div>
+              <div class="old-line" style="width:100%;height:8px;margin-top:20px;"></div>
+              <div class="old-line"></div>
+              <div class="old-line" style="width:70%"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;">
+                <div class="old-line" style="height:60px;border-radius:4px;"></div>
+                <div class="old-line" style="height:60px;border-radius:4px;"></div>
+              </div>
+              <div class="old-line" style="margin-top:20px;"></div>
+              <div class="old-line" style="width:80%"></div>
+              <div class="old-line" style="width:60%"></div>
+            </div>
+            <div class="old-site-overlay">
+              <span>→ REBUILT</span>
+              <small>Modern · Fast · Mobile-Ready</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       DOMAIN SEARCH
+       ============================================================ -->
+  <section id="domains" class="section section-alt" aria-labelledby="domains-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">DOMAIN REGISTRATION</span>
+        <h2 id="domains-heading">Find Your Perfect Domain Name</h2>
+        <p>Register your .ug, .co.ug, .com, .net or any of 500+ domain extensions. Africa's most affordable domain registration.</p>
+      </div>
+
+      <!-- Big domain search -->
+      <div style="max-width:680px;margin:0 auto 16px;">
+        <div class="domain-search-wrap" id="domainSearchWrap" style="border-radius:var(--radius-md);max-width:100%;">
+          <input type="text" class="domain-input" id="domainInput" placeholder="Type your domain name..." style="padding:22px 24px;font-size:16px;" aria-label="Search for domain">
+          <button class="domain-search-btn" id="domainSearchBtn" style="padding:14px 32px;font-size:16px;margin:8px;">Search Domain</button>
+        </div>
+      </div>
+      <div class="domain-results" id="domainResults"></div>
+      <div class="domain-search-loading" id="sectionLoadingIndicator" style="max-width:680px;margin:0 auto;">
+        <span class="spinner"></span> Checking availability across registries…
+      </div>
+
+      <!-- Domain price grid -->
+      <div class="domain-prices-grid animate-on-scroll">
+        <div class="domain-price-card">
+          <div><div class="domain-ext">.com</div><div style="font-size:11px;color:var(--color-text-muted)">Most popular</div></div>
+          <div class="domain-price-info"><span class="domain-price-ugx">$22.99</span><span class="domain-price-period">/year</span></div>
+          <button class="domain-add-btn" aria-label="Add .com domain">+</button>
+        </div>
+        <div class="domain-price-card">
+          <div><div class="domain-ext">.ug</div><div style="font-size:11px;color:var(--color-text-muted)">Local identity</div></div>
+          <div class="domain-price-info"><span class="domain-price-ugx">$25.99</span><span class="domain-price-period">/year</span></div>
+          <button class="domain-add-btn" aria-label="Add .ug domain">+</button>
+        </div>
+        <div class="domain-price-card">
+          <div><div class="domain-ext">.co.ug</div><div style="font-size:11px;color:var(--color-text-muted)">Business standard</div></div>
+          <div class="domain-price-info"><span class="domain-price-ugx">$18.99</span><span class="domain-price-period">/year</span></div>
+          <button class="domain-add-btn" aria-label="Add .co.ug domain">+</button>
+        </div>
+        <div class="domain-price-card">
+          <div><div class="domain-ext">.net</div><div style="font-size:11px;color:var(--color-text-muted)">Tech & networks</div></div>
+          <div class="domain-price-info"><span class="domain-price-ugx">$21.99</span><span class="domain-price-period">/year</span></div>
+          <button class="domain-add-btn" aria-label="Add .net domain">+</button>
+        </div>
+        <div class="domain-price-card">
+          <div><div class="domain-ext">.org</div><div style="font-size:11px;color:var(--color-text-muted)">NGOs & nonprofits</div></div>
+          <div class="domain-price-info"><span class="domain-price-ugx">$20.99</span><span class="domain-price-period">/year</span></div>
+          <button class="domain-add-btn" aria-label="Add .org domain">+</button>
+        </div>
+        <div class="domain-price-card">
+          <div><div class="domain-ext">.shop</div><div style="font-size:11px;color:var(--color-text-muted)">E-commerce stores</div></div>
+          <div class="domain-price-info"><span class="domain-price-ugx">$29.99</span><span class="domain-price-period">/year</span></div>
+          <button class="domain-add-btn" aria-label="Add .shop domain">+</button>
+        </div>
+        <div class="domain-price-card">
+          <div><div class="domain-ext">.online</div><div style="font-size:11px;color:var(--color-text-muted)">Best value</div></div>
+          <div class="domain-price-info"><span class="domain-price-ugx">$17.99</span><span class="domain-price-period">/year</span></div>
+          <button class="domain-add-btn" aria-label="Add .online domain">+</button>
+        </div>
+        <div class="domain-price-card">
+          <div><div class="domain-ext">.africa</div><div style="font-size:11px;color:var(--color-text-muted)">Pan-African brands</div></div>
+          <div class="domain-price-info"><span class="domain-price-ugx">$32.99</span><span class="domain-price-period">/year</span></div>
+          <button class="domain-add-btn" aria-label="Add .africa domain">+</button>
+        </div>
+      </div>
+      <p class="domain-includes animate-on-scroll">
+        All domains include:
+        <span>Free WHOIS Privacy</span> ·
+        <span>DNS Management</span> ·
+        <span>1-Year Registration</span> ·
+        <span>Easy Transfer</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section id="testimonials" class="section" aria-labelledby="testimonials-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">SOCIAL PROOF</span>
+        <h2 id="testimonials-heading">Trusted by African Businesses</h2>
+        <p>Over 500 clients across Africa and East Africa trust BlacTec to power their online presence.</p>
+      </div>
+
+      <!-- Stats row -->
+      <div class="stats-row animate-on-scroll">
+        <div class="stat-box">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">99.9%</span>
+          <span class="stat-label">Uptime Guaranteed</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">10,000+</span>
+          <span class="stat-label">Websites Hosted</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">24/7</span>
+          <span class="stat-label">Expert Support</span>
+        </div>
+      </div>
+
+      <!-- Testimonial cards -->
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"BlacTec redesigned our outdated website in just 10 days. The result is stunning — mobile-friendly, super fast, and our inquiries have tripled since launch."</p>
+          <div class="testimonial-author">
+            <strong>Sarah Nakato</strong>
+            <span>Director, Kampala Medical Centre</span>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll" style="transition-delay:0.1s">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"We switched our hosting to BlacTec after constant downtime with our previous provider. Zero downtime in 8 months and their support team responds in minutes."</p>
+          <div class="testimonial-author">
+            <strong>Moses Ssemakula</strong>
+            <span>CEO, Ssemakula Enterprises Ltd</span>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll" style="transition-delay:0.2s">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"BlacTec registered our .ug domain and set up our business email in the same day. Professional, fast and very affordable. Highly recommended!"</p>
+          <div class="testimonial-author">
+            <strong>Grace Atim</strong>
+            <span>Founder, Atim Fashion House, Gulu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section id="about" class="section section-alt" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text animate-on-scroll">
+          <span class="section-label">ABOUT BLACTEC</span>
+          <h2 id="about-heading">The Tech Partner Built for Africa</h2>
+          <p>BlacTec is a Kampala-based technology company on a mission to democratise digital access for African businesses. We believe every business — no matter how small — deserves a powerful, professional online presence.</p>
+          <p>We provide end-to-end digital solutions: from registering your first domain and hosting your website to designing beautiful interfaces and modernising outdated platforms. We speak your language, accept Mobile Money, and our support team is always a call or WhatsApp away.</p>
+          <p>Our infrastructure is built for East Africa — fast, resilient, and designed around the realities of doing business across the continent.</p>
+          <div class="about-pills">
+            <span class="about-pill">🌍 Africa-Based Team</span>
+            <span class="about-pill">⚡ East Africa Optimised</span>
+            <span class="about-pill">💬 Swahili &amp; English Support</span>
+            <span class="about-pill">💳 Mobile Money Payments</span>
+          </div>
+          <a href="#contact" class="btn btn-primary">Learn More About Us</a>
+        </div>
+        <div class="about-visual animate-on-scroll" style="transition-delay:0.15s">
+          <div class="geo-box">
+            <div class="geo-circle geo-c1"></div>
+            <div class="geo-circle geo-c2"></div>
+            <div class="geo-circle geo-c3"></div>
+            <div class="geo-center">
+              <span class="geo-letter">B.</span>
+            </div>
+            <div class="geo-dot gd1"></div>
+            <div class="geo-dot gd2"></div>
+            <div class="geo-dot gd3"></div>
+            <div class="geo-dot gd4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section id="faq" class="section" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">FAQ</span>
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item animate-on-scroll" role="listitem">
+          <button class="faq-question" aria-expanded="false" id="faq-q1" aria-controls="faq-a1">
+            <span>What hosting plans does BlacTec offer?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer" id="faq-a1" aria-labelledby="faq-q1" role="region">
+            <p>BlacTec offers Shared Web Hosting, WordPress Hosting, VPS Hosting, Cloud Hosting, and Reseller Hosting plans. All plans include free SSL, SSD storage, and 99.9% uptime. Plans start from $18.99/year.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll" style="transition-delay:0.05s">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I pay with MTN Mobile Money or Airtel Money?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! BlacTec fully supports MTN MoMo and Airtel Money payments. We also accept bank transfers and major credit/debit cards. You can pay securely in USD or your local currency.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll" style="transition-delay:0.1s">
+          <button class="faq-question" aria-expanded="false">
+            <span>How long does website design take?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer">
+            <p>A standard business website typically takes 7–14 working days. E-commerce sites and complex projects may take 3–6 weeks. We'll give you a clear timeline at the start of every project.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll" style="transition-delay:0.15s">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is Website Modernisation?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer">
+            <p>Website Modernisation is our service to rebuild and redesign existing, outdated websites. We preserve your content and brand identity while delivering a modern, mobile-responsive, fast-loading design. We support sites on any platform.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll" style="transition-delay:0.2s">
+          <button class="faq-question" aria-expanded="false">
+            <span>Do I get a free domain with hosting?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — all Business and Enterprise hosting plans include a free domain registration for one year (.com, .ug, or .co.ug). Starter plans include a free .ug domain for the first year.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll" style="transition-delay:0.25s">
+          <button class="faq-question" aria-expanded="false">
+            <span>What is included in the business email service?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer">
+            <p>Our business email gives you professional @yourdomain.ug addresses, unlimited email accounts (on Business plan+), spam protection, 10GB per mailbox, and compatibility with Gmail, Outlook, and all mobile apps.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll" style="transition-delay:0.3s">
+          <button class="faq-question" aria-expanded="false">
+            <span>Do you provide website maintenance?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Our Website Maintenance packages cover regular updates, security patches, content updates, uptime monitoring, and monthly performance reports. Contact us for a custom quote.</p>
+          </div>
+        </div>
+
+        <div class="faq-item animate-on-scroll" style="transition-delay:0.35s">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can BlacTec help with SEO?</span>
+            <div class="faq-icon" aria-hidden="true">+</div>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. All websites we design or modernise include basic on-page SEO. We also offer dedicated SEO Services — keyword research, content optimisation, Google My Business setup, and monthly reporting focused on the Africa market.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section id="contact" class="section section-alt" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="contact-form-box animate-on-scroll">
+          <h2 id="contact-heading">Get In Touch</h2>
+          <p class="sub">Have a question? Ready to start your project? Our team in Kampala is here to help.</p>
+
+          <div id="contactFormWrap">
+            <div class="form-row">
+              <div class="form-group" id="fg-name">
+                <label for="cName">Full Name</label>
+                <input type="text" id="cName" placeholder="Your full name" autocomplete="name">
+                <span class="form-error">Please enter your name.</span>
+              </div>
+              <div class="form-group" id="fg-email">
+                <label for="cEmail">Email Address</label>
+                <input type="email" id="cEmail" placeholder="you@example.com" autocomplete="email">
+                <span class="form-error">Please enter a valid email.</span>
+              </div>
+            </div>
+            <div class="form-group" id="fg-phone">
+              <label for="cPhone">Phone / WhatsApp</label>
+              <input type="tel" id="cPhone" placeholder="+256 750 870755" autocomplete="tel">
+              <span class="form-error">Please enter your phone number.</span>
+            </div>
+            <div class="form-group" id="fg-service">
+              <label for="cService">Service Interested In</label>
+              <select id="cService">
+                <option value="">Select a service...</option>
+                <option>Web &amp; App Development</option>
+                <option>Website Redesign</option>
+                <option>E-commerce Development</option>
+                <option>Business Email</option>
+                <option>Google Workspace</option>
+                <option>Web Hosting</option>
+                <option>Domain Registration</option>
+                <option>SEO Services</option>
+                <option>Bulk SMS</option>
+                <option>Other</option>
+              </select>
+              <span class="form-error">Please select a service.</span>
+            </div>
+            <div class="form-group" id="fg-msg">
+              <label for="cMessage">Message</label>
+              <textarea id="cMessage" placeholder="Tell us about your project or question..." rows="5"></textarea>
+              <span class="form-error">Please enter your message.</span>
+            </div>
+            <button type="button" class="btn btn-primary contact-submit" id="contactSubmitBtn">Send Message</button>
+          </div>
+
+          <div class="contact-success" id="contactSuccess">
+            ✅ Message sent! We'll respond within 2 hours during business hours.
+          </div>
+        </div>
+
+        <!-- Contact info -->
+        <div class="contact-info-box animate-on-scroll" style="transition-delay:0.2s">
+          <div class="contact-decorative">
+            <span class="contact-decorative-inner">BT.</span>
+          </div>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <strong>Location</strong>
+                <span>Kampala, Uganda</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <strong>Phone / WhatsApp</strong>
+                <!-- EDITABLE: Update phone number below -->
+                <a href="tel:+256750870755">+256 750 870755</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <strong>Email</strong>
+                <a href="mailto:info@blactec.ug">info@blactec.ug</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <strong>Business Hours</strong>
+                <span>Mon–Fri 8AM–6PM, Sat 9AM–2PM (EAT)</span>
+              </div>
+            </div>
+            <a id="whatsappFab"
+   href="https://wa.me/256750870755?text=Hi%20BlacTec%2C%20I%27m%20interested%20in%20your%20services"
+   target="_blank"
+   rel="noopener" class="btn btn-whatsapp" style="margin-top:8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="vertical-align: text-bottom; margin-right: 6px;"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.127.554 4.195 1.604 6.015L.135 23.39l5.485-1.439a11.986 11.986 0 0 0 6.411 1.84h.005c6.645 0 12.03-5.385 12.03-12.03 0-3.218-1.254-6.248-3.533-8.528A12.001 12.001 0 0 0 12.031 0zm0 21.785h-.003a9.986 9.986 0 0 1-5.088-1.385l-.364-.216-3.784.992.997-3.69-.236-.375A9.957 9.957 0 0 1 2.016 12.03c0-5.525 4.496-10.021 10.017-10.021 2.678 0 5.195 1.042 7.087 2.936a10.018 10.018 0 0 1 2.932 7.085c-.001 5.523-4.498 10.02-10.02 10.02zm5.495-7.51c-.302-.15-1.787-.882-2.062-.982-.275-.1-.475-.15-.675.15-.201.3-.775.981-.95 1.182-.176.2-.351.225-.652.075-2.01-1.008-3.356-2.046-4.321-3.673-.102-.175.049-.247.199-.396.126-.126.275-.326.401-.501.126-.175.176-.3.251-.5.075-.2.038-.376-.038-.526-.075-.15-.675-1.626-.925-2.226-.244-.585-.492-.505-.675-.514-.175-.01-.375-.01-.575-.01s-.526.075-.801.375c-.275.3-1.051 1.026-1.051 2.502s1.076 2.898 1.226 3.098c.15.2 2.115 3.226 5.12 4.526 2.052.887 2.87.973 3.993.826 1.003-.131 3.078-1.258 3.504-2.472.426-1.215.426-2.257.301-2.472-.125-.215-.475-.34-.776-.49z"/></svg>Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div>
+        <span class="footer-brand-logo">blac<span class="lac">tec</span>.</span>
+        <p class="footer-brand-desc">Building the Digital Future — Africa's leading web development, email solutions &amp; hosting provider. Based in Kampala, serving businesses across East Africa.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" aria-label="Twitter/X">𝕏</a>
+          <a href="#" class="footer-social" aria-label="Facebook">f</a>
+          <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
+          <a href="#" class="footer-social" aria-label="Instagram">◎</a>
+        </div>
+        <p style="font-size:12px;color:var(--color-text-muted);">© 2026 BlacTec. All rights reserved.</p>
+      </div>
+
+      <!-- Build (Web Dev — #1 priority) -->
+      <div class="footer-col">
+        <h4>Build</h4>
+        <ul>
+          <li><a href="web-development.html">Web &amp; App Development</a></li>
+          <li><a href="web-development.html">Website Redesign</a></li>
+          <li><a href="ecommerce-development.html">E-commerce Development</a></li>
+          <li><a href="wordpress-development.html">WordPress Development</a></li>
+          <li><a href="website-maintenance.html">Website Maintenance</a></li>
+        </ul>
+      </div>
+
+      <!-- Email & Solutions (#2 priority) -->
+      <div class="footer-col">
+        <h4>Email &amp; Solutions</h4>
+        <ul>
+          <li><a href="business-email.html">Business Email</a></li>
+          <li><a href="google-workspace.html">Google Workspace</a></li>
+          <li><a href="zoho-mail.html"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#fff" stroke-width="2" fill="none"/></svg>Zoho Mail</a></li>
+          <li><a href="microsoft-365.html"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg>Microsoft 365</a></li>
+          <li><a href="ssl-certificates.html">SSL Certificates</a></li>
+        </ul>
+      </div>
+
+      <!-- Hosting & Domains (#3 priority) -->
+      <div class="footer-col">
+        <h4>Hosting &amp; Domains</h4>
+        <ul>
+          <li><a href="web-hosting.html">Shared Hosting</a></li>
+          <li><a href="wordpress-hosting.html">WordPress Hosting</a></li>
+          <li><a href="vps-hosting.html">VPS Hosting</a></li>
+          <li><a href="cloud-hosting.html">Cloud Hosting</a></li>
+          <li><a href="domain-search.html">Domain Registration</a></li>
+          <li><a href="ug-domains.html">.UG Domains</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About BlacTec</a></li>
+          <li><a href="index.html#contact">Our Portfolio</a></li>
+          <li><a href="https://wa.me/256750870755">Help Center</a></li>
+          <li><a href="index.html#contact">Privacy Policy</a></li>
+          <li><a href="index.html#contact">Terms of Service</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 BlacTec Technologies Ltd. Kampala, Uganda.</span>
+      <div class="footer-bottom-links">
+        <a href="index.html#contact">Privacy</a>
+        <a href="index.html#contact">Terms</a>
+        <a href="https://wa.me/256750870755">Support</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button id="scrollTop" aria-label="Scroll to top" title="Back to top">↑</button>
+
+<!-- WhatsApp FAB -->
+<a id="whatsappFab"
+   href="https://wa.me/256750870755?text=Hi%20BlacTec%2C%20I%27m%20interested%20in%20your%20services"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp"
+   title="Chat with us on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.127.554 4.195 1.604 6.015L.135 23.39l5.485-1.439a11.986 11.986 0 0 0 6.411 1.84h.005c6.645 0 12.03-5.385 12.03-12.03 0-3.218-1.254-6.248-3.533-8.528A12.001 12.001 0 0 0 12.031 0zm0 21.785h-.003a9.986 9.986 0 0 1-5.088-1.385l-.364-.216-3.784.992.997-3.69-.236-.375A9.957 9.957 0 0 1 2.016 12.03c0-5.525 4.496-10.021 10.017-10.021 2.678 0 5.195 1.042 7.087 2.936a10.018 10.018 0 0 1 2.932 7.085c-.001 5.523-4.498 10.02-10.02 10.02zm5.495-7.51c-.302-.15-1.787-.882-2.062-.982-.275-.1-.475-.15-.675.15-.201.3-.775.981-.95 1.182-.176.2-.351.225-.652.075-2.01-1.008-3.356-2.046-4.321-3.673-.102-.175.049-.247.199-.396.126-.126.275-.326.401-.501.126-.175.176-.3.251-.5.075-.2.038-.376-.038-.526-.075-.15-.675-1.626-.925-2.226-.244-.585-.492-.505-.675-.514-.175-.01-.375-.01-.575-.01s-.526.075-.801.375c-.275.3-1.051 1.026-1.051 2.502s1.076 2.898 1.226 3.098c.15.2 2.115 3.226 5.12 4.526 2.052.887 2.87.973 3.993.826 1.003-.131 3.078-1.258 3.504-2.472.426-1.215.426-2.257.301-2.472-.125-.215-.475-.34-.776-.49z"/></svg></a>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     1. NAVBAR SCROLL
+  ============================================================ */
+  const navbar = document.getElementById('navbar');
+  const desktopGetStarted = document.getElementById('desktopGetStarted');
+
+  // Show desktop buttons on large screens
+  function updateDesktopButtons() {
+    if (window.innerWidth >= 1024) {
+      desktopGetStarted.style.display = 'inline-flex';
+    } else {
+      desktopGetStarted.style.display = 'none';
+    }
+  }
+  updateDesktopButtons();
+  window.addEventListener('resize', updateDesktopButtons);
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  /* ============================================================
+     2. MOBILE HAMBURGER
+  ============================================================ */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', function () {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    mobileNav.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close on mobile nav link click
+  mobileNav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* ============================================================
+     3. MOBILE SUB-MENUS ACCORDION
+  ============================================================ */
+  var mobileHeaders = {
+    'mnh-hosting': 'msl-hosting',
+    'mnh-web': 'msl-web',
+    'mnh-domain': 'msl-domain',
+    'mnh-solutions': 'msl-solutions'
+  };
+  Object.keys(mobileHeaders).forEach(function (hid) {
+    var header = document.getElementById(hid);
+    var sub = document.getElementById(mobileHeaders[hid]);
+    if (!header || !sub) return;
+    header.addEventListener('click', function () {
+      var isOpen = sub.classList.toggle('open');
+      header.classList.toggle('open', isOpen);
+    });
+  });
+
+  /* ============================================================
+     4. PRICING TOGGLE
+  ============================================================ */
+  var annualBtn = document.getElementById('annualBtn');
+  var monthlyBtn = document.getElementById('monthlyBtn');
+  var isAnnual = true;
+
+  function updatePrices() {
+    var prices = document.querySelectorAll('.price-val');
+    var periods = document.querySelectorAll('.period-label');
+    var msgs = document.querySelectorAll('.save-msg');
+    prices.forEach(function (el) {
+      el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+    });
+    periods.forEach(function (el) {
+      el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+    });
+    msgs.forEach(function (el) {
+      el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+    });
+  }
+
+  annualBtn.addEventListener('click', function () {
+    isAnnual = true;
+    annualBtn.classList.add('active');
+    monthlyBtn.classList.remove('active');
+    updatePrices();
+  });
+  monthlyBtn.addEventListener('click', function () {
+    isAnnual = false;
+    monthlyBtn.classList.add('active');
+    annualBtn.classList.remove('active');
+    updatePrices();
+  });
+
+  /* ============================================================
+     5. FAQ ACCORDION
+  ============================================================ */
+  document.querySelectorAll('.faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('open'); });
+      // Toggle clicked
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  /* ============================================================
+     6. CONTACT FORM
+  ============================================================ */
+  var submitBtn = document.getElementById('contactSubmitBtn');
+  var formWrap = document.getElementById('contactFormWrap');
+  var successBox = document.getElementById('contactSuccess');
+
+  function validateEmail(email) {
+    return /^[^ @]+@[^ @]+\.[^ @]+$/.test(email);
+  }
+
+  function setError(groupId, show) {
+    var g = document.getElementById(groupId);
+    if (!g) return;
+    if (show) g.classList.add('has-error');
+    else g.classList.remove('has-error');
+  }
+
+  submitBtn && submitBtn.addEventListener('click', function () {
+    var name = document.getElementById('cName').value.trim();
+    var email = document.getElementById('cEmail').value.trim();
+    var phone = document.getElementById('cPhone').value.trim();
+    var service = document.getElementById('cService').value;
+    var msg = document.getElementById('cMessage').value.trim();
+    var valid = true;
+
+    setError('fg-name', !name); if (!name) valid = false;
+    setError('fg-email', !validateEmail(email)); if (!validateEmail(email)) valid = false;
+    setError('fg-phone', !phone); if (!phone) valid = false;
+    setError('fg-service', !service); if (!service) valid = false;
+    setError('fg-msg', !msg); if (!msg) valid = false;
+
+    if (valid) {
+      formWrap.style.display = 'none';
+      successBox.style.display = 'block';
+    }
+  });
+
+  /* ============================================================
+     7. SCROLL ANIMATIONS (IntersectionObserver)
+  ============================================================ */
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback: make everything visible
+    document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+      el.classList.add('visible');
+    });
+  }
+
+  /* ============================================================
+     8. SMOOTH SCROLL
+  ============================================================ */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offset = 80;
+        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+
+  /* ============================================================
+     9. DOMAIN SEARCH — Live RDAP + UG Registry API
+  ============================================================ */
+
+  // Pricing table (USD, per year)
+  var domainPrices = {
+    '.ug':    25.99,
+    '.co.ug': 18.99,
+    '.com':   22.99,
+    '.net':   21.99,
+    '.org':   20.99
+  };
+
+  // Official UG Registry API is authenticated. We use Google Public DNS DoH as a fallback heuristic.
+  // If a domain has no DNS records (NXDOMAIN/Status 3), it is likely available.
+  var DNS_DOH_API = 'https://dns.google/resolve?name=';
+
+  var rdapEndpoints = {
+    '.com': 'https://rdap.verisign.com/com/v1/domain/',
+    '.net': 'https://rdap.verisign.com/net/v1/domain/',
+    '.org': 'https://rdap.publicinterestregistry.org/rdap/domain/'
+  };
+
+  /* ── UG Domain Check Fallback ─────────────────────────────────── */
+  function checkUgDomain(sld, ext) {
+    var fullDomain = sld + ext;
+    var url = DNS_DOH_API + encodeURIComponent(fullDomain) + '&type=ANY';
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 7000) : null;
+    var opts = { method: 'GET' };
+    if (controller) opts.signal = controller.signal;
+
+    return fetch(url, opts)
+      .then(function (res) {
+        if (timer) clearTimeout(timer);
+        if (!res.ok) throw new Error('DNS API error');
+        return res.json();
+      })
+      .then(function (json) {
+        if (json.Status === 3) {
+          return { domain: fullDomain, available: true, price: domainPrices[ext], source: 'dns' };
+        } else if (json.Status === 0) {
+          return { domain: fullDomain, available: false, price: domainPrices[ext], source: 'dns' };
+        }
+        throw new Error('Unexpected DNS response');
+      })
+      .catch(function () {
+        if (timer) clearTimeout(timer);
+        return {
+          domain: fullDomain,
+          available: null,
+          price: domainPrices[ext],
+          whoisLink: 'https://whois.co.ug/?search=' + encodeURIComponent(fullDomain)
+        };
+      });
+  }
+
+  /* ── RDAP check for gTLDs (.com / .net / .org) ──────────────── */
+  function checkRdapDomain(sld, ext) {
+    var fullDomain = sld + ext;
+    var url = rdapEndpoints[ext] + encodeURIComponent(fullDomain);
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, 6000) : null;
+    var opts = { method: 'GET', headers: { 'Accept': 'application/rdap+json, application/json' } };
+    if (controller) opts.signal = controller.signal;
+    return fetch(url, opts)
+      .then(function (res) {
+        if (timer) clearTimeout(timer);
+        if (res.status === 404) return { domain: fullDomain, available: true,  price: domainPrices[ext] };
+        if (res.ok)             return { domain: fullDomain, available: false, price: domainPrices[ext] };
+        return { domain: fullDomain, available: null, price: domainPrices[ext] };
+      })
+      .catch(function () {
+        if (timer) clearTimeout(timer);
+        return { domain: fullDomain, available: null, price: domainPrices[ext] };
+      });
+  }
+
+  /* ── Unified dispatcher ──────────────────────────────────────── */
+  function checkDomain(sld, ext) {
+    if (ext === '.ug' || ext === '.co.ug') {
+      return checkUgDomain(sld, ext);
+    }
+    return checkRdapDomain(sld, ext);
+  }
+
+
+  function renderDomainRow(result) {
+    var availHtml, actionHtml;
+    var whatsappOrder = 'https://wa.me/256750870755?text=Hi%2C%20I%27d%20like%20to%20register%20' +
+      encodeURIComponent(result.domain);
+
+    if (result.available === true) {
+      availHtml  = '<span class="domain-result-avail">&#10003; Available</span>';
+      actionHtml = '<a href="' + whatsappOrder + '" target="_blank" rel="noopener" ' +
+        'class="domain-result-action">Register Now</a>';
+    } else if (result.available === false) {
+      availHtml  = '<span class="domain-result-avail taken">&#10007; Taken</span>';
+      actionHtml = '<button class="domain-result-action taken-btn" disabled>Unavailable</button>';
+    } else if (result.whoisLink) {
+      // UG Registry CORS fallback — deep-link directly to whois.co.ug result
+      availHtml  = '<span class="domain-result-avail" style="color:#f59e0b">&#9888; Check Below</span>';
+      actionHtml = '<a href="' + result.whoisLink + '" target="_blank" rel="noopener" ' +
+        'class="domain-result-action" style="background:linear-gradient(135deg,#d97706,#f59e0b);">' +
+        'Check on whois.co.ug</a>';
+    } else {
+      availHtml  = '<span class="domain-result-avail" style="color:var(--color-text-muted)">&#63; Unknown</span>';
+      actionHtml = '<a href="https://whois.co.ug" target="_blank" rel="noopener" class="domain-result-action">Check Manually</a>';
+    }
+
+    return '<div class="domain-result-item">' +
+      '<span class="domain-result-name">' + result.domain + '</span>' +
+      availHtml +
+      '<span class="domain-result-price">$' + Number(result.price).toFixed(2) + '/yr</span>' +
+      actionHtml +
+      '</div>';
+  }
+
+  function runDomainSearch(raw, resultEl, loadingEl) {
+    if (!raw) return;
+    // Clean the input
+    var sld = raw.toLowerCase().replace(/ +/g,'').replace(/\.[a-z.]+$/,'');
+    if (!sld) return;
+
+    // Show loading, clear old results
+    resultEl.classList.remove('show');
+    resultEl.innerHTML = '';
+    if (loadingEl) { loadingEl.classList.add('active'); }
+
+    var extensions = Object.keys(domainPrices);
+    var total = extensions.length;
+    var done  = 0;
+    var rows  = {}; // keyed by ext to maintain order
+
+    extensions.forEach(function (ext) {
+      checkDomain(sld, ext).then(function (result) {
+        rows[ext] = renderDomainRow(result);
+        done++;
+        if (done === total) {
+          // All checks complete — render in order
+          if (loadingEl) { loadingEl.classList.remove('active'); }
+          resultEl.innerHTML = extensions.map(function (e) { return rows[e]; }).join('');
+          resultEl.classList.add('show');
+        }
+      }).catch(function(err) {
+        console.error("Search error for " + ext + ":", err);
+        rows[ext] = '<div class="domain-result-item"><span class="domain-result-name">' + sld + ext + '</span><span class="domain-result-avail" style="color:var(--color-text-muted)">Error checking</span></div>';
+        done++;
+        if (done === total) {
+          if (loadingEl) { loadingEl.classList.remove('active'); }
+          resultEl.innerHTML = extensions.map(function (e) { return rows[e]; }).join('');
+          resultEl.classList.add('show');
+        }
+      });
+    });
+  }
+
+  function wireDomainSearch(inputId, btnId, resultsId, loadingId) {
+    var inp = document.getElementById(inputId);
+    var btn = document.getElementById(btnId);
+    var res = document.getElementById(resultsId);
+    var ldr = loadingId ? document.getElementById(loadingId) : null;
+    if (!inp || !btn || !res) return;
+    btn.addEventListener('click', function () {
+      runDomainSearch(inp.value.trim(), res, ldr);
+    });
+    inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') btn.click(); });
+  }
+
+  wireDomainSearch('heroDomainInput', 'heroDomainBtn', 'heroDomainResults', 'heroLoadingIndicator');
+  wireDomainSearch('domainInput', 'domainSearchBtn', 'domainResults', 'sectionLoadingIndicator');
+
+
+  /* ============================================================
+     10. FLOATING PARTICLES (HERO)
+  ============================================================ */
+  var particleContainer = document.getElementById('heroParticles');
+  if (particleContainer) {
+    for (var i = 0; i < 14; i++) {
+      var p = document.createElement('div');
+      p.className = 'particle';
+      var size = 3 + Math.random() * 5;
+      var x = Math.random() * 100;
+      var delay = Math.random() * 8;
+      var duration = 8 + Math.random() * 10;
+      var opacity = 0.3 + Math.random() * 0.3;
+      var isAccent = Math.random() > 0.5;
+      p.style.cssText = [
+        'width:' + size + 'px',
+        'height:' + size + 'px',
+        'left:' + x + '%',
+        'bottom:' + (Math.random() * 30) + '%',
+        'background:' + (isAccent ? '#00E5FF' : '#7C5CFC'),
+        'opacity:' + opacity,
+        'animation-duration:' + duration + 's',
+        'animation-delay:-' + delay + 's'
+      ].join(';');
+      particleContainer.appendChild(p);
+    }
+  }
+
+  /* ============================================================
+     11. PAGE LOADER
+  ============================================================ */
+  var loader = document.getElementById('pageLoader');
+  if (loader) {
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        loader.classList.add('loaded');
+      }, 400);
+    });
+    // Fallback in case load already fired
+    if (document.readyState === 'complete') {
+      setTimeout(function () { loader.classList.add('loaded'); }, 400);
+    }
+  }
+
+  /* ============================================================
+     12. SCROLL TO TOP
+  ============================================================ */
+  var scrollTopBtn = document.getElementById('scrollTop');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    }, { passive: true });
+    scrollTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ============================================================
+     13. DOMAIN ADD BUTTONS (toast feedback)
+  ============================================================ */
+  document.querySelectorAll('.domain-add-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var original = btn.textContent;
+      btn.textContent = '✓';
+      btn.style.background = 'var(--color-primary)';
+      btn.style.color = '#fff';
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 1800);
+    });
+  });
+
+  /* ============================================================
+     14. HERO TYPEWRITER
+  ============================================================ */
+  var typeTarget = document.getElementById('typewriter');
+  if (typeTarget) {
+    var words = ["Faster.", "Smarter.", "Better."];
+    var wordIndex = 0;
+    var charIndex = words[0].length;
+    var isDeleting = false;
+    var typeSpeed = 150;
+
+    function type() {
+      var currentWord = words[wordIndex];
+      
+      if (isDeleting) {
+        typeTarget.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 100;
+      } else {
+        typeTarget.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 150;
+      }
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+    
+    // Start after initial delay
+    setTimeout(type, 2000);
+  }
+
+})();
+</script>
+</body>
+</html>
