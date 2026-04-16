@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WordPress Hosting - BlacTec</title>
-  <meta name="description" content="Experience blazing-fast, secure, and reliable web hosting from BlacTec. Up to 75% off Premium, Business, and Cloud plans. Starting at just $2.99/mo.">
+  <title>Professional Web Design & Redesign - BlacTec Africa</title>
+  <meta name="description" content="Expert web development services by BlacTec. Whether you need a brand new web application or a complete legacy redesign, we build high-converting platforms.">
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="favicon.jpg">
   <!-- Google Fonts -->
@@ -12,7 +12,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 
-  <style>
+  
+<style>
+
     /* ============================================================
        CSS CUSTOM PROPERTIES & BASE (Synced with index.html)
        ============================================================ */
@@ -335,6 +337,181 @@
       .nav-links { display: none; }
     }
   
+
+/* ============================================================
+       DESIGN SPOTLIGHT (ALTERNATING)
+       ============================================================ */
+    #design {}
+    .spotlight-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .spotlight-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .spotlight-row.reverse { direction: rtl; }
+    .spotlight-row.reverse > * { direction: ltr; }
+    .spotlight-text {}
+    .spotlight-text h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    .spotlight-text p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .spotlight-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .spotlight-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    .spotlight-feature span { color: var(--color-primary); font-weight: 700; }
+
+    /* CSS Art: browser mockup */
+    .browser-mockup {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .browser-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .bd-red { background: #FF5F57; }
+    .bd-yellow { background: #FFBD2E; }
+    .bd-green { background: #28C940; }
+    .browser-url {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50px;
+      height: 24px;
+      margin-left: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      font-size: 10px;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+    }
+    .browser-body {
+      padding: 24px;
+      min-height: 280px;
+    }
+    .mockup-hero-bar {
+      height: 12px;
+      background: var(--gradient-brand);
+      border-radius: 50px;
+      margin-bottom: 16px;
+      width: 60%;
+    }
+    .mockup-line {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+    .mockup-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .mockup-card {
+      height: 70px;
+      background: rgba(124,92,252,0.12);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(124,92,252,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .mockup-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 30%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Old site mockup */
+    .old-site-mockup {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .old-site-mockup::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10,11,15,0.72);
+      backdrop-filter: blur(2px);
+      border-radius: var(--radius-md);
+    }
+    .old-site-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      gap: 8px;
+    }
+    .old-site-overlay span {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 20px var(--color-primary-glow);
+    }
+    .old-site-overlay small {
+      font-size: 14px;
+      color: var(--color-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .old-body {
+      padding: 24px;
+      min-height: 280px;
+      filter: grayscale(1);
+      opacity: 0.25;
+    }
+    .old-line {
+      height: 8px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+
+    
+
     /* ============================================================
        FOOTER & FAB STYLES (MATCHES INDEX.HTML)
        ============================================================ */
@@ -396,6 +573,7 @@
     * { -ms-overflow-style: none; scrollbar-width: none; }
 
   </style>
+
 </head>
 <body>
 
@@ -611,96 +789,197 @@
 </div>
 
 <main>
-  <main id="main-content">
+  
+<main id="main-content">
 
-    <section id="hosting-hero">
-      <div class="hero-bg-accent"></div>
-      <div class="container hero-content-wrap">
-        <div class="animate-on-scroll">
-          <h1 class="hero-title">Managed WordPress <span class="gradient-text">Optimised for Speed</span></h1>
-          <p class="hero-desc">The world’s most popular CMS, supercharged with LiteSpeed, LSCache, and automatic updates. Ideal for bloggers and businesses.</p>
-          <div class="hero-cta-group">
-            <a href="#pricing" class="btn btn-primary btn-lg">View Plans</a>
-            <a href="#pricing" class="btn btn-ghost btn-lg">Compare Features</a>
-          </div>
-          
-          <div class="hero-price-tag animate-on-scroll" style="transition-delay: 0.2s;">
-            <div class="price-tag-label">Starting From</div>
-            <div class="price-tag-value"><span>$</span>3.99</div>
-            <div class="price-tag-footer">Secured via MoMo & Card</div>
-          </div>
+  <!-- HERO SECTION -->
+  <section id="hosting-hero">
+    <div class="hero-bg-accent"></div>
+    <div class="container hero-content-wrap">
+      <div class="animate-on-scroll">
+        <h1 class="hero-title">End-to-End <span class="gradient-text">Web Development</span></h1>
+        <p class="hero-desc">From complex, custom-built applications from scratch to complete overhauls of outdated legacy websites. We engineer digital solutions that drive real results.</p>
+        <div class="hero-cta-group">
+          <a href="#pricing" class="btn btn-primary btn-lg">View Development Packages</a>
+          <a href="#solutions" class="btn btn-ghost btn-lg">Explore Our Solutions</a>
+        </div>
+        
+        <div class="hero-trust-badges animate-on-scroll" style="transition-delay: 0.4s;">
+          <div class="hero-trust-badge"><i>✓</i> 🎨 Custom UI/UX</div>
+          <div class="hero-trust-badge"><i>✓</i> ⚡ Lightning Fast NVMe</div>
+          <div class="hero-trust-badge"><i>✓</i> 📱 Mobile First</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="hero-trust-badges animate-on-scroll" style="transition-delay: 0.4s;">
-            <div class="hero-trust-badge"><i>✓</i> ⚡ LiteSpeed Cache</div><div class="hero-trust-badge"><i>✓</i> 🛡️ Web App Firewall</div><div class="hero-trust-badge"><i>✓</i> 🔄 Auto Backups</div>
-          </div>
-        </div>
+  <!-- SOLUTIONS SPLIT SECTION -->
+  <section id="design" class="section" aria-labelledby="design-heading">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-label">WEB SERVICES</span>
+        <h2 id="design-heading">Websites That Work as Hard as You Do</h2>
+        <p>Design &amp; modernisation services crafted for African businesses ready to compete online.</p>
       </div>
-    </section>
-  
-    <section id="pricing" class="section">
-      <div class="container">
-        <div class="pricing-header animate-on-scroll">
-          <h2 style="font-size: 36px; margin-bottom: 16px;">Pick Your <span class="gradient-text">Perfect Plan</span></h2>
+
+      <!-- Sub A: Design -->
+      <div class="spotlight-row animate-on-scroll">
+        <div class="spotlight-text">
+          <span class="section-label">WEBSITE DESIGN</span>
+          <h2>Get a Website That Converts Visitors Into Customers</h2>
+          <p>BlacTec builds fast, stunning, mobile-first websites tailored to your business goals. Whether you're a startup, NGO, school, restaurant, or enterprise — our designers craft websites that convert visitors into customers. Every site includes free hosting for the first year, SSL security, and ongoing support.</p>
+          <div class="spotlight-features">
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom-coded performance (React/Next.js/HTML5)</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> SEO-first semantic architecture</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced API &amp; Webhook integrations</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> World-class UI design system</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Comprehensive security hardening</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Progressive Web App (PWA) capabilities</div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Request a Free Quote</a>
         </div>
-        <div class="pricing-grid">
-          
-          <div class="plan-card  animate-on-scroll" style="transition-delay: 0s;">
-            
-            <h3 class="plan-name">WP Starter</h3>
-            <p class="plan-desc">For small blogs</p>
-            <div class="plan-price-wrap">
-              <span class="plan-currency">$</span><span class="plan-price">3.99</span><span class="plan-period">/mo</span>
+        <div>
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <div class="browser-dot bd-red"></div>
+              <div class="browser-dot bd-yellow"></div>
+              <div class="browser-dot bd-green"></div>
+              <div class="browser-url">https://yourbusiness.ug</div>
             </div>
-            <a href="#" class="btn btn-ghost" style="width: 100%;">Get Started</a>
-            <div class="plan-features">
-              <div class="plan-feature-item"><i>✓</i> 1 WordPress Site</div><div class="plan-feature-item"><i>✓</i> 50GB NVMe</div><div class="plan-feature-item"><i>✓</i> Free SSL</div><div class="plan-feature-item"><i>✓</i> Free Email</div>
-            </div>
-          </div>
-          <div class="plan-card popular animate-on-scroll" style="transition-delay: 0.1s;">
-            <div class="popular-ribbon">Most Popular</div>
-            <h3 class="plan-name">WP Business</h3>
-            <p class="plan-desc">For WooCommerce</p>
-            <div class="plan-price-wrap">
-              <span class="plan-currency">$</span><span class="plan-price">6.99</span><span class="plan-period">/mo</span>
-            </div>
-            <a href="#" class="btn btn-primary" style="width: 100%;">Get Started</a>
-            <div class="plan-features">
-              <div class="plan-feature-item"><i>✓</i> 100 WordPress Sites</div><div class="plan-feature-item"><i>✓</i> 200GB NVMe</div><div class="plan-feature-item"><i>✓</i> Free Domain</div><div class="plan-feature-item"><i>✓</i> Daily Backups</div><div class="plan-feature-item"><i>✓</i> Object Cache</div>
-            </div>
-          </div>
-          <div class="plan-card  animate-on-scroll" style="transition-delay: 0.2s;">
-            
-            <h3 class="plan-name">WP Pro</h3>
-            <p class="plan-desc">Agencies & scaling</p>
-            <div class="plan-price-wrap">
-              <span class="plan-currency">$</span><span class="plan-price">12.99</span><span class="plan-period">/mo</span>
-            </div>
-            <a href="#" class="btn btn-ghost" style="width: 100%;">Get Started</a>
-            <div class="plan-features">
-              <div class="plan-feature-item"><i>✓</i> 300 WordPress Sites</div><div class="plan-feature-item"><i>✓</i> 300GB NVMe</div><div class="plan-feature-item"><i>✓</i> Free Domain</div><div class="plan-feature-item"><i>✓</i> Dedicated IP</div>
+            <div class="browser-body">
+              <div class="mockup-hero-bar"></div>
+              <div class="mockup-line" style="width:80%"></div>
+              <div class="mockup-line" style="width:55%"></div>
+              <div class="mockup-line" style="width:40%;background:var(--gradient-brand);height:10px;border-radius:50px;"></div>
+              <div class="mockup-cards">
+                <div class="mockup-card"></div>
+                <div class="mockup-card" style="background:rgba(0,229,255,0.1);border-color:rgba(0,229,255,0.2);"></div>
+                <div class="mockup-card"></div>
+              </div>
+              <div style="height:12px;background:rgba(255,255,255,0.04);border-radius:4px;margin-top:16px;"></div>
+              <div style="height:12px;background:rgba(255,255,255,0.04);border-radius:4px;margin-top:8px;width:70%;"></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  
-    <section class="section">
-      <div class="container">
-        <div class="pricing-header animate-on-scroll">
-          <h2 style="font-size: 32px;">Frequently Asked <span class="gradient-text">Questions</span></h2>
+
+      <!-- Sub B: Modernisation -->
+      <div class="spotlight-row reverse animate-on-scroll">
+        <div class="spotlight-text">
+          <span class="section-label">WEBSITE MODERNISATION</span>
+          <h2>Is Your Old Website Hurting Your Business?</h2>
+          <p>A slow, outdated website drives customers away. BlacTec's Website Modernisation service rebuilds your existing site from the ground up — preserving your content and brand while delivering modern design, blazing speed, and mobile compatibility. We work with sites of any age or platform.</p>
+          <div class="spotlight-features">
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Full redesign with modern UI/UX</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Speed optimisation &amp; Core Web Vitals</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Mobile-first responsive rebuild</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> SEO audit &amp; restructuring included</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Content migration — nothing is lost</div>
+            <div class="spotlight-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;"><polyline points="20 6 9 17 4 12"></polyline></svg> Launch support &amp; 3-month aftercare</div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Modernise My Website</a>
         </div>
-        <div class="faq-grid animate-on-scroll">
-          
-          <div class="faq-item">
-            <div class="faq-question">Is WordPress pre-installed? <span class="faq-icon-arrow">▼</span></div>
-            <div class="faq-answer">Yes, WordPress is automatically installed along with performance plugins.</div>
+        <div>
+          <div class="old-site-mockup">
+            <div class="old-body">
+              <div class="old-line" style="width:90%;height:16px;background:rgba(255,255,255,0.4);"></div>
+              <div class="old-line" style="width:100%;height:8px;margin-top:20px;"></div>
+              <div class="old-line"></div>
+              <div class="old-line" style="width:70%"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;">
+                <div class="old-line" style="height:60px;border-radius:4px;"></div>
+                <div class="old-line" style="height:60px;border-radius:4px;"></div>
+              </div>
+              <div class="old-line" style="margin-top:20px;"></div>
+              <div class="old-line" style="width:80%"></div>
+              <div class="old-line" style="width:60%"></div>
+            </div>
+            <div class="old-site-overlay">
+              <span>→ REBUILT</span>
+              <small>Modern · Fast · Mobile-Ready</small>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-  
-  </main>
+    </div>
+  </section>
+
+  <!-- PRICING SECTION -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <div class="pricing-header animate-on-scroll" style="text-align: center;">
+        <h2 style="font-size: 36px; margin-bottom: 16px;">Transparent <span class="gradient-text">Project Pricing</span></h2>
+      </div>
+      <div class="pricing-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto;">
+        
+        <!-- Redesign Plan -->
+        <div class="plan-card animate-on-scroll" style="transition-delay: 0s;">
+          <h3 class="plan-name">Legacy Redesign</h3>
+          <p class="plan-desc">Revamp your existing web presence</p>
+          <div class="plan-price-wrap">
+            <span class="plan-currency">$</span><span class="plan-price">500</span><span class="plan-period">one-off</span>
+          </div>
+          <a href="https://wa.me/256750870755?text=Hi%2C%20I%20am%20interested%20in%20a%20Legacy%20Website%20Redesign%20for%20%24500." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%;">Order Redesign</a>
+          <div class="plan-features">
+            <div class="plan-feature-item"><i>✓</i> Complete Mobile Optimization</div>
+            <div class="plan-feature-item"><i>✓</i> Content Migration</div>
+            <div class="plan-feature-item"><i>✓</i> SEO Preservation Hooks</div>
+            <div class="plan-feature-item"><i>✓</i> Speed Architecture Overhaul</div>
+            <div class="plan-feature-item"><i>✓</i> Modern Security Implementation</div>
+          </div>
+        </div>
+
+        <!-- New Site Plan -->
+        <div class="plan-card popular animate-on-scroll" style="transition-delay: 0.1s;">
+          <div class="popular-ribbon">Premium</div>
+          <h3 class="plan-name">New Website Build</h3>
+          <p class="plan-desc">Engineered securely from scratch</p>
+          <div class="plan-price-wrap">
+            <span class="plan-currency">$</span><span class="plan-price">800</span><span class="plan-period">one-off</span>
+          </div>
+          <a href="https://wa.me/256750870755?text=Hi%2C%20I%20am%20interested%20in%20a%20New%20Website%20Build%20for%20%24800." target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">Start Fresh Build</a>
+          <div class="plan-features">
+            <div class="plan-feature-item"><i>✓</i> Tailored UI/UX Wireframing</div>
+            <div class="plan-feature-item"><i>✓</i> Custom Feature Integration</div>
+            <div class="plan-feature-item"><i>✓</i> Business Logic Configuration</div>
+            <div class="plan-feature-item"><i>✓</i> E-commerce Ready (MoMo/Airtel)</div>
+            <div class="plan-feature-item"><i>✓</i> Up to 10 Crafted Core Pages</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="pricing-header animate-on-scroll" style="text-align: center;">
+        <h2 style="font-size: 32px;">Frequently Asked <span class="gradient-text">Questions</span></h2>
+      </div>
+      <div class="faq-grid animate-on-scroll">
+        
+        <div class="faq-item">
+          <div class="faq-question">How exactly does a redesign work? Do I lose my data? <span class="faq-icon-arrow">▼</span></div>
+          <div class="faq-answer">Absolutely not! A redesign is heavily front-end focused. We rebuild the theme, aesthetics, and structural HTML templates of your application without damaging your core database, keeping your posts, images, and users strictly intact.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">How long does a $800 custom build take? <span class="faq-icon-arrow">▼</span></div>
+          <div class="faq-answer">Depending on your internal feature requirements and the speed at which you can provide branding assets (logos, raw copy), a premium new site generally takes 2 to 4 weeks from deposit to deployment.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Does the $500 redesign include new hosting? <span class="faq-icon-arrow">▼</span></div>
+          <div class="faq-answer">No, the redesign packages are primarily for overhauling the source code and design templates of your site. However, we highly recommend migrating to BlacTec's high-performance VPS or WordPress hosting to truly maximize the speed benefits of your new code.</div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
 </main>
+
 
   
 

@@ -20,29 +20,24 @@ const footerTemplate = content.substring(mainEndIndex);
 function genHero(title1, titleGradient, desc, price, featureTags) {
   return `
     <section id="hosting-hero">
-      <div class="container">
-        <div class="hero-split">
-          <div class="hero-left animate-on-scroll">
-            <h1 class="hero-title">${title1}<br><span class="gradient-text">${titleGradient}</span></h1>
-            <p class="hero-desc">${desc}</p>
-            <div class="hero-cta-group">
-              <a href="#pricing" class="btn btn-primary btn-lg">View Plans</a>
-              <div class="hero-trust-badge"><i class="check">✓</i> Trusted by African Businesses</div>
-            </div>
-            <div class="hero-trust-badges">
-              ${featureTags.map(f => `<div class="hero-trust-badge">${f}</div>`).join('')}
-            </div>
+      <div class="hero-bg-accent"></div>
+      <div class="container hero-content-wrap">
+        <div class="animate-on-scroll">
+          <h1 class="hero-title">${title1} <span class="gradient-text">${titleGradient}</span></h1>
+          <p class="hero-desc">${desc}</p>
+          <div class="hero-cta-group">
+            <a href="#pricing" class="btn btn-primary btn-lg">View Plans</a>
+            <a href="#pricing" class="btn btn-ghost btn-lg">Compare Features</a>
           </div>
-          <div class="hero-right animate-on-scroll" style="transition-delay: 0.2s;">
-            <div class="hero-timer">
-              <div class="timer-title">Starting from:</div>
-              <div style="font-size: 32px; font-weight: 900; color: #fff; font-family: 'Unbounded', sans-serif;">
-                <span style="font-size: 20px; font-weight: 500;">$</span>${price}
-              </div>
-              <div style="margin-top: 10px; font-size: 14px; color: var(--color-text-secondary);">
-                Secure via MTN MoMo / Airtel Money
-              </div>
-            </div>
+          
+          <div class="hero-price-tag animate-on-scroll" style="transition-delay: 0.2s;">
+            <div class="price-tag-label">Starting From</div>
+            <div class="price-tag-value"><span>$</span>${price}</div>
+            <div class="price-tag-footer">Secured via MoMo & Card</div>
+          </div>
+
+          <div class="hero-trust-badges animate-on-scroll" style="transition-delay: 0.4s;">
+            ${featureTags.map(f => `<div class="hero-trust-badge"><i>✓</i> ${f}</div>`).join('')}
           </div>
         </div>
       </div>
@@ -333,10 +328,28 @@ pageConfigs.forEach(page => {
     newHeader = newHeader.replace(titleMatch[0], "<title>" + page.title + "</title>");
   }
   
-  // Make sure nav highlights active link (rough logic)
+  // Make sure nav highlights active link
   newHeader = newHeader.replace(/class="nav-link active"/g, 'class="nav-link"');
+  newHeader = newHeader.replace(/class="nav-link-plain active"/g, 'class="nav-link-plain"');
+
+  // Intelligent active link highlighting
+  const hostingPages = ['wordpress-hosting.html', 'vps-hosting.html', 'cloud-hosting.html', 'reseller-hosting.html', 'web-hosting.html'];
+  const webServicesPages = ['website-design.html', 'website-modernisation.html', 'ecommerce-development.html', 'wordpress-development.html', 'website-maintenance.html'];
+  const domainPages = ['domain-search.html', 'ug-domains.html', 'domain-transfer.html', 'whois-privacy.html', 'whois.html'];
+  const solutionPages = ['business-email.html', 'google-workspace.html', 'ssl-certificates.html', 'seo-services.html', 'bulk-sms.html', 'website-security.html'];
+
+  if (hostingPages.includes(page.path)) {
+    newHeader = newHeader.replace(/Hosting\n\s*<svg/g, 'Hosting <svg'); // match fixed nav
+    newHeader = newHeader.replace(/>\s*Hosting\s*<svg/g, ' class="active">Hosting <svg');
+  } else if (webServicesPages.includes(page.path)) {
+    newHeader = newHeader.replace(/>\s*Web Services\s*<svg/g, ' class="active">Web Services <svg');
+  } else if (domainPages.includes(page.path)) {
+    newHeader = newHeader.replace(/>\s*Domains\s*<svg/g, ' class="active">Domains <svg');
+  } else if (solutionPages.includes(page.path)) {
+    newHeader = newHeader.replace(/>\s*Solutions\s*<svg/g, ' class="active">Solutions <svg');
+  }
   
-  const fullHtml = newHeader + '\\n  <main id="main-content">\\n' + page.html + '\\n  </main>\\n' + footerTemplate;
+  const fullHtml = newHeader + '\n  <main id="main-content">\n' + page.html + '\n  </main>\n' + footerTemplate;
   const filePath = path.join(__dirname, page.path);
   fs.writeFileSync(filePath, fullHtml, 'utf8');
   generatedPaths.push(page.path);
