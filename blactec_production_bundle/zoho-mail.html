@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoho Mail & Workplace | BlacTec</title>
+  <meta name="description" content="Get Zoho Mail through BlacTec — professional email for business, WorkDrive, Meeting, and Office suite. Perfect for African businesses.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Zoho Mail | BlacTec — Business Email & Collaboration Tools">
+  <meta property="og:description" content="Transform teamwork and boost productivity with Zoho Mail from BlacTec. Professional email, cloud storage, and office tools for your business.">
+  <meta property="og:image" content="https://blactec.ug/og-image.jpg">
+  <meta property="og:url" content="https://blactec.ug/zoho-mail">
+  <meta property="og:type" content="website">
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — BlacTec Design System
+       ============================================================ */
+    :root {
+      --color-bg:           #0A0B0F;
+      --color-bg-alt:       #0F1117;
+      --color-bg-card:      #13151C;
+      --color-bg-glass:     rgba(255,255,255,0.04);
+      --color-primary:      #7C5CFC;
+      --color-primary-dark: #5B3FD4;
+      --color-primary-glow: rgba(124,92,252,0.25);
+      --color-accent:       #00E5FF;
+      --color-accent-soft:  rgba(0,229,255,0.12);
+      --color-text:         #FFFFFF;
+      --color-text-secondary: #A0A4B8;
+      --color-text-muted:   #5A5F75;
+      --color-border:       rgba(255,255,255,0.07);
+      --color-border-hover: rgba(124,92,252,0.4);
+      --radius-sm:          8px;
+      --radius-md:          14px;
+      --radius-lg:          24px;
+      --radius-xl:          36px;
+      --gradient-hero:      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,92,252,0.35) 0%, transparent 70%);
+      --gradient-brand:     linear-gradient(135deg, #7C5CFC 0%, #00E5FF 100%);
+      --gradient-card:      linear-gradient(135deg, rgba(124,92,252,0.08) 0%, rgba(0,229,255,0.04) 100%);
+      --shadow-card:        0 4px 40px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05) inset;
+      --shadow-glow:        0 0 60px rgba(124,92,252,0.3);
+
+      /* Google Workspace brand colors */
+      --zoho-blue:   #4285F4;
+      --zoho-red:    #EA4335;
+      --zoho-yellow: #FBBC05;
+      --zoho-green:  #34A853;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4,h5,h6 { line-height: 1.15; font-weight: 700; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ============================================================
+       ACCESSIBILITY
+       ============================================================ */
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Page loader */
+    #pageLoader {
+      position: fixed; inset: 0;
+      background: var(--color-bg);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #pageLoader.loaded { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 28px; font-weight: 900;
+      color: var(--color-text);
+      animation: loaderPulse 1.2s ease-in-out infinite;
+    }
+    .loader-logo .lac { color: var(--color-primary); }
+    @keyframes loaderPulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.95); }
+    }
+
+    /* ============================================================
+       UTILITIES
+       ============================================================ */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .gradient-text {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--color-primary);
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 12px;
+    }
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+      opacity: 0.15; margin: 0;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 28px; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 16px;
+      cursor: pointer; transition: all 0.25s ease; border: none; white-space: nowrap;
+    }
+    .btn-primary { background: var(--gradient-brand); color: #fff; box-shadow: 0 4px 24px var(--color-primary-glow); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--color-primary-glow); }
+    .btn-ghost { background: transparent; color: var(--color-text); border: 1.5px solid var(--color-border); }
+    .btn-ghost:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-2px); }
+    .btn-lg { padding: 16px 36px; font-size: 18px; }
+    .btn-sm { padding: 10px 20px; font-size: 14px; }
+    .btn-whatsapp { background: #25D366; color: #fff; box-shadow: 0 4px 20px rgba(37,211,102,0.3); }
+    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+    .btn-google {
+      background: linear-gradient(135deg, var(--zoho-blue) 0%, var(--zoho-green) 100%);
+      color: #fff; box-shadow: 0 4px 24px rgba(66,133,244,0.3);
+    }
+    .btn-google:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(66,133,244,0.4); }
+
+    /* ============================================================
+       SCROLL ANIMATIONS
+       ============================================================ */
+    .animate-on-scroll {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+      height: 72px; display: flex; align-items: center;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(10,11,15,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--color-border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 24px; }
+    .nav-logo { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px; color: var(--color-text); flex-shrink: 0; letter-spacing: -0.5px; }
+    .nav-logo .logo-accent { color: var(--color-primary); }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: flex; align-items: center; gap: 4px; padding: 8px 14px;
+      font-size: 14px; font-weight: 500; color: var(--color-text-secondary);
+      border-radius: var(--radius-sm); transition: color 0.2s, background 0.2s; cursor: pointer;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--color-text); background: var(--color-bg-glass); }
+    .nav-link svg { width: 12px; height: 12px; transition: transform 0.2s; }
+    .nav-item:hover .nav-link svg { transform: rotate(180deg); }
+    .nav-link-plain { display: flex; align-items: center; padding: 8px 14px; font-size: 14px; font-weight: 500; color: var(--color-text-secondary); border-radius: var(--radius-sm); transition: color 0.2s, background 0.2s; }
+    .nav-link-plain:hover { color: var(--color-text); background: var(--color-bg-glass); }
+    .nav-link-plain.active { color: var(--color-primary); background: rgba(124,92,252,0.08); }
+
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+      min-width: 420px; background: rgba(15,17,23,0.98); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6); backdrop-filter: blur(20px);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      transform: translateX(-50%) translateY(-6px);
+    }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px; border-radius: var(--radius-sm); transition: background 0.2s; }
+    .nav-dropdown-item:hover { background: var(--color-bg-glass); }
+    .nav-dropdown-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .nav-dropdown-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--color-text); margin-bottom: 2px; }
+    .nav-dropdown-text span { font-size: 12px; color: var(--color-text-muted); }
+
+    .nav-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-right .btn { font-size: 14px; padding: 10px 20px; }
+
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px; padding: 8px; border-radius: var(--radius-sm);
+      cursor: pointer; transition: background 0.2s; border: 1px solid var(--color-border);
+    }
+    .hamburger:hover { background: var(--color-bg-glass); }
+    .hamburger span { display: block; height: 2px; background: var(--color-text); border-radius: 2px; transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-nav {
+      position: fixed; inset: 0; z-index: 8999;
+      background: rgba(10,11,15,0.98); backdrop-filter: blur(20px);
+      display: flex; flex-direction: column; padding: 100px 24px 40px; overflow-y: auto;
+      transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav-item { border-bottom: 1px solid var(--color-border); }
+    .mobile-nav-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; font-size: 18px; font-weight: 600; cursor: pointer; color: var(--color-text);
+    }
+    .mobile-nav-header svg { transition: transform 0.2s; }
+    .mobile-nav-header.open svg { transform: rotate(180deg); }
+    .mobile-sub-links { display: none; flex-direction: column; gap: 4px; padding-bottom: 12px; }
+    .mobile-sub-links.open { display: flex; }
+    .mobile-sub-link {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm);
+      font-size: 15px; color: var(--color-text-secondary); transition: all 0.2s;
+    }
+    .mobile-sub-link:hover { background: var(--color-bg-glass); color: var(--color-text); }
+    .mobile-nav-plain { display: block; padding: 16px 0; font-size: 18px; font-weight: 600; border-bottom: 1px solid var(--color-border); color: var(--color-text); }
+    .mobile-nav-buttons { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .mobile-nav-buttons .btn { width: 100%; justify-content: center; }
+
+
+    /* ============================================================
+       HERO — Hostinger-style split layout
+       ============================================================ */
+    #zoho-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 120px 0 80px;
+      background: var(--color-bg);
+    }
+    .zoho-hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 20% 30%, rgba(124,92,252,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 80% 60%, rgba(0,229,255,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 50% 90%, rgba(66,133,244,0.1) 0%, transparent 50%);
+      z-index: 0;
+    }
+    .zoho-hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px; z-index: 1; pointer-events: none;
+    }
+    .zoho-hero-blob {
+      position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0;
+      animation: gwBlobFloat 14s ease-in-out infinite;
+    }
+    .zoho-blob-1 { width: 500px; height: 500px; background: rgba(124,92,252,0.18); top: -10%; left: 5%; }
+    .zoho-blob-2 { width: 350px; height: 350px; background: rgba(0,229,255,0.10); bottom: 10%; right: 5%; animation-delay: 5s; }
+    .zoho-blob-3 { width: 300px; height: 300px; background: rgba(66,133,244,0.12); top: 40%; right: 30%; animation-delay: 3s; }
+    @keyframes gwBlobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(15px,-15px) scale(1.04); }
+    }
+
+    /* Hero split layout */
+    .zoho-hero-split {
+      position: relative; z-index: 4;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .zoho-hero-left {}
+    .zoho-hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 20px; border-radius: 50px;
+      border: 1px solid var(--color-primary);
+      background: rgba(124,92,252,0.08);
+      font-size: 13px; font-weight: 600; color: var(--color-primary);
+      margin-bottom: 28px;
+      animation: shimmerBorder 3s linear infinite;
+    }
+    @keyframes shimmerBorder {
+      0%,100% { box-shadow: 0 0 0 0 rgba(124,92,252,0.3); }
+      50% { box-shadow: 0 0 16px 2px rgba(124,92,252,0.4); }
+    }
+    .zoho-hero-left h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 900; line-height: 1.08;
+      color: var(--color-text);
+      margin-bottom: 20px; letter-spacing: -1.5px;
+    }
+    .zoho-google-text {
+      background: linear-gradient(135deg, var(--zoho-blue), var(--zoho-red), var(--zoho-yellow), var(--zoho-green));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .zoho-hero-sub {
+      font-size: 18px; color: var(--color-text-secondary);
+      margin-bottom: 36px; font-weight: 400; line-height: 1.65;
+      max-width: 480px;
+    }
+    .zoho-hero-cta-row {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .zoho-hero-trust {
+      display: flex; flex-direction: column; gap: 10px;
+      font-size: 14px; color: var(--color-text-secondary);
+    }
+    .zoho-hero-trust-item { display: flex; align-items: center; gap: 8px; }
+    .zoho-hero-trust-icon {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(124,92,252,0.15); border: 1px solid rgba(124,92,252,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; flex-shrink: 0;
+      color: var(--color-primary);
+    }
+
+    /* Hero stylized icons */
+    .zoho-hero-icons-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+    .zoho-hero-icon {
+      position: absolute; width: 60px; height: 60px;
+      border: 1.5px solid var(--color-primary); border-radius: 12px;
+      background: rgba(124,92,252,0.1); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: gwIconFloat 6s ease-in-out infinite;
+    }
+    .zoho-hi-1 { top: 15%; left: 45%; animation-delay: 0s; }
+    .zoho-hi-2 { bottom: 20%; left: 55%; animation-delay: 2s; }
+    .zoho-hi-3 { top: 30%; right: 5%; animation-delay: 4s; }
+    @keyframes gwIconFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-15px) rotate(4deg); }
+    }
+    .zoho-hero-img-wrap {
+      position: relative; border-radius: var(--radius-xl); overflow: hidden;
+      box-shadow: var(--shadow-card); border: 1px solid var(--color-border);
+    }
+    .zoho-hero-img-wrap img { width: 100%; height: auto; display: block; }
+    .zoho-hero-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent, rgba(10,11,15,0.4));
+    }
+
+    /* Modern Mockup Styles */
+    .zoho-mockup-wrapper {
+      position: relative; width: 100%; max-width: 600px;
+      margin: 0 auto; perspective: 1000px;
+    }
+    .zoho-modern-mockup {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: var(--shadow-card); transition: transform 0.5s ease;
+    }
+    .zoho-modern-mockup:hover { transform: translateY(-5px) rotateX(2deg); }
+
+    .zoho-mockup-topbar {
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-border);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .zoho-mockup-dots {
+      display: flex;
+      gap: 6px;
+      position: absolute;
+      left: 16px;
+    }
+    .zoho-mockup-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .zoho-mockup-dot:nth-child(1) { background: #FF5F57; }
+    .zoho-mockup-dot:nth-child(2) { background: #FFBD2E; }
+    .zoho-mockup-dot:nth-child(3) { background: #28C940; }
+    .zoho-mockup-address {
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: 11px;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+      max-width: 200px;
+      text-align: center;
+    }
+
+    /* Docs collaboration mockup (CSS) */
+    .docs-mockup { background: #fff; color: #333; height: 320px; padding: 32px; font-family: sans-serif; position: relative; }
+    .docs-line { height: 10px; background: #eee; border-radius: 5px; margin-bottom: 12px; }
+    .cursor-label {
+      position: absolute; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; color: #fff;
+      display: flex; align-items: center; gap: 4px; z-index: 10;
+    }
+    .cursor-label::before { content: ''; width: 2px; height: 18px; position: absolute; left: -2px; top: 0; }
+    .cl-kaori { background: #f06292; top: 80px; left: 140px; }
+    .cl-kaori::before { background: #f06292; }
+    .cl-tim { background: #4285f4; top: 140px; left: 220px; }
+    .cl-tim::before { background: #4285f4; }
+    .docs-comment-box {
+      position: absolute; top: 60px; right: -20px; width: 220px;
+      background: #fff; border: 1px solid #ddd; border-radius: 8px;
+      padding: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 20;
+    }
+
+    .zoho-email-row.unread .zoho-sender { font-weight: 700; color: var(--color-text); }
+    .zoho-email-row.unread .zoho-subject { color: var(--color-text); }
+    .zoho-email-avatar-sm {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+    }
+    .zoho-email-info { flex: 1; min-width: 0; }
+    .zoho-sender { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); display: block; }
+    .zoho-subject { font-size: 13px; color: var(--color-text-muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .zoho-email-time { font-size: 11px; color: var(--color-text-muted); flex-shrink: 0; }
+    .zoho-mockup-compose {
+      position: absolute; bottom: 20px; right: 20px;
+      background: var(--gradient-brand);
+      color: #fff; padding: 12px 20px; border-radius: 50px;
+      font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 20px var(--color-primary-glow);
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       HIGH-FIDELITY DASHBOARD MOCKUP (Gemini Interface)
+       ============================================================ */
+    .zoho-hero-dashboard {
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(124,92,252,0.1);
+      display: flex;
+      flex-direction: column;
+      height: 440px;
+      position: relative;
+      background-clip: padding-box;
+    }
+    .zoho-dash-header {
+      height: 48px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 12px;
+    }
+    .zoho-dash-body { display: flex; flex: 1; overflow: hidden; }
+    .zoho-dash-sidebar {
+      width: 64px;
+      border-right: 1px solid var(--color-border);
+      background: rgba(255,255,255,0.01);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0;
+      gap: 20px;
+    }
+    .zoho-dash-main { flex: 1; padding: 24px; overflow-y: auto; background: #fff; color: #1f1f1f; }
+    .zoho-dash-gemini {
+      width: 240px;
+      border-left: 1px solid var(--color-border);
+      background: rgba(124,92,252,0.02);
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .gemini-sparkle-icon {
+      width: 24px; height: 24px;
+      background: var(--gradient-brand);
+      mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3L14.5 9.5L21 12L14.5 14.5L12 21L9.5 14.5L3 12L9.5 9.5L12 3Z' fill='white'/%3E%3C/svg%3E") no-repeat center;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3L14.5 9.5L21 12L14.5 14.5L12 21L9.5 14.5L3 12L9.5 9.5L12 3Z' fill='white'/%3E%3C/svg%3E") no-repeat center;
+    }
+    .gemini-title { font-size: 14px; font-weight: 700; color: var(--color-text); margin-top: 12px; margin-bottom: 8px; }
+    .gemini-pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gemini-pill:hover { background: rgba(124,92,252,0.1); border-color: var(--color-primary); }
+
+    .dash-email-sub { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #1f1f1f; }
+    .dash-email-line { height: 8px; background: #f1f3f4; border-radius: 4px; margin-bottom: 12px; width: 100%; }
+
+    /* Floating app icons (Official Logo Colors) */
+    .zoho-floating-app {
+      position: absolute;
+      width: 44px; height: 44px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+      animation: gwFloat 6s ease-in-out infinite;
+    }
+    .fa-gmail { top: -15px; left: 10%; animation-delay: 0s; }
+    .fa-drive { top: 20%; right: -20px; animation-delay: 1.5s; }
+    .fa-docs { bottom: 10%; left: -20px; animation-delay: 3s; }
+    .fa-gemini { bottom: -15px; right: 20%; animation-delay: 4.5s; }
+
+    @keyframes gwFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    /* ============================================================
+       SHARED SECTION STYLES
+       ============================================================ */
+    .section { padding: 100px 0; }
+    .section-alt { background: var(--color-bg-alt); }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(28px, 4vw, 44px); font-weight: 800;
+      color: var(--color-text); margin-bottom: 16px; letter-spacing: -0.5px;
+    }
+    .section-header p { font-size: 17px; color: var(--color-text-secondary); max-width: 560px; margin: 0 auto; }
+
+    /* ============================================================
+       FEATURES — Hostinger-style alternating rows with real screenshots
+       ============================================================ */
+    .zoho-feature-section { padding: 80px 0; }
+    .zoho-feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .zoho-feature-row:last-child { margin-bottom: 0; }
+    .zoho-feature-text h2 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(26px, 3.2vw, 40px); font-weight: 800;
+      color: var(--color-text); margin-bottom: 18px; letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .zoho-feature-text p { font-size: 17px; color: var(--color-text-secondary); margin-bottom: 32px; line-height: 1.7; }
+    .zoho-feature-list { margin-bottom: 36px; display: flex; flex-direction: column; gap: 12px; }
+    .zoho-feature-li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--color-text-secondary); }
+    .zoho-feature-check {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(124,92,252,0.15); border: 1px solid rgba(124,92,252,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--color-primary); margin-top: 2px;
+    }
+
+    /* Screenshot showcase */
+    .zoho-feature-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: visible;
+    }
+    .zoho-feature-screen {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card), 0 0 40px rgba(124,92,252,0.12);
+    }
+    .zoho-feature-screen-header {
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-border);
+      padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .zoho-screen-dots { display: flex; gap: 5px; }
+    .zoho-screen-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .zoho-screen-dot:nth-child(1) { background: #FF5F57; }
+    .zoho-screen-dot:nth-child(2) { background: #FEBC2E; }
+    .zoho-screen-dot:nth-child(3) { background: #28C840; }
+    .zoho-screen-tab {
+      font-size: 11px; color: var(--color-text-muted);
+      background: rgba(255,255,255,0.06); padding: 4px 12px; border-radius: 6px;
+    }
+    .zoho-screen-body { padding: 20px; }
+
+    /* Gmail mockup screen */
+    .zoho-sc-gmail .zoho-screen-body { padding: 0; }
+    .zoho-sc-gmail-nav {
+      display: flex; align-items: center; gap: 0; border-bottom: 1px solid var(--color-border);
+    }
+    .zoho-sc-gmail-sidebar {
+      width: 180px; flex-shrink: 0; border-right: 1px solid var(--color-border); padding: 12px 0;
+    }
+    .zoho-sc-gmail-item {
+      padding: 7px 16px; font-size: 12px; color: var(--color-text-muted);
+      display: flex; align-items: center; gap: 8px; border-radius: 0 24px 24px 0; margin-right: 8px;
+    }
+    .zoho-sc-gmail-item.active {
+      background: rgba(124,92,252,0.12); color: var(--color-primary); font-weight: 600;
+    }
+    .zoho-sc-gmail-count { margin-left: auto; font-size: 10px; font-weight: 700; }
+    .zoho-sc-gmail-mails { flex: 1; }
+    .zoho-sc-mail-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .zoho-sc-mail-item.unread { background: rgba(124,92,252,0.04); }
+    .zoho-sc-mail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--zoho-blue); flex-shrink: 0; }
+    .zoho-sc-mail-avatar { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; }
+    .zoho-sc-mail-body { flex: 1; min-width: 0; }
+    .zoho-sc-mail-from { font-size: 11px; font-weight: 700; color: var(--color-text); }
+    .zoho-sc-mail-preview { font-size: 10px; color: var(--color-text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .zoho-sc-mail-time { font-size: 10px; color: var(--color-text-muted); flex-shrink: 0; }
+
+    /* Meet mockup */
+    .zoho-sc-meet-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+      background: #000; border-radius: 8px; overflow: hidden;
+    }
+    .zoho-sc-meet-cell {
+      aspect-ratio: 4/3; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .zoho-sc-meet-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; }
+    .zoho-sc-meet-name {
+      position: absolute; bottom: 8px; left: 8px;
+      font-size: 10px; font-weight: 600; color: #fff;
+      background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;
+    }
+    .zoho-sc-meet-bar {
+      background: rgba(255,255,255,0.05); border-top: 1px solid var(--color-border);
+      padding: 12px 16px; display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .zoho-sc-meet-btn {
+      width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+
+    /* Docs mockup */
+    .zoho-sc-docs-toolbar {
+      background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--color-border);
+      padding: 8px 16px; display: flex; gap: 8px; align-items: center;
+    }
+    .zoho-sc-docs-btn {
+      padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;
+      background: rgba(255,255,255,0.05); color: var(--color-text-muted);
+    }
+    .zoho-sc-docs-body { padding: 20px; min-height: 200px; }
+    .zoho-sc-docs-title { font-size: 16px; font-weight: 700; color: var(--color-text); margin-bottom: 12px; }
+    .zoho-sc-docs-line { height: 9px; border-radius: 4px; margin-bottom: 8px; background: rgba(255,255,255,0.07); }
+    .zoho-sc-docs-collaborators {
+      display: flex; gap: -8px; margin-bottom: 12px;
+    }
+    .zoho-sc-docs-collab {
+      width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--color-bg-card);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: #fff; margin-left: -6px;
+    }
+    .zoho-sc-docs-collab:first-child { margin-left: 0; }
+    .zoho-sc-docs-cursor {
+      display: inline-block; width: 2px; height: 16px;
+      background: var(--zoho-blue); animation: cursorBlink 1s infinite;
+      vertical-align: middle; margin-left: 2px;
+    }
+    @keyframes cursorBlink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Security mockup */
+    .zoho-sc-security-content { padding: 20px; }
+    .zoho-sc-security-status {
+      display: flex; align-items: center; gap: 12px; padding: 16px;
+      background: rgba(52,168,83,0.08); border: 1px solid rgba(52,168,83,0.2);
+      border-radius: var(--radius-md); margin-bottom: 16px;
+    }
+    .zoho-sc-security-icon { font-size: 28px; }
+    .zoho-sc-security-title { font-size: 14px; font-weight: 700; color: var(--color-text); }
+    .zoho-sc-security-sub { font-size: 11px; color: var(--color-text-muted); }
+    .zoho-sc-security-items { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .zoho-sc-security-item {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm); padding: 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .zoho-sc-security-item-icon { font-size: 16px; }
+    .zoho-sc-security-item-label { font-size: 11px; font-weight: 600; color: var(--color-text-secondary); }
+    .zoho-sc-security-item-status { font-size: 10px; color: #34A853; }
+
+    /* Floating badge on feature images */
+    .zoho-feature-badge {
+      position: absolute; z-index: 10;
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 10px 14px;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: var(--shadow-card); pointer-events: none;
+    }
+    .zoho-feature-badge-pulse {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+      animation: badgePulse 2s ease-out infinite;
+    }
+    @keyframes badgePulse {
+      0% { box-shadow: 0 0 0 0 currentColor; }
+      70% { box-shadow: 0 0 0 6px transparent; }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    .zoho-feature-badge-text { font-size: 12px; font-weight: 600; color: var(--color-text); }
+    .zoho-feature-badge-sub { font-size: 10px; color: var(--color-text-muted); }
+
+    /* ============================================================
+       PRICING
+       ============================================================ */
+    #zoho-pricing {}
+    .zoho-pricing-note {
+      text-align: center; margin-bottom: 48px;
+      font-size: 14px; color: var(--color-text-muted);
+    }
+    .zoho-pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start;
+    }
+    .zoho-plan-card {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); padding: 36px 32px; position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .zoho-plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+    .zoho-plan-card.popular {
+      border-color: var(--color-primary);
+      transform: scale(1.03);
+      box-shadow: 0 0 40px rgba(124,92,252,0.2), var(--shadow-card);
+    }
+    .zoho-plan-card.popular:hover { transform: scale(1.03) translateY(-6px); }
+    .zoho-popular-badge {
+      position: absolute; top: -14px; right: 24px;
+      background: var(--gradient-brand); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 5px 14px;
+      border-radius: 50px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .zoho-plan-icon { font-size: 36px; margin-bottom: 16px; }
+    .zoho-plan-name { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; color: var(--color-text); margin-bottom: 6px; }
+    .zoho-plan-tagline { font-size: 13px; color: var(--color-text-muted); margin-bottom: 24px; }
+    .zoho-plan-price-wrap { margin-bottom: 4px; }
+    .zoho-plan-price { font-family: 'Unbounded', sans-serif; font-size: 36px; font-weight: 800; color: var(--color-text); }
+    .zoho-plan-price-cur { font-size: 14px; vertical-align: super; font-weight: 600; margin-right: 2px; }
+    .zoho-plan-period { font-size: 13px; color: var(--color-text-muted); margin-bottom: 28px; }
+    .zoho-plan-cta { width: 100%; justify-content: center; margin-bottom: 28px; }
+    .zoho-plan-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--color-text-secondary);
+      padding: 7px 0; border-bottom: 1px solid var(--color-border);
+    }
+    .zoho-plan-features li:last-child { border-bottom: none; }
+    .zoho-plan-check { color: var(--color-primary); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ============================================================
+       TOOLS GRID
+       ============================================================ */
+    .zoho-tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .zoho-tool-card {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 28px 24px; text-align: center; position: relative;
+      overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      text-decoration: none; display: block; color: inherit;
+    }
+    .zoho-tool-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--gradient-card); opacity: 0; transition: opacity 0.25s;
+    }
+    .zoho-tool-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); border-color: var(--color-border-hover); }
+    .zoho-tool-card:hover::before { opacity: 1; }
+    .zoho-tool-icon { font-size: 36px; margin-bottom: 14px; position: relative; z-index: 1; }
+    .zoho-tool-card h3 { font-size: 15px; font-weight: 700; color: var(--color-text); margin-bottom: 8px; position: relative; z-index: 1; }
+    .zoho-tool-card p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; position: relative; z-index: 1; }
+
+    /* ============================================================
+       BENEFITS / STATS BAR
+       ============================================================ */
+    .zoho-stats-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--color-border); border-radius: var(--radius-md); overflow: hidden;
+    }
+    .zoho-stat-box {
+      background: var(--color-bg-card); padding: 36px 24px; text-align: center;
+      transition: background 0.25s;
+    }
+    .zoho-stat-box:hover { background: rgba(19,21,28,0.9); }
+    .zoho-stat-num {
+      font-family: 'Unbounded', sans-serif; font-size: 32px; font-weight: 900;
+      background: var(--gradient-brand); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+      display: block; margin-bottom: 8px;
+    }
+    .zoho-stat-label { font-size: 14px; font-weight: 600; color: var(--color-text); margin-bottom: 6px; display: block; }
+    .zoho-stat-desc { font-size: 12px; color: var(--color-text-muted); line-height: 1.5; }
+
+    /* ============================================================
+       WHY BLACTEC SECTION
+       ============================================================ */
+    .zoho-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .zoho-why-card {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg); padding: 32px 28px;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .zoho-why-card:hover { transform: translateY(-4px); border-color: var(--color-border-hover); box-shadow: var(--shadow-card); }
+    .zoho-why-icon {
+      width: 52px; height: 52px; border-radius: var(--radius-md);
+      background: rgba(124,92,252,0.12); border: 1px solid rgba(124,92,252,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .zoho-why-card h3 { font-family: 'Unbounded', sans-serif; font-size: 16px; font-weight: 700; color: var(--color-text); margin-bottom: 10px; }
+    .zoho-why-card p { font-size: 14px; color: var(--color-text-muted); line-height: 1.65; }
+
+    /* ============================================================
+       CTA BANNER
+       ============================================================ */
+    .zoho-cta-banner {
+      background: linear-gradient(135deg, rgba(124,92,252,0.12) 0%, rgba(0,229,255,0.06) 50%, rgba(66,133,244,0.08) 100%);
+      border-top: 1px solid rgba(124,92,252,0.2); border-bottom: 1px solid rgba(124,92,252,0.2);
+      padding: 80px 0;
+    }
+    .zoho-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .zoho-cta-text h2 { font-family: 'Unbounded', sans-serif; font-size: clamp(22px, 3vw, 36px); font-weight: 800; color: var(--color-text); margin-bottom: 10px; letter-spacing: -0.3px; }
+    .zoho-cta-text p { font-size: 16px; color: var(--color-text-secondary); max-width: 480px; }
+    .zoho-cta-actions { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+
+    /* ============================================================
+       FAQ
+       ============================================================ */
+    .zoho-faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .zoho-faq-item {
+      background: var(--color-bg-card); border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); overflow: hidden; transition: border-color 0.25s;
+    }
+    .zoho-faq-item.open { border-color: rgba(124,92,252,0.4); }
+    .zoho-faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; cursor: pointer; user-select: none; gap: 16px; width: 100%;
+    }
+    .zoho-faq-question span { font-size: 16px; font-weight: 600; color: var(--color-text); text-align: left; }
+    .zoho-faq-icon {
+      width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%;
+      background: rgba(124,92,252,0.1); border: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: var(--color-primary); transition: transform 0.3s, background 0.25s;
+    }
+    .zoho-faq-item.open .zoho-faq-icon { transform: rotate(45deg); background: var(--color-primary); color: #fff; }
+    .zoho-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .zoho-faq-item.open .zoho-faq-answer { max-height: 500px; }
+    .zoho-faq-answer p { padding: 0 24px 20px; font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; }
+
+    /* ============================================================
+       SCROLL TOP & WHATSAPP FAB
+       ============================================================ */
+    /* ============================================================
+       SCROLL TO TOP BUTTON
+       ============================================================ */
+    #scrollTop {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gradient-brand);
+      color: #fff;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px var(--color-primary-glow);
+      z-index: 7000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    }
+    #scrollTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    #scrollTop:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--color-primary-glow); }
+
+    /* ============================================================
+       WHATSAPP FAB
+       ============================================================ */
+    #whatsappFab {
+      position: fixed;
+      bottom: 90px;
+      right: 32px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 7001;
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    #whatsappFab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.55); }
+    #whatsappFab::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid rgba(37,211,102,0.5);
+      animation: waPulse 2.5s ease-out infinite;
+    }
+    @keyframes waPulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    @media (max-width: 480px) {
+      #whatsappFab { bottom: 76px; right: 20px; width: 46px; height: 46px; font-size: 22px; }
+      #scrollTop { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+    }
+100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    
+    .footer-brand-logo { font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 24px; color: var(--color-text); margin-bottom: 16px; display: block; }
+    .footer-brand-logo .lac { color: var(--color-primary); }
+    .footer-brand-desc { font-size: 14px; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 24px; max-width: 280px; }
+    .footer-socials { display: flex; gap: 12px; margin-bottom: 24px; }
+    .footer-social {
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      background: var(--color-bg-glass); border: 1px solid var(--color-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--color-text-secondary); transition: all 0.2s;
+    }
+    .footer-social:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-2px); }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: var(--color-text); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; color: var(--color-text-muted); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--color-primary); }
+    .footer-bottom {
+      border-top: 1px solid var(--color-border); padding: 24px 0;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { font-size: 13px; color: var(--color-text-muted); }
+    .footer-bottom-links { display: flex; align-items: center; gap: 20px; }
+    .footer-bottom-links a { font-size: 13px; color: var(--color-text-muted); transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--color-primary); }
+    
+
+
+    /* ============================================================
+       FOOTER LAYOUT
+       ============================================================ */
+    #footer { background: #060709; border-top: 1px solid var(--color-border); padding: 80px 0 0; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 64px;
+    }
+    @media (max-width: 1100px) {
+      .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Hide scrollbars site-wide while maintaining scroll functionality */
+    *::-webkit-scrollbar { display: none; }
+    * { -ms-overflow-style: none; scrollbar-width: none; }
+
+  </style>
+  <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div id="pageLoader" role="status" aria-label="Loading">
+  <div class="loader-logo">blac<span class="lac">tec</span>.</div>
+</div>
+
+<!-- Scroll to Top -->
+
+
+<!-- WhatsApp FAB -->
+
+
+<!-- ============================================================
+     STICKY NAVBAR
+     ============================================================ -->
+
+<header>
+  <nav id="navbar" class="scrolled" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="index.html" class="nav-logo" aria-label="BlacTec Home">blac<span class="logo-accent">tec</span>.</a>
+
+        <!-- Desktop Nav -->
+                <ul class="nav-links" role="list">
+          <!-- BUILD (Web & App Development — #1 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Build
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+                <div class="nav-dropdown-text"><strong>Web &amp; App Development</strong><span>Custom websites, web apps &amp; digital platforms</span></div>
+              </a>
+              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔄</span>
+                <div class="nav-dropdown-text"><strong>Website Redesign</strong><span>Modernise &amp; rebuild your existing site</span></div>
+              </a>
+              <a href="ecommerce-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🛒</span>
+                <div class="nav-dropdown-text"><strong>E-commerce Development</strong><span>Online stores with MoMo &amp; Airtel integration</span></div>
+              </a>
+              <a href="wordpress-development.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
+                <div class="nav-dropdown-text"><strong>WordPress Development</strong><span>CMS-powered websites &amp; blogs</span></div>
+              </a>
+              <a href="website-maintenance.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔧</span>
+                <div class="nav-dropdown-text"><strong>Website Maintenance</strong><span>Updates, backups &amp; ongoing support</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- EMAIL SOLUTIONS (#2 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Email
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="business-email.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">✉️</span>
+                <div class="nav-dropdown-text"><strong>Business Email</strong><span>Professional @yourdomain.ug addresses</span></div>
+              </a>
+              <a href="google-workspace.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+</svg></span>
+                <div class="nav-dropdown-text"><strong>Google Workspace</strong><span>Gmail, Drive, Meet &amp; more for teams</span></div>
+              </a>
+              <a href="zoho-mail.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#ffffff" stroke-width="2" fill="none"/></svg></span>
+                <div class="nav-dropdown-text"><strong>Zoho Mail</strong><span>Ad-free, secure email &amp; workplace</span></div>
+              </a>
+              <a href="microsoft-365.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg></span>
+                <div class="nav-dropdown-text"><strong>Microsoft 365</strong><span>Word, Excel, Teams &amp; Outlook</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- HOSTING (#3 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Hosting
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🌐</span>
+                <div class="nav-dropdown-text"><strong>Web Hosting</strong><span>Shared Linux hosting with cPanel</span></div>
+              </a>
+              <a href="wordpress-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
+                <div class="nav-dropdown-text"><strong>WordPress Hosting</strong><span>Managed WordPress with 1-click install</span></div>
+              </a>
+              <a href="vps-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">⚡</span>
+                <div class="nav-dropdown-text"><strong>VPS Hosting</strong><span>Full root access, scalable resources</span></div>
+              </a>
+              <a href="cloud-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">☁️</span>
+                <div class="nav-dropdown-text"><strong>Cloud Hosting</strong><span>Scale fast with cloud infrastructure</span></div>
+              </a>
+              <a href="reseller-hosting.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🏢</span>
+                <div class="nav-dropdown-text"><strong>Reseller Hosting</strong><span>Start your own hosting business</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- DOMAINS (#4) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Domains
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="domain-search.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔍</span>
+                <div class="nav-dropdown-text"><strong>Domain Search</strong><span>Find &amp; register your perfect domain</span></div>
+              </a>
+              <a href="ug-domains.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🇺🇬</span>
+                <div class="nav-dropdown-text"><strong>.UG Domains</strong><span>Official Uganda country domain</span></div>
+              </a>
+              <a href="domain-transfer.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔁</span>
+                <div class="nav-dropdown-text"><strong>Domain Transfer</strong><span>Move your domain to BlacTec</span></div>
+              </a>
+              <a href="whois-privacy.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔒</span>
+                <div class="nav-dropdown-text"><strong>Free WHOIS Privacy</strong><span>Protect your registration info</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- MORE (#5) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              More
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="ssl-certificates.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔒</span>
+                <div class="nav-dropdown-text"><strong>SSL Certificates</strong><span>Encrypt &amp; secure your website</span></div>
+              </a>
+              <a href="seo-services.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔍</span>
+                <div class="nav-dropdown-text"><strong>SEO Services</strong><span>Rank higher on Google Search</span></div>
+              </a>
+              <a href="bulk-sms.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">💬</span>
+                <div class="nav-dropdown-text"><strong>Bulk SMS</strong><span>Reach customers via SMS marketing</span></div>
+              </a>
+              <a href="website-security.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🛡️</span>
+                <div class="nav-dropdown-text"><strong>Website Security</strong><span>Firewalls, malware scanning &amp; protection</span></div>
+              </a>
+            </div>
+          </li>
+          <li><a href="index.html#about" class="nav-link-plain">About</a></li>
+        </ul>
+
+        <!-- Nav Right -->
+        <div class="nav-right">
+          <a href="index.html#pricing" class="btn btn-primary" style="display:none;" id="desktopGetStarted">Get Started</a>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <!-- BUILD -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-build" tabindex="0">Build
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-build">
+      <a href="web-development.html" class="mobile-sub-link">💻 Web &amp; App Development</a>
+      <a href="web-development.html" class="mobile-sub-link">🔄 Website Redesign</a>
+      <a href="ecommerce-development.html" class="mobile-sub-link">🛒 E-commerce Development</a>
+      <a href="wordpress-development.html" class="mobile-sub-link">📝 WordPress Development</a>
+      <a href="website-maintenance.html" class="mobile-sub-link">🔧 Website Maintenance</a>
+    </div>
+  </div>
+  <!-- EMAIL -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-email" tabindex="0">Email
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-email">
+      <a href="business-email.html" class="mobile-sub-link">✉️ Business Email</a>
+      <a href="google-workspace.html" class="mobile-sub-link">🔷 Google Workspace</a>
+      <a href="zoho-mail.html" class="mobile-sub-link">📧 Zoho Mail</a>
+      <a href="microsoft-365.html" class="mobile-sub-link">🏢 Microsoft 365</a>
+    </div>
+  </div>
+  <!-- HOSTING -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-hosting" tabindex="0">Hosting
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-hosting">
+      <a href="web-hosting.html" class="mobile-sub-link">🌐 Web Hosting</a>
+      <a href="wordpress-hosting.html" class="mobile-sub-link">🎯 WordPress Hosting</a>
+      <a href="vps-hosting.html" class="mobile-sub-link">⚡ VPS Hosting</a>
+      <a href="cloud-hosting.html" class="mobile-sub-link">☁️ Cloud Hosting</a>
+      <a href="reseller-hosting.html" class="mobile-sub-link">🏢 Reseller Hosting</a>
+    </div>
+  </div>
+  <!-- DOMAINS -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-domain" tabindex="0">Domains
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-domain">
+      <a href="domain-search.html" class="mobile-sub-link">🔍 Domain Search</a>
+      <a href="ug-domains.html" class="mobile-sub-link">🇺🇬 .UG Domains</a>
+      <a href="domain-transfer.html" class="mobile-sub-link">🔁 Domain Transfer</a>
+      <a href="whois-privacy.html" class="mobile-sub-link">🔒 Free WHOIS Privacy</a>
+    </div>
+  </div>
+  <!-- MORE -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-more" tabindex="0">More
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-more">
+      <a href="ssl-certificates.html" class="mobile-sub-link">🔒 SSL Certificates</a>
+      <a href="seo-services.html" class="mobile-sub-link">🔍 SEO Services</a>
+      <a href="bulk-sms.html" class="mobile-sub-link">💬 Bulk SMS</a>
+      <a href="website-security.html" class="mobile-sub-link">🛡️ Website Security</a>
+    </div>
+  </div>
+  <a href="index.html#about" class="mobile-nav-plain">About</a>
+  <div class="mobile-nav-buttons">
+    <a href="web-development.html" class="btn btn-primary">Start Your Project</a>
+  </div>
+</div>
+
+<main>
+  <style>
+    .zoho-hero-dashboard { box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(230, 57, 70, 0.15); }
+    .gemini-sparkle-icon { display: none; } /* hide gemini */
+    .fa-gmail { background: #e63946 !important; color: white; border-radius: 8px; }
+    .fa-drive { background: #fca311 !important; color: white; border-radius: 8px; }
+    .fa-docs { background: #14213d !important; color: white; border-radius: 8px; }
+    .fa-gemini { display: none; }
+    .zoho-sc-mail-avatar { background: #14213d; }
+  
+    /* ============================================================
+       PREMIUM HERO THEME (Propagated)
+       ============================================================ */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-hero);
+      z-index: 0;
+    }
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      animation: blobFloat 12s ease-in-out infinite;
+    }
+    .hero-blob-1 { width: 500px; height: 500px; background: rgba(124,92,252,0.18); top: -10%; left: 20%; animation-delay: 0s; }
+    .hero-blob-2 { width: 350px; height: 350px; background: rgba(0,229,255,0.10); top: 30%; right: 10%; animation-delay: 4s; }
+    @keyframes blobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(20px,-20px) scale(1.05); }
+    }
+    .hero-icons-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 5; opacity: 0.5; }
+    .hero-icon {
+      position: absolute; width: 60px; height: 60px;
+      border: 1.5px solid var(--color-primary); border-radius: 12px;
+      background: rgba(124,92,252,0.1); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: heroIconFloat 6s ease-in-out infinite;
+      color: var(--color-primary);
+    }
+    .hi-1 { top: 18%; left: 10%; animation-delay: 0s; }
+    .hi-2 { bottom: 25%; left: 15%; animation-delay: 2s; }
+    .hi-3 { top: 25%; right: 10%; animation-delay: 4s; }
+    @keyframes heroIconFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-15px) rotate(4deg); }
+    }
+    .hero-particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      animation: particleFloat linear infinite;
+    }
+    @keyframes particleFloat {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
+    }
+</style>
+
+  <!-- Hero Section -->
+  <section class="section" style="padding-top: 180px; padding-bottom: 80px; overflow: visible; position: relative;">
+    
+    <div class="hero-bg"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-icons-wrap">
+      <div class="hero-icon hi-1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6M12 5v14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="hero-icon hi-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="hero-icon hi-3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    </div>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 50px; border: 1px solid var(--color-border); margin-bottom: 24px;">
+            <span style="font-size: 16px;">📧</span>
+            <span style="font-size: 12px; font-weight: 600; color: var(--color-text); letter-spacing: 0.05em; text-transform: uppercase;">Secure Business Email</span>
+          </div>
+          <h1 style="font-family: 'Unbounded', sans-serif; font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: var(--color-text); line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px;">
+            Ad-free, secure email with <span style="background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Zoho Mail</span>
+          </h1>
+          <p style="font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 40px; max-width: 480px;">
+            Experience unparalleled privacy with Zoho Mail and collaborate seamlessly with Zoho Workplace. Affordable, secure, and reliable email plans for businesses of all sizes.
+          </p>
+          <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+            <a href="#zoho-pricing" class="btn btn-primary" style="padding: 16px 32px; font-size: 15px;">View Zoho Plans</a>
+            <p style="font-size: 13px; color: var(--color-text-muted); display: flex; align-items: center; gap: 6px;"><span class="zoho-plan-check">✓</span> Guaranteed Ad-Free</p>
+            <p style="font-size: 13px; color: var(--color-text-muted); display: flex; align-items: center; gap: 6px;"><span class="zoho-plan-check">✓</span> Privacy First</p>
+          </div>
+        </div>
+
+        <div class="zoho-hero-dashboard">
+          <div class="zoho-dash-header">
+            <div class="zoho-mockup-dots" style="display:flex;gap:6px;">
+              <span class="zoho-mockup-dot" style="width:10px;height:10px;border-radius:50%;background:#FF5F57;"></span>
+              <span class="zoho-mockup-dot" style="width:10px;height:10px;border-radius:50%;background:#FFBD2E;"></span>
+              <span class="zoho-mockup-dot" style="width:10px;height:10px;border-radius:50%;background:#28C940;"></span>
+            </div>
+            <div class="zoho-mockup-address">mail.zoho.com</div>
+          </div>
+          <div class="zoho-dash-body">
+            <div class="zoho-dash-sidebar">
+              <span style="font-size: 20px; color: var(--color-primary);">✉️</span>
+              <span style="font-size: 20px; color: var(--color-text-muted);">📅</span>
+              <span style="font-size: 20px; color: var(--color-text-muted);">📋</span>
+              <span style="font-size: 20px; color: var(--color-text-muted);">📁</span>
+            </div>
+            <div class="zoho-dash-main">
+              <div class="dash-email-sub">Inbox (12)</div>
+              
+              <!-- Email 1 -->
+              <div class="zoho-email-row unread" style="display:flex; gap:16px; align-items:center; border-bottom:1px solid #eee; padding-bottom:12px; margin-bottom:12px;">
+                <div class="zoho-email-avatar-sm" style="background:var(--color-primary);">K</div>
+                <div class="zoho-email-info">
+                  <span class="zoho-sender">Kevin Mgongo</span>
+                  <span class="zoho-subject">Q3 Marketing Report & Analytics...</span>
+                </div>
+                <div class="zoho-email-time">10:42 AM</div>
+              </div>
+
+              <!-- Email 2 -->
+              <div class="zoho-email-row" style="display:flex; gap:16px; align-items:center;">
+                <div class="zoho-email-avatar-sm" style="background:#fca311;">A</div>
+                <div class="zoho-email-info">
+                  <span class="zoho-sender">Alice Security</span>
+                  <span class="zoho-subject">Your monthly security report is ready</span>
+                </div>
+                <div class="zoho-email-time">Yesterday</div>
+              </div>
+            </div>
+          </div>
+          <div class="zoho-mockup-compose">✏️ Compose</div>
+
+          <!-- Floating App Icons -->
+          <div class="zoho-floating-app zoho-mail"><svg width="48" height="48" viewBox="0 0 48 48"><rect width="40" height="32" x="4" y="8" fill="#e63946" rx="4"/><path fill="#fff" d="M44 12L24 28 4 12" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+          <div class="zoho-floating-app zoho-workdrive"><svg width="48" height="48" viewBox="0 0 48 48"><path fill="#fca311" d="M24 4L4 14v20l20 10 20-10V14L24 4z"/><path fill="#fff" d="M24 14l-8 8 8 8 8-8-8-8z"/></svg></div>
+          <div class="zoho-floating-app zoho-office"><svg width="48" height="48" viewBox="0 0 48 48"><rect width="32" height="40" x="8" y="4" fill="#14213d" rx="2"/><path fill="#fff" d="M14 12h20v2H14zM14 18h20v2H14zM14 24h14v2H14z"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Grid Section -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Unmatched Privacy & Tools</h2>
+        <p>Everything your business needs to communicate, collaborate, and manage data securely under one roof.</p>
+      </div>
+
+      <div class="zoho-tools-grid">
+        <div class="zoho-tool-card">
+          <div class="zoho-tool-icon"><svg width="48" height="48" viewBox="0 0 48 48"><rect width="40" height="32" x="4" y="8" fill="#e63946" rx="4"/><path d="M44 12L24 28 4 12" stroke="#fff" stroke-width="3" fill="none"/></svg></div>
+          <h3>Zoho Mail</h3>
+          <p>Enterprise-grade, secure, and ad-free email with custom domains.</p>
+        </div>
+        <div class="zoho-tool-card">
+          <div class="zoho-tool-icon"><svg width="48" height="48" viewBox="0 0 48 48"><path fill="#fca311" d="M24 8L8 16v16l16 8 16-8V16L24 8z"/><path fill="#fff" d="M24 15l-7 7 7 7 7-7-7-7z"/></svg></div>
+          <h3>WorkDrive</h3>
+          <p>A secure hub for your team to store, share, and manage workplace files.</p>
+        </div>
+        <div class="zoho-tool-card">
+          <div class="zoho-tool-icon"><svg width="48" height="48" viewBox="0 0 48 48"><path fill="#0078d4" d="M8 8h32v24H8z"/><path fill="#fff" d="M16 16h16v2H16zm0 4h16v2H16zm0 4h10v2H16z"/><path fill="#0078d4" d="M12 32l-4 8 8-4h24V12H12v20z"/></svg></div>
+          <h3>Zoho Cliq</h3>
+          <p>Instant messaging, group chats, and unified business communication.</p>
+        </div>
+        <div class="zoho-tool-card">
+          <div class="zoho-tool-icon"><svg width="48" height="48" viewBox="0 0 48 48"><rect width="32" height="40" x="8" y="4" fill="#14213d" rx="4"/><path fill="#fca311" d="M14 14h10v2H14zm0 6h20v2H14zm0 6h20v2H14zm0 6h14v2H14z"/></svg></div>
+          <h3>Zoho Office</h3>
+          <p>Collaborative word processor, spreadsheets, and presentation software.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section" id="zoho-pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple, Powerful Pricing</h2>
+        <p>Choose the Zoho plan that perfectly aligns with your team’s size and collaboration needs.</p>
+      </div>
+
+      <div class="zoho-pricing-grid">
+        <!-- Mail Lite -->
+        <div class="zoho-plan-card">
+          <div class="zoho-plan-icon">✉️</div>
+          <h3 class="zoho-plan-name">Mail Lite</h3>
+          <p class="zoho-plan-tagline">Essential custom email</p>
+          <div class="zoho-plan-price-wrap">
+            <span class="zoho-plan-price-cur">$</span>
+            <span class="zoho-plan-price">1.00</span>
+          </div>
+          <p class="zoho-plan-period">per user / month (annually)</p>
+          <a href="#services" class="btn btn-ghost zoho-plan-cta">Select Mail Lite</a>
+          <ul class="zoho-plan-features">
+            <li><span class="zoho-plan-check">✓</span> <strong>5GB to 10GB</strong> mail storage</li>
+            <li><span class="zoho-plan-check">✓</span> Enterprise-grade custom email</li>
+            <li><span class="zoho-plan-check">✓</span> Shared calendars & contacts</li>
+            <li><span class="zoho-plan-check">✓</span> Mobile & Desktop Apps</li>
+            <li><span class="zoho-plan-check">✓</span> Aliases & group routing</li>
+          </ul>
+        </div>
+
+        <!-- Mail Premium -->
+        <div class="zoho-plan-card popular">
+          <span class="zoho-popular-badge">High Limit</span>
+          <div class="zoho-plan-icon">⭐</div>
+          <h3 class="zoho-plan-name">Mail Premium</h3>
+          <p class="zoho-plan-tagline">Advanced email archiving</p>
+          <div class="zoho-plan-price-wrap">
+            <span class="zoho-plan-price-cur">$</span>
+            <span class="zoho-plan-price">4.00</span>
+          </div>
+          <p class="zoho-plan-period">per user / month (annually)</p>
+          <a href="#services" class="btn btn-primary zoho-plan-cta">Select Premium</a>
+          <ul class="zoho-plan-features">
+            <li><span class="zoho-plan-check">✓</span> <strong>50GB</strong> mail storage</li>
+            <li><span class="zoho-plan-check">✓</span> Email Retention & eDiscovery</li>
+            <li><span class="zoho-plan-check">✓</span> S-MIME & Encryption</li>
+            <li><span class="zoho-plan-check">✓</span> Huge Attachments feature</li>
+            <li><span class="zoho-plan-check">✓</span> Account backup & recovery</li>
+          </ul>
+        </div>
+
+        <!-- Workplace Standard -->
+        <div class="zoho-plan-card">
+          <div class="zoho-plan-icon">🏢</div>
+          <h3 class="zoho-plan-name">Workplace Standard</h3>
+          <p class="zoho-plan-tagline">Complete collaboration suite</p>
+          <div class="zoho-plan-price-wrap">
+            <span class="zoho-plan-price-cur">$</span>
+            <span class="zoho-plan-price">3.00</span>
+          </div>
+          <p class="zoho-plan-period">per user / month (annually)</p>
+          <a href="#services" class="btn btn-ghost zoho-plan-cta">Select Workplace</a>
+          <ul class="zoho-plan-features">
+            <li><span class="zoho-plan-check">✓</span> <strong>30GB</strong> mail storage per user</li>
+            <li><span class="zoho-plan-check">✓</span> <strong>100GB</strong> shared WorkDrive storage</li>
+            <li><span class="zoho-plan-check">✓</span> Zoho Cliq for team chat</li>
+            <li><span class="zoho-plan-check">✓</span> Zoho Writer, Sheet, & Show</li>
+            <li><span class="zoho-plan-check">✓</span> Video meetings via Zoho Meeting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div>
+        <span class="footer-brand-logo">blac<span class="lac">tec</span>.</span>
+        <p class="footer-brand-desc">Building the Digital Future — Africa's leading web development, email solutions &amp; hosting provider. Based in Kampala, serving businesses across East Africa.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" aria-label="Twitter/X">𝕏</a>
+          <a href="#" class="footer-social" aria-label="Facebook">f</a>
+          <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
+          <a href="#" class="footer-social" aria-label="Instagram">◎</a>
+        </div>
+        <p style="font-size:12px;color:var(--color-text-muted);">© 2026 BlacTec. All rights reserved.</p>
+      </div>
+
+      <!-- Build (Web Dev — #1 priority) -->
+      <div class="footer-col">
+        <h4>Build</h4>
+        <ul>
+          <li><a href="web-development.html">Web &amp; App Development</a></li>
+          <li><a href="web-development.html">Website Redesign</a></li>
+          <li><a href="ecommerce-development.html">E-commerce Development</a></li>
+          <li><a href="wordpress-development.html">WordPress Development</a></li>
+          <li><a href="website-maintenance.html">Website Maintenance</a></li>
+        </ul>
+      </div>
+
+      <!-- Email & Solutions (#2 priority) -->
+      <div class="footer-col">
+        <h4>Email &amp; Solutions</h4>
+        <ul>
+          <li><a href="business-email.html">Business Email</a></li>
+          <li><a href="google-workspace.html">Google Workspace</a></li>
+          <li><a href="zoho-mail.html"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#fff" stroke-width="2" fill="none"/></svg>Zoho Mail</a></li>
+          <li><a href="microsoft-365.html"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg>Microsoft 365</a></li>
+          <li><a href="ssl-certificates.html">SSL Certificates</a></li>
+        </ul>
+      </div>
+
+      <!-- Hosting & Domains (#3 priority) -->
+      <div class="footer-col">
+        <h4>Hosting &amp; Domains</h4>
+        <ul>
+          <li><a href="web-hosting.html">Shared Hosting</a></li>
+          <li><a href="wordpress-hosting.html">WordPress Hosting</a></li>
+          <li><a href="vps-hosting.html">VPS Hosting</a></li>
+          <li><a href="cloud-hosting.html">Cloud Hosting</a></li>
+          <li><a href="domain-search.html">Domain Registration</a></li>
+          <li><a href="ug-domains.html">.UG Domains</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About BlacTec</a></li>
+          <li><a href="index.html#contact">Our Portfolio</a></li>
+          <li><a href="https://wa.me/256750870755">Help Center</a></li>
+          <li><a href="index.html#contact">Privacy Policy</a></li>
+          <li><a href="index.html#contact">Terms of Service</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 BlacTec Technologies Ltd. Kampala, Uganda.</span>
+      <div class="footer-bottom-links">
+        <a href="index.html#contact">Privacy</a>
+        <a href="index.html#contact">Terms</a>
+        <a href="https://wa.me/256750870755">Support</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button id="scrollTop" aria-label="Scroll to top" title="Back to top">↑</button>
+
+<!-- WhatsApp FAB -->
+<a id="whatsappFab"
+   href="https://wa.me/256750870755?text=Hi%20BlacTec%2C%20I%27m%20interested%20in%20your%20services"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp"
+   title="Chat with us on WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.127.554 4.195 1.604 6.015L.135 23.39l5.485-1.439a11.986 11.986 0 0 0 6.411 1.84h.005c6.645 0 12.03-5.385 12.03-12.03 0-3.218-1.254-6.248-3.533-8.528A12.001 12.001 0 0 0 12.031 0zm0 21.785h-.003a9.986 9.986 0 0 1-5.088-1.385l-.364-.216-3.784.992.997-3.69-.236-.375A9.957 9.957 0 0 1 2.016 12.03c0-5.525 4.496-10.021 10.017-10.021 2.678 0 5.195 1.042 7.087 2.936a10.018 10.018 0 0 1 2.932 7.085c-.001 5.523-4.498 10.02-10.02 10.02zm5.495-7.51c-.302-.15-1.787-.882-2.062-.982-.275-.1-.475-.15-.675.15-.201.3-.775.981-.95 1.182-.176.2-.351.225-.652.075-2.01-1.008-3.356-2.046-4.321-3.673-.102-.175.049-.247.199-.396.126-.126.275-.326.401-.501.126-.175.176-.3.251-.5.075-.2.038-.376-.038-.526-.075-.15-.675-1.626-.925-2.226-.244-.585-.492-.505-.675-.514-.175-.01-.375-.01-.575-.01s-.526.075-.801.375c-.275.3-1.051 1.026-1.051 2.502s1.076 2.898 1.226 3.098c.15.2 2.115 3.226 5.12 4.526 2.052.887 2.87.973 3.993.826 1.003-.131 3.078-1.258 3.504-2.472.426-1.215.426-2.257.301-2.472-.125-.215-.475-.34-.776-.49z"/></svg></a>
+
+
+
+
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* 1. PAGE LOADER */
+  window.addEventListener('load', function () {
+    var loader = document.getElementById('pageLoader');
+    if (loader) {
+      setTimeout(function () { loader.classList.add('loaded'); }, 300);
+    }
+  });
+
+  /* 2. NAVBAR SCROLL */
+  var navbar = document.getElementById('navbar');
+  var desktopGetStarted = document.getElementById('desktopGetStarted');
+
+  function updateDesktopButtons() {
+    if (!desktopGetStarted) return;
+    var show = window.innerWidth >= 1024;
+    desktopGetStarted.style.display = show ? 'inline-flex' : 'none';
+  }
+  updateDesktopButtons();
+  window.addEventListener('resize', updateDesktopButtons);
+
+  window.addEventListener('scroll', function () {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  }, { passive: true });
+
+  /* 3. MOBILE HAMBURGER */
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', function () {
+    var isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    mobileNav.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  mobileNav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+
+  /* Toggle mobile sub-links */
+  document.querySelectorAll('.mobile-nav-header').forEach(function (header) {
+    header.addEventListener('click', function () {
+      var subLinks = header.nextElementSibling;
+      var isOpen = subLinks.classList.toggle('open');
+      header.classList.toggle('open', isOpen);
+    });
+  });
+
+
+  /* 4. SCROLL TO TOP */
+  document.getElementById('scrollTop').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* 5. FAQ ACCORDION */
+  document.querySelectorAll('.zoho-faq-question').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.zoho-faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.zoho-faq-item').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.zoho-faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* 6. SCROLL ANIMATIONS */
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
+      el.classList.add('visible');
+    });
+  }
+
+  /* 7. SMOOTH SCROLL */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offset = 80;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+})();
+</script>
+
+
+    <script>
+    function initParticles() {
+      const container = document.getElementById('heroParticles');
+      if(!container) return;
+      const particleCount = 20;
+      for(let i=0; i<particleCount; i++){
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 3 + 2;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.background = 'rgba(124,92,252,' + (Math.random() * 0.3 + 0.1) + ')';
+        p.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        p.style.animationDelay = (Math.random() * 5) + 's';
+        container.appendChild(p);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initParticles);
+    </script>
+    </body>
+</html>

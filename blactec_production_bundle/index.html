@@ -1624,169 +1624,57 @@
       margin-bottom: 8px;
     }
     .contact-form-box .sub { font-size: 15px; color: var(--color-text-secondary); margin-bottom: 36px; }
-    
-    .premium-form-wrap {
-      background: var(--color-bg-card);
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      letter-spacing: 0.03em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--color-bg-glass);
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
-      position: relative;
-      overflow: hidden;
-    }
-    .premium-form-wrap::before {
-      content: '';
-      position: absolute;
-      top: -100px; left: -100px;
-      width: 300px; height: 300px;
-      background: var(--color-primary-glow);
-      filter: blur(80px);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
-    
-    .premium-group {
-      position: relative;
-      margin-bottom: 20px;
-      z-index: 1;
-    }
-    .premium-group input,
-    .premium-group textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.02);
-      border: 1.5px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-md);
-      padding: 24px 20px 10px 20px;
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
       font-size: 15px;
       color: var(--color-text);
       font-family: 'DM Sans', sans-serif;
       outline: none;
-      transition: all 0.3s ease;
+      transition: border-color 0.25s, box-shadow 0.25s;
       appearance: none;
     }
-    .premium-group textarea { resize: vertical; min-height: 120px; }
-    .premium-group label {
-      position: absolute;
-      left: 20px;
-      top: 18px;
-      font-size: 15px;
-      color: var(--color-text-secondary);
-      pointer-events: none;
-      transition: all 0.25s ease;
-    }
-    .premium-group input:focus,
-    .premium-group textarea:focus {
-      background: rgba(124,92,252,0.05);
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
       border-color: var(--color-primary);
-      box-shadow: 0 0 0 4px rgba(124,92,252,0.1);
+      box-shadow: 0 0 0 3px rgba(124,92,252,0.15);
     }
-    .premium-group input:focus ~ label,
-    .premium-group input:not(:placeholder-shown) ~ label,
-    .premium-group textarea:focus ~ label,
-    .premium-group textarea:not(:placeholder-shown) ~ label {
-      top: 6px;
-      font-size: 11px;
-      color: var(--color-primary);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-    
-    .select-group label {
-      position: static;
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--color-text-secondary);
-      margin-bottom: 8px;
-      margin-left: 4px;
-      letter-spacing: 0.05em;
-      pointer-events: auto;
-      text-transform: uppercase;
-    }
-    .select-wrapper {
-      position: relative;
-    }
-    .select-wrapper::after {
-      content: '▼';
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--color-text-secondary);
-      pointer-events: none;
-      font-size: 12px;
-    }
-    .premium-group select {
-      width: 100%;
-      background: rgba(255,255,255,0.02);
-      border: 1.5px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      font-size: 15px;
-      color: var(--color-text);
-      font-family: 'DM Sans', sans-serif;
-      outline: none;
-      transition: all 0.3s ease;
-      appearance: none;
-      cursor: pointer;
-    }
-    .premium-group select:focus {
-      background: rgba(124,92,252,0.05);
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 4px rgba(124,92,252,0.1);
-    }
-    .premium-group select option { background: var(--color-bg-card); color: var(--color-text); }
-    
-    .form-error { font-size: 12px; color: #f87171; margin-top: 6px; display: none; margin-left: 4px; }
-    .premium-group.has-error input,
-    .premium-group.has-error select,
-    .premium-group.has-error textarea { border-color: #f87171; }
-    .premium-group.has-error .form-error { display: block; }
-    
-    .contact-submit { 
-      width: 100%; 
-      justify-content: center; 
-      margin-top: 10px; 
-      padding: 18px 32px;
-      font-size: 16px;
-      border-radius: var(--radius-md);
-    }
-    
+    .form-group select option { background: var(--color-bg-alt); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-error { font-size: 12px; color: #f87171; margin-top: 4px; display: none; }
+    .form-group.has-error input,
+    .form-group.has-error select,
+    .form-group.has-error textarea { border-color: #f87171; }
+    .form-group.has-error .form-error { display: block; }
+    .contact-submit { width: 100%; justify-content: center; margin-top: 8px; }
     .contact-success {
       display: none;
       background: rgba(74,222,128,0.08);
       border: 1px solid rgba(74,222,128,0.3);
-      border-radius: var(--radius-lg);
-      padding: 40px 32px;
+      border-radius: var(--radius-md);
+      padding: 24px;
       text-align: center;
-      box-shadow: var(--shadow-card);
-      backdrop-filter: blur(10px);
-    }
-    .success-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: rgba(74,222,128,0.15);
+      font-size: 16px;
       color: #4ade80;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 32px;
-    }
-    .success-title {
-      font-family: 'Unbounded', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .success-desc {
-      font-size: 15px;
-      color: var(--color-text-secondary);
-      line-height: 1.6;
+      font-weight: 500;
     }
 
     /* Contact info panel */
@@ -2968,61 +2856,52 @@
         <div class="contact-form-box animate-on-scroll">
           <h2 id="contact-heading">Get In Touch</h2>
           <p class="sub">Have a question? Ready to start your project? Our team in Kampala is here to help.</p>
-          <div id="contactFormWrap" class="premium-form-wrap">
-            <form id="contactForm">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_subject" value="New Contact Inquiry from BlacTec Website">
-              <div class="form-row">
-                <div class="form-group premium-group" id="fg-name">
-                  <input type="text" id="cName" name="name" placeholder=" " autocomplete="name" required>
-                  <label for="cName">Full Name</label>
-                  <span class="form-error">Please enter your name.</span>
-                </div>
-                <div class="form-group premium-group" id="fg-email">
-                  <input type="email" id="cEmail" name="email" placeholder=" " autocomplete="email" required>
-                  <label for="cEmail">Email Address</label>
-                  <span class="form-error">Please enter a valid email.</span>
-                </div>
+
+          <div id="contactFormWrap">
+            <div class="form-row">
+              <div class="form-group" id="fg-name">
+                <label for="cName">Full Name</label>
+                <input type="text" id="cName" placeholder="Your full name" autocomplete="name">
+                <span class="form-error">Please enter your name.</span>
               </div>
-              <div class="form-group premium-group" id="fg-phone">
-                <input type="tel" id="cPhone" name="phone" placeholder=" " autocomplete="tel" required>
-                <label for="cPhone">Phone / WhatsApp</label>
-                <span class="form-error">Please enter your phone number.</span>
+              <div class="form-group" id="fg-email">
+                <label for="cEmail">Email Address</label>
+                <input type="email" id="cEmail" placeholder="you@example.com" autocomplete="email">
+                <span class="form-error">Please enter a valid email.</span>
               </div>
-              <div class="form-group premium-group select-group" id="fg-service">
-                <label for="cService">Service Interested In</label>
-                <div class="select-wrapper">
-                  <select id="cService" name="service" required>
-                    <option value="" disabled selected>Select a service...</option>
-                    <option value="Web & App Development">Web &amp; App Development</option>
-                    <option value="Website Redesign">Website Redesign</option>
-                    <option value="E-commerce Development">E-commerce Development</option>
-                    <option value="Business Email">Business Email</option>
-                    <option value="Google Workspace">Google Workspace</option>
-                    <option value="Web Hosting">Web Hosting</option>
-                    <option value="Domain Registration">Domain Registration</option>
-                    <option value="SEO Services">SEO Services</option>
-                    <option value="Bulk SMS">Bulk SMS</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <span class="form-error">Please select a service.</span>
-              </div>
-              <div class="form-group premium-group" id="fg-msg">
-                <textarea id="cMessage" name="message" placeholder=" " rows="5" required></textarea>
-                <label for="cMessage">Project details or questions...</label>
-                <span class="form-error">Please enter your message.</span>
-              </div>
-              <button type="submit" class="btn btn-primary contact-submit" id="contactSubmitBtn">
-                <span id="btnText">Send Message</span>
-              </button>
-            </form>
+            </div>
+            <div class="form-group" id="fg-phone">
+              <label for="cPhone">Phone / WhatsApp</label>
+              <input type="tel" id="cPhone" placeholder="+256 750 870755" autocomplete="tel">
+              <span class="form-error">Please enter your phone number.</span>
+            </div>
+            <div class="form-group" id="fg-service">
+              <label for="cService">Service Interested In</label>
+              <select id="cService">
+                <option value="">Select a service...</option>
+                <option>Web &amp; App Development</option>
+                <option>Website Redesign</option>
+                <option>E-commerce Development</option>
+                <option>Business Email</option>
+                <option>Google Workspace</option>
+                <option>Web Hosting</option>
+                <option>Domain Registration</option>
+                <option>SEO Services</option>
+                <option>Bulk SMS</option>
+                <option>Other</option>
+              </select>
+              <span class="form-error">Please select a service.</span>
+            </div>
+            <div class="form-group" id="fg-msg">
+              <label for="cMessage">Message</label>
+              <textarea id="cMessage" placeholder="Tell us about your project or question..." rows="5"></textarea>
+              <span class="form-error">Please enter your message.</span>
+            </div>
+            <button type="button" class="btn btn-primary contact-submit" id="contactSubmitBtn">Send Message</button>
           </div>
 
           <div class="contact-success" id="contactSuccess">
-            <div class="success-icon">✓</div>
-            <div class="success-title">Message Sent</div>
-            <div class="success-desc">Thank you for reaching out! A specialist will get back to you within 2 hours.</div>
+            ✅ Message sent! We'll respond within 2 hours during business hours.
           </div>
         </div>
 
@@ -3069,6 +2948,12 @@
                 <span>Mon–Fri 8AM–6PM, Sat 9AM–2PM (EAT)</span>
               </div>
             </div>
+            <a id="whatsappFab"
+   href="https://wa.me/256750870755?text=Hi%20BlacTec%2C%20I%27m%20interested%20in%20your%20services"
+   target="_blank"
+   rel="noopener" class="btn btn-whatsapp" style="margin-top:8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" style="vertical-align: text-bottom; margin-right: 6px;"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.127.554 4.195 1.604 6.015L.135 23.39l5.485-1.439a11.986 11.986 0 0 0 6.411 1.84h.005c6.645 0 12.03-5.385 12.03-12.03 0-3.218-1.254-6.248-3.533-8.528A12.001 12.001 0 0 0 12.031 0zm0 21.785h-.003a9.986 9.986 0 0 1-5.088-1.385l-.364-.216-3.784.992.997-3.69-.236-.375A9.957 9.957 0 0 1 2.016 12.03c0-5.525 4.496-10.021 10.017-10.021 2.678 0 5.195 1.042 7.087 2.936a10.018 10.018 0 0 1 2.932 7.085c-.001 5.523-4.498 10.02-10.02 10.02zm5.495-7.51c-.302-.15-1.787-.882-2.062-.982-.275-.1-.475-.15-.675.15-.201.3-.775.981-.95 1.182-.176.2-.351.225-.652.075-2.01-1.008-3.356-2.046-4.321-3.673-.102-.175.049-.247.199-.396.126-.126.275-.326.401-.501.126-.175.176-.3.251-.5.075-.2.038-.376-.038-.526-.075-.15-.675-1.626-.925-2.226-.244-.585-.492-.505-.675-.514-.175-.01-.375-.01-.575-.01s-.526.075-.801.375c-.275.3-1.051 1.026-1.051 2.502s1.076 2.898 1.226 3.098c.15.2 2.115 3.226 5.12 4.526 2.052.887 2.87.973 3.993.826 1.003-.131 3.078-1.258 3.504-2.472.426-1.215.426-2.257.301-2.472-.125-.215-.475-.34-.776-.49z"/></svg>Chat on WhatsApp
+            </a>
           </div>
         </div>
       </div>
@@ -3304,11 +3189,9 @@
   /* ============================================================
      6. CONTACT FORM
   ============================================================ */
-  var contactForm = document.getElementById('contactForm');
+  var submitBtn = document.getElementById('contactSubmitBtn');
   var formWrap = document.getElementById('contactFormWrap');
   var successBox = document.getElementById('contactSuccess');
-  var submitBtn = document.getElementById('contactSubmitBtn');
-  var btnText = document.getElementById('btnText');
 
   function validateEmail(email) {
     return /^[^ @]+@[^ @]+\.[^ @]+$/.test(email);
@@ -3321,61 +3204,25 @@
     else g.classList.remove('has-error');
   }
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      
-      var name = document.getElementById('cName').value.trim();
-      var email = document.getElementById('cEmail').value.trim();
-      var phone = document.getElementById('cPhone').value.trim();
-      var service = document.getElementById('cService').value;
-      var msg = document.getElementById('cMessage').value.trim();
-      var valid = true;
+  submitBtn && submitBtn.addEventListener('click', function () {
+    var name = document.getElementById('cName').value.trim();
+    var email = document.getElementById('cEmail').value.trim();
+    var phone = document.getElementById('cPhone').value.trim();
+    var service = document.getElementById('cService').value;
+    var msg = document.getElementById('cMessage').value.trim();
+    var valid = true;
 
-      setError('fg-name', !name); if (!name) valid = false;
-      setError('fg-email', !validateEmail(email)); if (!validateEmail(email)) valid = false;
-      setError('fg-phone', !phone); if (!phone) valid = false;
-      setError('fg-service', !service); if (!service) valid = false;
-      setError('fg-msg', !msg); if (!msg) valid = false;
+    setError('fg-name', !name); if (!name) valid = false;
+    setError('fg-email', !validateEmail(email)); if (!validateEmail(email)) valid = false;
+    setError('fg-phone', !phone); if (!phone) valid = false;
+    setError('fg-service', !service); if (!service) valid = false;
+    setError('fg-msg', !msg); if (!msg) valid = false;
 
-      if (!valid) return;
-
-      // Premium Form Submit Loader
-      submitBtn.disabled = true;
-      btnText.textContent = 'Sending...';
-
-      // Capture all form data including hidden fields
-      var formData = new FormData(contactForm);
-      var payload = Object.fromEntries(formData.entries());
-
-      // Submit via FormSubmit Ajax
-      fetch("https://formsubmit.co/ajax/info@blactec.ug", {
-        method: "POST",
-        headers: { 
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(function(response) {
-        if (!response.ok) throw new Error('Submission failed');
-        return response.json();
-      })
-      .then(function(data) {
-        formWrap.style.display = 'none';
-        successBox.style.display = 'block';
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      })
-      .catch(function(error) {
-        console.error('Error:', error);
-        btnText.textContent = 'Error! Try Again.';
-        submitBtn.disabled = false;
-        setTimeout(function() { 
-          if (btnText) btnText.textContent = 'Send Message'; 
-        }, 3000);
-      });
-    });
-  }
+    if (valid) {
+      formWrap.style.display = 'none';
+      successBox.style.display = 'block';
+    }
+  });
 
   /* ============================================================
      7. SCROLL ANIMATIONS (IntersectionObserver)
