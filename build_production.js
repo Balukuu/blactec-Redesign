@@ -94,10 +94,12 @@ if (fs.existsSync(assetDir)) {
     });
 }
 
-// 6. Copy Root Favicon
-if (fs.existsSync(path.join(rootDir, 'favicon.jpg'))) {
-    fs.copyFileSync(path.join(rootDir, 'favicon.jpg'), path.join(buildDir, 'favicon.jpg'));
-}
+// 6. Copy Root SVG and Image Files
+const rootAssets = fs.readdirSync(rootDir).filter(f => f.endsWith('.svg') || f.endsWith('.png') || f.endsWith('.jpg') || f.endsWith('.ico'));
+rootAssets.forEach(asset => {
+    fs.copyFileSync(path.join(rootDir, asset), path.join(buildDir, asset));
+    console.log(`✓ Copied Root Asset: ${asset}`);
+});
 
 console.log('\\nBuild complete in ./prod_build');
 console.log('Next step: ZIP the contents of prod_build');
