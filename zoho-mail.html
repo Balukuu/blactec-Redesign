@@ -999,7 +999,139 @@
     *::-webkit-scrollbar { display: none; }
     * { -ms-overflow-style: none; scrollbar-width: none; }
 
-  </style>
+  
+    /* ============================================================
+       GLOBAL RESPONSIVE OPTIMIZATIONS (v2)
+       ============================================================ */
+    .section-header, .pricing-header, .pricing-header-center { text-align: center; margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .section-header h2, .pricing-header h2, .pricing-header-center h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+    .section-header p, .pricing-header p, .pricing-header-center p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; }
+    
+    @media (max-width: 1024px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: clamp(32px, 8vw, 56px) !important; }
+      .hero-desc { font-size: 17px !important; }
+      .hero-split { grid-template-columns: 1fr !important; text-align: center !important; gap: 40px !important; }
+      .hero-right { justify-content: center !important; }
+      .hero-cta-group { justify-content: center !important; }
+      .hero-trust-badges { justify-content: center !important; }
+      .pricing-grid, .tech-grid, .plans-grid, .services-grid, .about-grid, .contact-grid, .spotlight-row { 
+        grid-template-columns: 1fr !important; 
+        gap: 32px !important; 
+      }
+      .plan-card.popular { transform: none !important; margin: 20px 0 !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .spotlight-row.reverse { direction: ltr !important; }
+      .spotlight-row.reverse > * { direction: ltr !important; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-cta-group .btn { width: 100% !important; }
+      .nav-logo { font-size: 20px; }
+    }
+
+
+    .zoho-hero-dashboard { box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(230, 57, 70, 0.15); }
+    .gemini-sparkle-icon { display: none; } /* hide gemini */
+    .fa-gmail { background: #e63946 !important; color: white; border-radius: 8px; }
+    .fa-drive { background: #fca311 !important; color: white; border-radius: 8px; }
+    .fa-docs { background: #14213d !important; color: white; border-radius: 8px; }
+    .fa-gemini { display: none; }
+    .zoho-sc-mail-avatar { background: #14213d; }
+  
+    /* ============================================================
+       PREMIUM HERO THEME (Propagated)
+       ============================================================ */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-hero);
+      z-index: 0;
+    }
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      animation: blobFloat 12s ease-in-out infinite;
+    }
+    .hero-blob-1 { width: 500px; height: 500px; background: rgba(124,92,252,0.18); top: -10%; left: 20%; animation-delay: 0s; }
+    .hero-blob-2 { width: 350px; height: 350px; background: rgba(0,229,255,0.10); top: 30%; right: 10%; animation-delay: 4s; }
+    @keyframes blobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(20px,-20px) scale(1.05); }
+    }
+    .hero-icons-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 5; opacity: 0.5; }
+    .hero-icon {
+      position: absolute; width: 60px; height: 60px;
+      border: 1.5px solid var(--color-primary); border-radius: 12px;
+      background: rgba(124,92,252,0.1); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      animation: heroIconFloat 6s ease-in-out infinite;
+      color: var(--color-primary);
+    }
+    .hi-1 { top: 18%; left: 10%; animation-delay: 0s; }
+    .hi-2 { bottom: 25%; left: 15%; animation-delay: 2s; }
+    .hi-3 { top: 25%; right: 10%; animation-delay: 4s; }
+    @keyframes heroIconFloat {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-15px) rotate(4deg); }
+    }
+    .hero-particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      animation: particleFloat linear infinite;
+    }
+    @keyframes particleFloat {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
+    }
+
+    /* ============================================================
+       GLOBAL RESPONSIVE OPTIMIZATIONS
+       ============================================================ */
+    .section-header, .pricing-header { text-align: center; margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .section-header h2, .pricing-header h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+    .section-header p, .pricing-header p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; }
+    
+    @media (max-width: 1024px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: clamp(32px, 8vw, 56px) !important; }
+      .hero-desc { font-size: 17px !important; }
+      .hero-split { grid-template-columns: 1fr !important; text-align: center !important; gap: 40px !important; }
+      .hero-right { justify-content: center !important; }
+      .hero-cta-group { justify-content: center !important; }
+      .hero-trust-badges { justify-content: center !important; }
+      .pricing-grid, .tech-grid, .plans-grid, .services-grid, .about-grid, .contact-grid, .spotlight-row { 
+        grid-template-columns: 1fr !important; 
+        gap: 32px !important; 
+      }
+      .plan-card.popular { transform: none !important; margin: 20px 0 !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .spotlight-row.reverse { direction: ltr !important; }
+      .spotlight-row.reverse > * { direction: ltr !important; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-cta-group .btn { width: 100%; }
+      .nav-logo { font-size: 20px; }
+    }
+</style>
   <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
@@ -1252,76 +1384,7 @@
 </div>
 
 <main>
-  <style>
-    .zoho-hero-dashboard { box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(230, 57, 70, 0.15); }
-    .gemini-sparkle-icon { display: none; } /* hide gemini */
-    .fa-gmail { background: #e63946 !important; color: white; border-radius: 8px; }
-    .fa-drive { background: #fca311 !important; color: white; border-radius: 8px; }
-    .fa-docs { background: #14213d !important; color: white; border-radius: 8px; }
-    .fa-gemini { display: none; }
-    .zoho-sc-mail-avatar { background: #14213d; }
   
-    /* ============================================================
-       PREMIUM HERO THEME (Propagated)
-       ============================================================ */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: var(--gradient-hero);
-      z-index: 0;
-    }
-    .hero-grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .hero-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: 0;
-      animation: blobFloat 12s ease-in-out infinite;
-    }
-    .hero-blob-1 { width: 500px; height: 500px; background: rgba(124,92,252,0.18); top: -10%; left: 20%; animation-delay: 0s; }
-    .hero-blob-2 { width: 350px; height: 350px; background: rgba(0,229,255,0.10); top: 30%; right: 10%; animation-delay: 4s; }
-    @keyframes blobFloat {
-      0%,100% { transform: translate(0,0) scale(1); }
-      50% { transform: translate(20px,-20px) scale(1.05); }
-    }
-    .hero-icons-wrap { position: absolute; inset: 0; pointer-events: none; z-index: 5; opacity: 0.5; }
-    .hero-icon {
-      position: absolute; width: 60px; height: 60px;
-      border: 1.5px solid var(--color-primary); border-radius: 12px;
-      background: rgba(124,92,252,0.1); backdrop-filter: blur(8px);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      animation: heroIconFloat 6s ease-in-out infinite;
-      color: var(--color-primary);
-    }
-    .hi-1 { top: 18%; left: 10%; animation-delay: 0s; }
-    .hi-2 { bottom: 25%; left: 15%; animation-delay: 2s; }
-    .hi-3 { top: 25%; right: 10%; animation-delay: 4s; }
-    @keyframes heroIconFloat {
-      0%, 100% { transform: translateY(0) rotate(0); }
-      50% { transform: translateY(-15px) rotate(4deg); }
-    }
-    .hero-particles { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-    .particle {
-      position: absolute; border-radius: 50%;
-      animation: particleFloat linear infinite;
-    }
-    @keyframes particleFloat {
-      0% { transform: translateY(0) scale(1); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 0.6; }
-      100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
-    }
-</style>
 
   <!-- Hero Section -->
   <section class="section" style="padding-top: 180px; padding-bottom: 80px; overflow: visible; position: relative;">
@@ -1531,7 +1594,7 @@
           <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
           <a href="#" class="footer-social" aria-label="Instagram">◎</a>
         </div>
-        <p style="font-size:12px;color:var(--color-text-muted);">© 2026 BlacTec. All rights reserved.</p>
+        
       </div>
 
       <!-- Build (Web Dev — #1 priority) -->

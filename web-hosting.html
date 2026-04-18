@@ -58,6 +58,8 @@
     .section { padding: 100px 0; position: relative; }
     .section-alt { background: var(--color-bg-alt); }
     .gradient-text { background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .text-center { text-align: center; }
+    .pricing-header { text-align: center; margin-bottom: 48px; }
 
     /* Buttons */
     .btn {
@@ -271,8 +273,15 @@
 
     /* Domain Search Section (Specific to web-hosting.html) */
     .hosting-domain-search {
-      padding: 60px 0; background: var(--color-bg-alt);
+      padding: 80px 40px; background: var(--color-bg-card);
       border-radius: var(--radius-xl); margin: 60px 0; border: 1px solid var(--color-border);
+      text-align: center; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    .hosting-domain-search::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at top right, rgba(124,92,252,0.05), transparent 60%);
+      pointer-events: none;
     }
     .domain-search-wrap {
       display: flex; background: var(--color-bg); padding: 8px;
@@ -479,6 +488,157 @@
     }
 
     [id*="-hero"], .hero-section { position: relative; overflow: hidden; }
+
+    /* Hero Split & Timer */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 60px;
+      text-align: left;
+    }
+    .hero-left { z-index: 10; }
+    .hero-right { z-index: 10; display: flex; justify-content: flex-end; }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(124,92,252,0.1);
+      border: 1px solid var(--color-primary-glow);
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-timer {
+      background: rgba(19, 21, 28, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+    .timer-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .timer-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255,255,255,0.03);
+      padding: 12px 8px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .timer-num {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+    .timer-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+    .timer-price-box {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .timer-price-label { font-size: 13px; color: var(--color-text-secondary); }
+    .timer-price-val { font-family: 'Unbounded', sans-serif; font-size: 28px; font-weight: 800; color: #fff; }
+    .timer-price-val span { font-size: 16px; font-weight: 500; color: var(--color-text-muted); }
+
+    @media (max-width: 1024px) {
+      .hero-split { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+      .hero-right { justify-content: center; }
+      .hero-cta-group { justify-content: center; }
+      .hero-trust-badges { justify-content: center; }
+    }
+
+    /* ============================================================
+       GLOBAL RESPONSIVE OPTIMIZATIONS
+       ============================================================ */
+    .section-header, .pricing-header { text-align: center; margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .section-header h2, .pricing-header h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+    .section-header p, .pricing-header p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; }
+    
+    @media (max-width: 1024px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: clamp(32px, 8vw, 56px) !important; }
+      .hero-desc { font-size: 17px !important; }
+      .hero-split { grid-template-columns: 1fr !important; text-align: center !important; gap: 40px !important; }
+      .hero-right { justify-content: center !important; }
+      .hero-cta-group { justify-content: center !important; }
+      .hero-trust-badges { justify-content: center !important; }
+      .pricing-grid, .tech-grid, .plans-grid, .services-grid, .about-grid, .contact-grid, .spotlight-row { 
+        grid-template-columns: 1fr !important; 
+        gap: 32px !important; 
+      }
+      .plan-card.popular { transform: none !important; margin: 20px 0 !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .spotlight-row.reverse { direction: ltr !important; }
+      .spotlight-row.reverse > * { direction: ltr !important; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-cta-group .btn { width: 100%; }
+      .nav-logo { font-size: 20px; }
+    }
+
+    /* ============================================================
+       GLOBAL RESPONSIVE OPTIMIZATIONS (v2)
+       ============================================================ */
+    .section-header, .pricing-header, .pricing-header-center { text-align: center; margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .section-header h2, .pricing-header h2, .pricing-header-center h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+    .section-header p, .pricing-header p, .pricing-header-center p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; }
+    
+    @media (max-width: 1024px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: clamp(32px, 8vw, 56px) !important; }
+      .hero-desc { font-size: 17px !important; }
+      .hero-split { grid-template-columns: 1fr !important; text-align: center !important; gap: 40px !important; }
+      .hero-right { justify-content: center !important; }
+      .hero-cta-group { justify-content: center !important; }
+      .hero-trust-badges { justify-content: center !important; }
+      .pricing-grid, .tech-grid, .plans-grid, .services-grid, .about-grid, .contact-grid, .spotlight-row { 
+        grid-template-columns: 1fr !important; 
+        gap: 32px !important; 
+      }
+      .plan-card.popular { transform: none !important; margin: 20px 0 !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .spotlight-row.reverse { direction: ltr !important; }
+      .spotlight-row.reverse > * { direction: ltr !important; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-cta-group .btn { width: 100% !important; }
+      .nav-logo { font-size: 20px; }
+    }
 </style>
 </head>
 <body>
@@ -739,7 +899,6 @@
       <div class="container">
         <div class="hero-split">
           <div class="hero-left animate-on-scroll">
-            <div class="hero-tag">🔥 FLASH SALE: UP TO 75% OFF</div>
             <h1 class="hero-title">
               Speed You Need.<br>
               <span class="gradient-text">Reliability</span> You Deserve.
@@ -761,13 +920,14 @@
             <div class="hero-timer">
               <div class="timer-title">Deal ending in:</div>
               <div class="timer-grid">
-                <div class="timer-item"><span class="timer-num">02</span><span class="timer-label">DAYS</span></div>
-                <div class="timer-item"><span class="timer-num">14</span><span class="timer-label">HOURS</span></div>
-                <div class="timer-item"><span class="timer-num">56</span><span class="timer-label">MINS</span></div>
-                <div class="timer-item"><span class="timer-num">32</span><span class="timer-label">SECS</span></div>
+                <div class="timer-item"><span class="timer-num" id="days">02</span><span class="timer-label">DAYS</span></div>
+                <div class="timer-item"><span class="timer-num" id="hours">14</span><span class="timer-label">HOURS</span></div>
+                <div class="timer-item"><span class="timer-num" id="mins">56</span><span class="timer-label">MINS</span></div>
+                <div class="timer-item"><span class="timer-num" id="secs">32</span><span class="timer-label">SECS</span></div>
               </div>
-              <div style="margin-top: 24px; font-size: 14px; color: var(--color-text-secondary);">
-                Starts from <span style="font-size: 24px; font-weight: 800; color: #fff;">$2.99/mo</span>
+              <div class="timer-price-box">
+                <div class="timer-price-label">Starts from</div>
+                <div class="timer-price-val">$9.99<span>/mo</span></div>
               </div>
             </div>
           </div>
@@ -789,7 +949,7 @@
             <h3 class="plan-name">Premium</h3>
             <p class="plan-desc">Perfect solution for beginners</p>
             <div class="plan-price-wrap">
-              <span class="plan-currency">$</span><span class="plan-price">2.99</span><span class="plan-period">/mo</span>
+              <span class="plan-currency">$</span><span class="plan-price">9.99</span><span class="plan-period">/mo</span>
             </div>
             <a href="#" class="btn btn-ghost" style="width: 100%;">Add to Cart</a>
             <div class="plan-features">
@@ -807,7 +967,7 @@
             <h3 class="plan-name">Business</h3>
             <p class="plan-desc">Optimized for small businesses</p>
             <div class="plan-price-wrap">
-              <span class="plan-currency">$</span><span class="plan-price">4.99</span><span class="plan-period">/mo</span>
+              <span class="plan-currency">$</span><span class="plan-price">11.99</span><span class="plan-period">/mo</span>
             </div>
             <a href="#" class="btn btn-primary" style="width: 100%;">Add to Cart</a>
             <div class="plan-features">
@@ -825,7 +985,7 @@
             <h3 class="plan-name">Cloud Startup</h3>
             <p class="plan-desc">Dedicated resources for scaling</p>
             <div class="plan-price-wrap">
-              <span class="plan-currency">$</span><span class="plan-price">9.99</span><span class="plan-period">/mo</span>
+              <span class="plan-currency">$</span><span class="plan-price">16.99</span><span class="plan-period">/mo</span>
             </div>
             <a href="#" class="btn btn-ghost" style="width: 100%;">Add to Cart</a>
             <div class="plan-features">
@@ -845,9 +1005,9 @@
     <section class="section">
       <div class="container">
         <div class="hosting-domain-search animate-on-scroll">
-          <div class="pricing-header" style="margin-bottom: 32px;">
-            <h2 style="font-size: 30px; margin-bottom: 12px;">Find the Perfect <span class="gradient-text">Domain Name</span></h2>
-            <p style="font-size: 14px;">Already have a name? Check availability across all major extensions instantly.</p>
+          <div class="pricing-header">
+            <h2 style="font-size: 32px; margin-bottom: 12px;">Find the Perfect <span class="gradient-text">Domain Name</span></h2>
+            <p style="font-size: 16px; color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">Already have a name? Check availability across all major extensions instantly.</p>
           </div>
           
           <div class="domain-search-wrap">
@@ -941,7 +1101,7 @@
           <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
           <a href="#" class="footer-social" aria-label="Instagram">◎</a>
         </div>
-        <p style="font-size:12px;color:var(--color-text-muted);">© 2026 BlacTec. All rights reserved.</p>
+        
       </div>
 
       <!-- Build (Web Dev — #1 priority) -->
@@ -1215,6 +1375,45 @@
 
     document.getElementById('hostingDomainBtn').addEventListener('click', runDomainSearch);
     document.getElementById('hostingDomainInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') runDomainSearch(); });
+
+    /* ============================================================
+       COUNTDOWN TIMER LOGIC
+       ============================================================ */
+    function startCountdown() {
+      let countDownDate = localStorage.getItem('blactec_sale_end');
+      
+      if (!countDownDate || new Date().getTime() > countDownDate) {
+        countDownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000);
+        localStorage.setItem('blactec_sale_end', countDownDate);
+      }
+
+      const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const dEl = document.getElementById("days");
+        const hEl = document.getElementById("hours");
+        const mEl = document.getElementById("mins");
+        const sEl = document.getElementById("secs");
+
+        if (dEl) dEl.innerHTML = d.toString().padStart(2, '0');
+        if (hEl) hEl.innerHTML = h.toString().padStart(2, '0');
+        if (mEl) mEl.innerHTML = m.toString().padStart(2, '0');
+        if (sEl) sEl.innerHTML = s.toString().padStart(2, '0');
+
+        if (distance < 0) {
+          clearInterval(x);
+          localStorage.removeItem('blactec_sale_end');
+          startCountdown();
+        }
+      }, 1000);
+    }
+    document.addEventListener('DOMContentLoaded', startCountdown);
   </script>
 
     <script>

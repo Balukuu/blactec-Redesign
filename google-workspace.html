@@ -999,7 +999,38 @@
     *::-webkit-scrollbar { display: none; }
     * { -ms-overflow-style: none; scrollbar-width: none; }
 
-  </style>
+  
+    /* ============================================================
+       GLOBAL RESPONSIVE OPTIMIZATIONS (v2)
+       ============================================================ */
+    .section-header, .pricing-header, .pricing-header-center { text-align: center; margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .section-header h2, .pricing-header h2, .pricing-header-center h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+    .section-header p, .pricing-header p, .pricing-header-center p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; }
+    
+    @media (max-width: 1024px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: clamp(32px, 8vw, 56px) !important; }
+      .hero-desc { font-size: 17px !important; }
+      .hero-split { grid-template-columns: 1fr !important; text-align: center !important; gap: 40px !important; }
+      .hero-right { justify-content: center !important; }
+      .hero-cta-group { justify-content: center !important; }
+      .hero-trust-badges { justify-content: center !important; }
+      .pricing-grid, .tech-grid, .plans-grid, .services-grid, .about-grid, .contact-grid, .spotlight-row { 
+        grid-template-columns: 1fr !important; 
+        gap: 32px !important; 
+      }
+      .plan-card.popular { transform: none !important; margin: 20px 0 !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .spotlight-row.reverse { direction: ltr !important; }
+      .spotlight-row.reverse > * { direction: ltr !important; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-cta-group .btn { width: 100% !important; }
+      .nav-logo { font-size: 20px; }
+    }
+</style>
   <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }
     /* ============================================================
        PREMIUM HERO THEME (Propagated)
@@ -1063,6 +1094,37 @@
     }
 
     [id*="-hero"], .hero-section { position: relative; overflow: hidden; }
+
+    /* ============================================================
+       GLOBAL RESPONSIVE OPTIMIZATIONS
+       ============================================================ */
+    .section-header, .pricing-header { text-align: center; margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .section-header h2, .pricing-header h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+    .section-header p, .pricing-header p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; }
+    
+    @media (max-width: 1024px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: clamp(32px, 8vw, 56px) !important; }
+      .hero-desc { font-size: 17px !important; }
+      .hero-split { grid-template-columns: 1fr !important; text-align: center !important; gap: 40px !important; }
+      .hero-right { justify-content: center !important; }
+      .hero-cta-group { justify-content: center !important; }
+      .hero-trust-badges { justify-content: center !important; }
+      .pricing-grid, .tech-grid, .plans-grid, .services-grid, .about-grid, .contact-grid, .spotlight-row { 
+        grid-template-columns: 1fr !important; 
+        gap: 32px !important; 
+      }
+      .plan-card.popular { transform: none !important; margin: 20px 0 !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .spotlight-row.reverse { direction: ltr !important; }
+      .spotlight-row.reverse > * { direction: ltr !important; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-cta-group .btn { width: 100%; }
+      .nav-logo { font-size: 20px; }
+    }
 </style></noscript>
 </head>
 <body>
@@ -1961,7 +2023,7 @@
           <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
           <a href="#" class="footer-social" aria-label="Instagram">◎</a>
         </div>
-        <p style="font-size:12px;color:var(--color-text-muted);">© 2026 BlacTec. All rights reserved.</p>
+        
       </div>
 
       <!-- Build (Web Dev — #1 priority) -->
