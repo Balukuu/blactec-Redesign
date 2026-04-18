@@ -999,260 +999,39 @@
     *::-webkit-scrollbar { display: none; }
     * { -ms-overflow-style: none; scrollbar-width: none; }
 
-  </style>
-  <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
-</head>
-<body>
+  
+    /* ============================================================
+       GLOBAL RESPONSIVE OPTIMIZATIONS (v2)
+       ============================================================ */
+    .section-header, .pricing-header, .pricing-header-center { text-align: center; margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .section-header h2, .pricing-header h2, .pricing-header-center h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+    .section-header p, .pricing-header p, .pricing-header-center p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; }
+    
+    @media (max-width: 1024px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: clamp(32px, 8vw, 56px) !important; }
+      .hero-desc { font-size: 17px !important; }
+      .hero-split { grid-template-columns: 1fr !important; text-align: center !important; gap: 40px !important; }
+      .hero-right { justify-content: center !important; }
+      .hero-cta-group { justify-content: center !important; }
+      .hero-trust-badges { justify-content: center !important; }
+      .pricing-grid, .tech-grid, .plans-grid, .services-grid, .about-grid, .contact-grid, .spotlight-row { 
+        grid-template-columns: 1fr !important; 
+        gap: 32px !important; 
+      }
+      .plan-card.popular { transform: none !important; margin: 20px 0 !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .spotlight-row.reverse { direction: ltr !important; }
+      .spotlight-row.reverse > * { direction: ltr !important; }
+    }
 
-<!-- Page Loader -->
-<div id="pageLoader" role="status" aria-label="Loading">
-  <div class="loader-logo">blac<span class="lac">tec</span>.</div>
-</div>
-
-<!-- Scroll to Top -->
-
-
-<!-- WhatsApp FAB -->
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-cta-group .btn { width: 100% !important; }
+      .nav-logo { font-size: 20px; }
+    }
 
 
-<!-- ============================================================
-     STICKY NAVBAR
-     ============================================================ -->
-
-<header>
-  <nav id="navbar" class="scrolled" role="navigation" aria-label="Main navigation">
-    <div class="container">
-      <div class="nav-inner">
-        <!-- Logo -->
-        <a href="index.html" class="nav-logo" aria-label="BlacTec Home">blac<span class="logo-accent">tec</span>.</a>
-
-        <!-- Desktop Nav -->
-                <ul class="nav-links" role="list">
-          <!-- BUILD (Web & App Development — #1 priority) -->
-          <li class="nav-item">
-            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
-              Build
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-            </div>
-            <div class="nav-dropdown" role="menu">
-              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
-                <div class="nav-dropdown-text"><strong>Web &amp; App Development</strong><span>Custom websites, web apps &amp; digital platforms</span></div>
-              </a>
-              <a href="web-development.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🔄</span>
-                <div class="nav-dropdown-text"><strong>Website Redesign</strong><span>Modernise &amp; rebuild your existing site</span></div>
-              </a>
-              <a href="ecommerce-development.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🛒</span>
-                <div class="nav-dropdown-text"><strong>E-commerce Development</strong><span>Online stores with MoMo &amp; Airtel integration</span></div>
-              </a>
-              <a href="wordpress-development.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
-                <div class="nav-dropdown-text"><strong>WordPress Development</strong><span>CMS-powered websites &amp; blogs</span></div>
-              </a>
-              <a href="website-maintenance.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🔧</span>
-                <div class="nav-dropdown-text"><strong>Website Maintenance</strong><span>Updates, backups &amp; ongoing support</span></div>
-              </a>
-            </div>
-          </li>
-          <!-- EMAIL SOLUTIONS (#2 priority) -->
-          <li class="nav-item">
-            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
-              Email
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-            </div>
-            <div class="nav-dropdown" role="menu">
-              <a href="business-email.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">✉️</span>
-                <div class="nav-dropdown-text"><strong>Business Email</strong><span>Professional @yourdomain.ug addresses</span></div>
-              </a>
-              <a href="google-workspace.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-</svg></span>
-                <div class="nav-dropdown-text"><strong>Google Workspace</strong><span>Gmail, Drive, Meet &amp; more for teams</span></div>
-              </a>
-              <a href="zoho-mail.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#ffffff" stroke-width="2" fill="none"/></svg></span>
-                <div class="nav-dropdown-text"><strong>Zoho Mail</strong><span>Ad-free, secure email &amp; workplace</span></div>
-              </a>
-              <a href="microsoft-365.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg></span>
-                <div class="nav-dropdown-text"><strong>Microsoft 365</strong><span>Word, Excel, Teams &amp; Outlook</span></div>
-              </a>
-            </div>
-          </li>
-          <!-- HOSTING (#3 priority) -->
-          <li class="nav-item">
-            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
-              Hosting
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-            </div>
-            <div class="nav-dropdown" role="menu">
-              <a href="web-hosting.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🌐</span>
-                <div class="nav-dropdown-text"><strong>Web Hosting</strong><span>Shared Linux hosting with cPanel</span></div>
-              </a>
-              <a href="wordpress-hosting.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
-                <div class="nav-dropdown-text"><strong>WordPress Hosting</strong><span>Managed WordPress with 1-click install</span></div>
-              </a>
-              <a href="vps-hosting.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">⚡</span>
-                <div class="nav-dropdown-text"><strong>VPS Hosting</strong><span>Full root access, scalable resources</span></div>
-              </a>
-              <a href="cloud-hosting.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">☁️</span>
-                <div class="nav-dropdown-text"><strong>Cloud Hosting</strong><span>Scale fast with cloud infrastructure</span></div>
-              </a>
-              <a href="reseller-hosting.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🏢</span>
-                <div class="nav-dropdown-text"><strong>Reseller Hosting</strong><span>Start your own hosting business</span></div>
-              </a>
-            </div>
-          </li>
-          <!-- DOMAINS (#4) -->
-          <li class="nav-item">
-            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
-              Domains
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-            </div>
-            <div class="nav-dropdown" role="menu">
-              <a href="domain-search.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🔍</span>
-                <div class="nav-dropdown-text"><strong>Domain Search</strong><span>Find &amp; register your perfect domain</span></div>
-              </a>
-              <a href="ug-domains.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🇺🇬</span>
-                <div class="nav-dropdown-text"><strong>.UG Domains</strong><span>Official Uganda country domain</span></div>
-              </a>
-              <a href="domain-transfer.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🔁</span>
-                <div class="nav-dropdown-text"><strong>Domain Transfer</strong><span>Move your domain to BlacTec</span></div>
-              </a>
-              <a href="whois-privacy.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🔒</span>
-                <div class="nav-dropdown-text"><strong>Free WHOIS Privacy</strong><span>Protect your registration info</span></div>
-              </a>
-            </div>
-          </li>
-          <!-- MORE (#5) -->
-          <li class="nav-item">
-            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
-              More
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-            </div>
-            <div class="nav-dropdown" role="menu">
-              <a href="ssl-certificates.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🔒</span>
-                <div class="nav-dropdown-text"><strong>SSL Certificates</strong><span>Encrypt &amp; secure your website</span></div>
-              </a>
-              <a href="seo-services.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🔍</span>
-                <div class="nav-dropdown-text"><strong>SEO Services</strong><span>Rank higher on Google Search</span></div>
-              </a>
-              <a href="bulk-sms.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">💬</span>
-                <div class="nav-dropdown-text"><strong>Bulk SMS</strong><span>Reach customers via SMS marketing</span></div>
-              </a>
-              <a href="website-security.html" class="nav-dropdown-item" role="menuitem">
-                <span class="nav-dropdown-icon">🛡️</span>
-                <div class="nav-dropdown-text"><strong>Website Security</strong><span>Firewalls, malware scanning &amp; protection</span></div>
-              </a>
-            </div>
-          </li>
-          <li><a href="index.html#about" class="nav-link-plain">About</a></li>
-        </ul>
-
-        <!-- Nav Right -->
-        <div class="nav-right">
-          <a href="index.html#pricing" class="btn btn-primary" style="display:none;" id="desktopGetStarted">Get Started</a>
-          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
-
-<!-- Mobile nav overlay -->
-<div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <!-- BUILD -->
-  <div class="mobile-nav-item">
-    <div class="mobile-nav-header" id="mnh-build" tabindex="0">Build
-      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-    </div>
-    <div class="mobile-sub-links" id="msl-build">
-      <a href="web-development.html" class="mobile-sub-link">💻 Web &amp; App Development</a>
-      <a href="web-development.html" class="mobile-sub-link">🔄 Website Redesign</a>
-      <a href="ecommerce-development.html" class="mobile-sub-link">🛒 E-commerce Development</a>
-      <a href="wordpress-development.html" class="mobile-sub-link">📝 WordPress Development</a>
-      <a href="website-maintenance.html" class="mobile-sub-link">🔧 Website Maintenance</a>
-    </div>
-  </div>
-  <!-- EMAIL -->
-  <div class="mobile-nav-item">
-    <div class="mobile-nav-header" id="mnh-email" tabindex="0">Email
-      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-    </div>
-    <div class="mobile-sub-links" id="msl-email">
-      <a href="business-email.html" class="mobile-sub-link">✉️ Business Email</a>
-      <a href="google-workspace.html" class="mobile-sub-link">🔷 Google Workspace</a>
-      <a href="zoho-mail.html" class="mobile-sub-link">📧 Zoho Mail</a>
-      <a href="microsoft-365.html" class="mobile-sub-link">🏢 Microsoft 365</a>
-    </div>
-  </div>
-  <!-- HOSTING -->
-  <div class="mobile-nav-item">
-    <div class="mobile-nav-header" id="mnh-hosting" tabindex="0">Hosting
-      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-    </div>
-    <div class="mobile-sub-links" id="msl-hosting">
-      <a href="web-hosting.html" class="mobile-sub-link">🌐 Web Hosting</a>
-      <a href="wordpress-hosting.html" class="mobile-sub-link">🎯 WordPress Hosting</a>
-      <a href="vps-hosting.html" class="mobile-sub-link">⚡ VPS Hosting</a>
-      <a href="cloud-hosting.html" class="mobile-sub-link">☁️ Cloud Hosting</a>
-      <a href="reseller-hosting.html" class="mobile-sub-link">🏢 Reseller Hosting</a>
-    </div>
-  </div>
-  <!-- DOMAINS -->
-  <div class="mobile-nav-item">
-    <div class="mobile-nav-header" id="mnh-domain" tabindex="0">Domains
-      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-    </div>
-    <div class="mobile-sub-links" id="msl-domain">
-      <a href="domain-search.html" class="mobile-sub-link">🔍 Domain Search</a>
-      <a href="ug-domains.html" class="mobile-sub-link">🇺🇬 .UG Domains</a>
-      <a href="domain-transfer.html" class="mobile-sub-link">🔁 Domain Transfer</a>
-      <a href="whois-privacy.html" class="mobile-sub-link">🔒 Free WHOIS Privacy</a>
-    </div>
-  </div>
-  <!-- MORE -->
-  <div class="mobile-nav-item">
-    <div class="mobile-nav-header" id="mnh-more" tabindex="0">More
-      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
-    </div>
-    <div class="mobile-sub-links" id="msl-more">
-      <a href="ssl-certificates.html" class="mobile-sub-link">🔒 SSL Certificates</a>
-      <a href="seo-services.html" class="mobile-sub-link">🔍 SEO Services</a>
-      <a href="bulk-sms.html" class="mobile-sub-link">💬 Bulk SMS</a>
-      <a href="website-security.html" class="mobile-sub-link">🛡️ Website Security</a>
-    </div>
-  </div>
-  <a href="index.html#about" class="mobile-nav-plain">About</a>
-  <div class="mobile-nav-buttons">
-    <a href="web-development.html" class="btn btn-primary">Start Your Project</a>
-  </div>
-</div>
-
-<main>
-  <style>
     .zoho-hero-dashboard { box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(230, 57, 70, 0.15); }
     .gemini-sparkle-icon { display: none; } /* hide gemini */
     .fa-gmail { background: #e63946 !important; color: white; border-radius: 8px; }
@@ -1321,7 +1100,291 @@
       90% { opacity: 0.6; }
       100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
     }
+
+    /* ============================================================
+       GLOBAL RESPONSIVE OPTIMIZATIONS
+       ============================================================ */
+    .section-header, .pricing-header { text-align: center; margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .section-header h2, .pricing-header h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 16px; font-weight: 800; letter-spacing: -1px; }
+    .section-header p, .pricing-header p { font-size: 18px; color: var(--color-text-secondary); line-height: 1.6; }
+    
+    @media (max-width: 1024px) {
+      .container { padding: 0 20px; }
+      .hero-title { font-size: clamp(32px, 8vw, 56px) !important; }
+      .hero-desc { font-size: 17px !important; }
+      .hero-split { grid-template-columns: 1fr !important; text-align: center !important; gap: 40px !important; }
+      .hero-right { justify-content: center !important; }
+      .hero-cta-group { justify-content: center !important; }
+      .hero-trust-badges { justify-content: center !important; }
+      .pricing-grid, .tech-grid, .plans-grid, .services-grid, .about-grid, .contact-grid, .spotlight-row { 
+        grid-template-columns: 1fr !important; 
+        gap: 32px !important; 
+      }
+      .plan-card.popular { transform: none !important; margin: 20px 0 !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+      .spotlight-row.reverse { direction: ltr !important; }
+      .spotlight-row.reverse > * { direction: ltr !important; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-cta-group .btn { width: 100%; }
+      .nav-logo { font-size: 20px; }
+    }
 </style>
+  <noscript><style>.animate-on-scroll { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div id="pageLoader" role="status" aria-label="Loading">
+  <div class="loader-logo">blac<span class="lac">tec</span>.</div>
+</div>
+
+<!-- Scroll to Top -->
+
+
+<!-- WhatsApp FAB -->
+
+
+<!-- ============================================================
+     STICKY NAVBAR
+     ============================================================ -->
+
+<header>
+  <nav id="navbar" class="scrolled" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="/" class="nav-logo" aria-label="BlacTec Home">blac<span class="logo-accent">tec</span>.</a>
+
+        <!-- Desktop Nav -->
+                <ul class="nav-links" role="list">
+          <!-- BUILD (Web & App Development — #1 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Build
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="web-development" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+                <div class="nav-dropdown-text"><strong>Web &amp; App Development</strong><span>Custom websites, web apps &amp; digital platforms</span></div>
+              </a>
+              <a href="web-development" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔄</span>
+                <div class="nav-dropdown-text"><strong>Website Redesign</strong><span>Modernise &amp; rebuild your existing site</span></div>
+              </a>
+              <a href="ecommerce-development" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🛒</span>
+                <div class="nav-dropdown-text"><strong>E-commerce Development</strong><span>Online stores with MoMo &amp; Airtel integration</span></div>
+              </a>
+              <a href="wordpress-development" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
+                <div class="nav-dropdown-text"><strong>WordPress Development</strong><span>CMS-powered websites &amp; blogs</span></div>
+              </a>
+              <a href="website-maintenance" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔧</span>
+                <div class="nav-dropdown-text"><strong>Website Maintenance</strong><span>Updates, backups &amp; ongoing support</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- EMAIL SOLUTIONS (#2 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Email
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="business-email" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">✉️</span>
+                <div class="nav-dropdown-text"><strong>Business Email</strong><span>Professional @yourdomain.ug addresses</span></div>
+              </a>
+              <a href="google-workspace" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+</svg></span>
+                <div class="nav-dropdown-text"><strong>Google Workspace</strong><span>Gmail, Drive, Meet &amp; more for teams</span></div>
+              </a>
+              <a href="zoho-mail" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#ffffff" stroke-width="2" fill="none"/></svg></span>
+                <div class="nav-dropdown-text"><strong>Zoho Mail</strong><span>Ad-free, secure email &amp; workplace</span></div>
+              </a>
+              <a href="microsoft-365" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg></span>
+                <div class="nav-dropdown-text"><strong>Microsoft 365</strong><span>Word, Excel, Teams &amp; Outlook</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- HOSTING (#3 priority) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Hosting
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="web-hosting" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🌐</span>
+                <div class="nav-dropdown-text"><strong>Web Hosting</strong><span>Shared Linux hosting with cPanel</span></div>
+              </a>
+              <a href="wordpress-hosting" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zm-7.42-3.993c-.415.701-.652 1.516-.652 2.384 0 1.5.714 2.824 1.815 3.665l3.388-9.306c-1.896.65-3.41 1.84-4.55 3.257zm12.633-.633c.607.82.971 1.828.971 2.924 0 1.1-.36 2.1-.967 2.916l2.457 7.122c1.777-2.146 2.84-4.897 2.84-7.905 0-3.32-1.29-6.33-3.402-8.58l-1.899 3.523zM12.012 2C6.482 2 2.012 6.47 2.012 12c0 5.53 4.47 10 10 10s10-4.47 10-10c0-5.53-4.47-10-10-10zm.42 1.055c3.02.134 5.572 2.08 6.74 4.777l-.924 1.733c-.73-.836-1.76-1.365-2.914-1.365-.24 0-.472.023-.695.067L12.432 3.055z"/></svg></span>
+                <div class="nav-dropdown-text"><strong>WordPress Hosting</strong><span>Managed WordPress with 1-click install</span></div>
+              </a>
+              <a href="vps-hosting" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">⚡</span>
+                <div class="nav-dropdown-text"><strong>VPS Hosting</strong><span>Full root access, scalable resources</span></div>
+              </a>
+              <a href="cloud-hosting" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">☁️</span>
+                <div class="nav-dropdown-text"><strong>Cloud Hosting</strong><span>Scale fast with cloud infrastructure</span></div>
+              </a>
+              <a href="reseller-hosting" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🏢</span>
+                <div class="nav-dropdown-text"><strong>Reseller Hosting</strong><span>Start your own hosting business</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- DOMAINS (#4) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              Domains
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="domain-search" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔍</span>
+                <div class="nav-dropdown-text"><strong>Domain Search</strong><span>Find &amp; register your perfect domain</span></div>
+              </a>
+              <a href="ug-domains" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🇺🇬</span>
+                <div class="nav-dropdown-text"><strong>.UG Domains</strong><span>Official Uganda country domain</span></div>
+              </a>
+              <a href="domain-transfer" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔁</span>
+                <div class="nav-dropdown-text"><strong>Domain Transfer</strong><span>Move your domain to BlacTec</span></div>
+              </a>
+              <a href="whois-privacy" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔒</span>
+                <div class="nav-dropdown-text"><strong>Free WHOIS Privacy</strong><span>Protect your registration info</span></div>
+              </a>
+            </div>
+          </li>
+          <!-- MORE (#5) -->
+          <li class="nav-item">
+            <div class="nav-link" tabindex="0" aria-haspopup="true" aria-expanded="false">
+              More
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+            </div>
+            <div class="nav-dropdown" role="menu">
+              <a href="ssl-certificates" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔒</span>
+                <div class="nav-dropdown-text"><strong>SSL Certificates</strong><span>Encrypt &amp; secure your website</span></div>
+              </a>
+              <a href="seo-services" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🔍</span>
+                <div class="nav-dropdown-text"><strong>SEO Services</strong><span>Rank higher on Google Search</span></div>
+              </a>
+              <a href="bulk-sms" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">💬</span>
+                <div class="nav-dropdown-text"><strong>Bulk SMS</strong><span>Reach customers via SMS marketing</span></div>
+              </a>
+              <a href="website-security" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon">🛡️</span>
+                <div class="nav-dropdown-text"><strong>Website Security</strong><span>Firewalls, malware scanning &amp; protection</span></div>
+              </a>
+            </div>
+          </li>
+          <li><a href="index#about" class="nav-link-plain">About</a></li>
+        </ul>
+
+        <!-- Nav Right -->
+        <div class="nav-right">
+          <a href="index#pricing" class="btn btn-primary" style="display:none;" id="desktopGetStarted">Get Started</a>
+          <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <!-- BUILD -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-build" tabindex="0">Build
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-build">
+      <a href="web-development" class="mobile-sub-link">💻 Web &amp; App Development</a>
+      <a href="web-development" class="mobile-sub-link">🔄 Website Redesign</a>
+      <a href="ecommerce-development" class="mobile-sub-link">🛒 E-commerce Development</a>
+      <a href="wordpress-development" class="mobile-sub-link">📝 WordPress Development</a>
+      <a href="website-maintenance" class="mobile-sub-link">🔧 Website Maintenance</a>
+    </div>
+  </div>
+  <!-- EMAIL -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-email" tabindex="0">Email
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-email">
+      <a href="business-email" class="mobile-sub-link">✉️ Business Email</a>
+      <a href="google-workspace" class="mobile-sub-link">🔷 Google Workspace</a>
+      <a href="zoho-mail" class="mobile-sub-link">📧 Zoho Mail</a>
+      <a href="microsoft-365" class="mobile-sub-link">🏢 Microsoft 365</a>
+    </div>
+  </div>
+  <!-- HOSTING -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-hosting" tabindex="0">Hosting
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-hosting">
+      <a href="web-hosting" class="mobile-sub-link">🌐 Web Hosting</a>
+      <a href="wordpress-hosting" class="mobile-sub-link">🎯 WordPress Hosting</a>
+      <a href="vps-hosting" class="mobile-sub-link">⚡ VPS Hosting</a>
+      <a href="cloud-hosting" class="mobile-sub-link">☁️ Cloud Hosting</a>
+      <a href="reseller-hosting" class="mobile-sub-link">🏢 Reseller Hosting</a>
+    </div>
+  </div>
+  <!-- DOMAINS -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-domain" tabindex="0">Domains
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-domain">
+      <a href="domain-search" class="mobile-sub-link">🔍 Domain Search</a>
+      <a href="ug-domains" class="mobile-sub-link">🇺🇬 .UG Domains</a>
+      <a href="domain-transfer" class="mobile-sub-link">🔁 Domain Transfer</a>
+      <a href="whois-privacy" class="mobile-sub-link">🔒 Free WHOIS Privacy</a>
+    </div>
+  </div>
+  <!-- MORE -->
+  <div class="mobile-nav-item">
+    <div class="mobile-nav-header" id="mnh-more" tabindex="0">More
+      <svg width="16" height="16" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+    </div>
+    <div class="mobile-sub-links" id="msl-more">
+      <a href="ssl-certificates" class="mobile-sub-link">🔒 SSL Certificates</a>
+      <a href="seo-services" class="mobile-sub-link">🔍 SEO Services</a>
+      <a href="bulk-sms" class="mobile-sub-link">💬 Bulk SMS</a>
+      <a href="website-security" class="mobile-sub-link">🛡️ Website Security</a>
+    </div>
+  </div>
+  <a href="index#about" class="mobile-nav-plain">About</a>
+  <div class="mobile-nav-buttons">
+    <a href="web-development" class="btn btn-primary">Start Your Project</a>
+  </div>
+</div>
+
+<main>
+  
 
   <!-- Hero Section -->
   <section class="section" style="padding-top: 180px; padding-bottom: 80px; overflow: visible; position: relative;">
@@ -1531,18 +1594,18 @@
           <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
           <a href="#" class="footer-social" aria-label="Instagram">◎</a>
         </div>
-        <p style="font-size:12px;color:var(--color-text-muted);">© 2026 BlacTec. All rights reserved.</p>
+        
       </div>
 
       <!-- Build (Web Dev — #1 priority) -->
       <div class="footer-col">
         <h4>Build</h4>
         <ul>
-          <li><a href="web-development.html">Web &amp; App Development</a></li>
-          <li><a href="web-development.html">Website Redesign</a></li>
-          <li><a href="ecommerce-development.html">E-commerce Development</a></li>
-          <li><a href="wordpress-development.html">WordPress Development</a></li>
-          <li><a href="website-maintenance.html">Website Maintenance</a></li>
+          <li><a href="web-development">Web &amp; App Development</a></li>
+          <li><a href="web-development">Website Redesign</a></li>
+          <li><a href="ecommerce-development">E-commerce Development</a></li>
+          <li><a href="wordpress-development">WordPress Development</a></li>
+          <li><a href="website-maintenance">Website Maintenance</a></li>
         </ul>
       </div>
 
@@ -1550,11 +1613,11 @@
       <div class="footer-col">
         <h4>Email &amp; Solutions</h4>
         <ul>
-          <li><a href="business-email.html">Business Email</a></li>
-          <li><a href="google-workspace.html">Google Workspace</a></li>
-          <li><a href="zoho-mail.html"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#fff" stroke-width="2" fill="none"/></svg>Zoho Mail</a></li>
-          <li><a href="microsoft-365.html"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg>Microsoft 365</a></li>
-          <li><a href="ssl-certificates.html">SSL Certificates</a></li>
+          <li><a href="business-email">Business Email</a></li>
+          <li><a href="google-workspace">Google Workspace</a></li>
+          <li><a href="zoho-mail"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="#e63946"/><path d="M22 6L12 13L2 6" stroke="#fff" stroke-width="2" fill="none"/></svg>Zoho Mail</a></li>
+          <li><a href="microsoft-365"><svg width="14" height="14" style="vertical-align:text-bottom;margin-right:5px;" viewBox="0 0 20 20"><rect x="1" y="1" width="8" height="8" fill="#f25022"/><rect x="11" y="1" width="8" height="8" fill="#7fba00"/><rect x="1" y="11" width="8" height="8" fill="#00a4ef"/><rect x="11" y="11" width="8" height="8" fill="#ffb900"/></svg>Microsoft 365</a></li>
+          <li><a href="ssl-certificates">SSL Certificates</a></li>
         </ul>
       </div>
 
@@ -1562,12 +1625,12 @@
       <div class="footer-col">
         <h4>Hosting &amp; Domains</h4>
         <ul>
-          <li><a href="web-hosting.html">Shared Hosting</a></li>
-          <li><a href="wordpress-hosting.html">WordPress Hosting</a></li>
-          <li><a href="vps-hosting.html">VPS Hosting</a></li>
-          <li><a href="cloud-hosting.html">Cloud Hosting</a></li>
-          <li><a href="domain-search.html">Domain Registration</a></li>
-          <li><a href="ug-domains.html">.UG Domains</a></li>
+          <li><a href="web-hosting">Shared Hosting</a></li>
+          <li><a href="wordpress-hosting">WordPress Hosting</a></li>
+          <li><a href="vps-hosting">VPS Hosting</a></li>
+          <li><a href="cloud-hosting">Cloud Hosting</a></li>
+          <li><a href="domain-search">Domain Registration</a></li>
+          <li><a href="ug-domains">.UG Domains</a></li>
         </ul>
       </div>
 
@@ -1575,12 +1638,12 @@
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="index.html#about">About BlacTec</a></li>
-          <li><a href="index.html#contact">Our Portfolio</a></li>
+          <li><a href="index#about">About BlacTec</a></li>
+          <li><a href="index#contact">Our Portfolio</a></li>
           <li><a href="https://wa.me/256750870755">Help Center</a></li>
-          <li><a href="index.html#contact">Privacy Policy</a></li>
-          <li><a href="index.html#contact">Terms of Service</a></li>
-          <li><a href="index.html#contact">Contact Us</a></li>
+          <li><a href="index#contact">Privacy Policy</a></li>
+          <li><a href="index#contact">Terms of Service</a></li>
+          <li><a href="index#contact">Contact Us</a></li>
         </ul>
       </div>
     </div>
@@ -1588,8 +1651,8 @@
     <div class="footer-bottom">
       <span class="footer-copy">© 2026 BlacTec Technologies Ltd. Kampala, Uganda.</span>
       <div class="footer-bottom-links">
-        <a href="index.html#contact">Privacy</a>
-        <a href="index.html#contact">Terms</a>
+        <a href="index#contact">Privacy</a>
+        <a href="index#contact">Terms</a>
         <a href="https://wa.me/256750870755">Support</a>
       </div>
     </div>
